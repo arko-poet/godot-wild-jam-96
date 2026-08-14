@@ -7,11 +7,11 @@ Person 2
 [Person w/ Link]()  
 
 ## Sourced
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+### Font
+Author: [CodeMan38](https://fonts.google.com/?query=CodeMan38)  
+Source: [https://fonts.google.com/](https://fonts.google.com/)  
+License: [SIL Open Font License (OFL) 1.1](https://fonts.google.com/specimen/Press+Start+2P/license?query=CodeMan38)
+
 
 #### Godot Engine Logo
 Author: Andrea Calabró  
