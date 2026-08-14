@@ -28,8 +28,10 @@ ProjectUISoundController="*uid://cc37235kj4384"
 
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
@@ -44,6 +46,7 @@ folder_colors={
 [gui]
 
 theme/custom="res://template/resources/themes/lore.tres"
+theme/custom_font="uid://dbpq11kg7v055"
 
 [internationalization]
 
@@ -62,6 +65,9 @@ copy_path="res://template/"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
