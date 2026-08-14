@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://chbdcxmv5ea61"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_mcwxw"]
-[ext_resource type="Script" path="res://template/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_p7afn"]
-[ext_resource type="PackedScene" path="res://template/scenes/windows/main_menu_options_window.tscn" id="3_tsej0"]
-[ext_resource type="PackedScene" path="res://template/scenes/windows/main_menu_credits_window.tscn" id="4_b321b"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_dm2ih"]
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_mcwxw"]
+[ext_resource type="Script" uid="uid://ctg8ahlyafrpf" path="res://template/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_p7afn"]
+[ext_resource type="PackedScene" uid="uid://cyt5argsc4ki2" path="res://template/scenes/windows/main_menu_options_window.tscn" id="3_tsej0"]
+[ext_resource type="PackedScene" uid="uid://bq0bdte0873c7" path="res://template/scenes/windows/main_menu_credits_window.tscn" id="4_b321b"]
+[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_dm2ih"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -331,6 +331,9 @@ parameters/conditions/intro_done = false
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" parent_id_path=PackedInt32Array(2112060331) index="0" unique_id=556427956]
 modulate = Color(1, 1, 1, 0)
+
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0" unique_id=359406872]
+text = "GTA VI"
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" parent_id_path=PackedInt32Array(1510335937) index="0" unique_id=930520368]
 modulate = Color(1, 1, 1, 0)
