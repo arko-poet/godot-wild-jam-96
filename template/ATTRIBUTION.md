@@ -1,10 +1,19 @@
 # Attribution
 ## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+### Project Direction
+[arko](https://arko-poet.itch.io/)
+
+### Art
+[sulpherr](https://itch.io/profile/sulpherr)
+
+### Music & SFX
+[mouse99](https://itch.io/profile/mouse99)
+
+### Programming
+[josephkhland](https://josephkhland.itch.io/)
+[jerrylikesgreen](https://jerrylikesgreen.itch.io/)
+[arko](https://arko-poet.itch.io/)
 
 ## Sourced
 ### Font
