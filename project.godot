@@ -46,6 +46,7 @@ folder_colors={
 [gui]
 
 theme/custom="res://template/resources/themes/lore.tres"
+theme/custom_font="uid://dbpq11kg7v055"
 
 [internationalization]
 
