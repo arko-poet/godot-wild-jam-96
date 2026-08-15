@@ -8,7 +8,7 @@ extends Resource
 
 @export_category("Activation")
 @export var charge_rate: float = 1.0
-@export var activation_cost: float = 1.0
+@export var activation_cost: float = 100.0
 @export var power: float = 1.0
 
 @export_category("Economy")

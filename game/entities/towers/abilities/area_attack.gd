@@ -10,11 +10,10 @@ func get_target_count() -> int:
 
 
 func activate(
-	context: TowerAbilityContext,
-	targets: Array[EnemyContract]
+	context: TowerAbilityContext
 ) -> void:
 
-	for target in targets:
+	for target in context.targets:
 		target.take_damage(
 			damage * context.power
 		)
