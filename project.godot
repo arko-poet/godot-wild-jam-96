@@ -46,8 +46,6 @@ folder_colors={
 "res://game/assets/": "purple",
 "res://game/assets/art/": "purple",
 "res://game/assets/audio/": "purple",
-"res://game/scenes/": "blue",
-"res://game/scripts/": "yellow",
 "res://game/system/": "orange"
 }
 
