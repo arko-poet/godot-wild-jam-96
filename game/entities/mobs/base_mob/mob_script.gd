@@ -1,6 +1,6 @@
 class_name Mob extends CharacterBody2D
 
-signal mob_killed
+signal mob_killed( ref_to_self: Mob )
 signal mob_reached_end_of_path
 
 @export var data: MobResource
@@ -14,6 +14,9 @@ var damage : int
 # Pathfinding Variables
 var mob_path: Array[Vector2]
 var path_index: int = 0
+
+# Value to use to determin how fast or how much hp a Mob will have. 
+var _difficulty: int = 0
 
 func _ready():
 	if data == null:
@@ -44,6 +47,10 @@ func set_up_path(path: Array[Vector2]) -> void:
 		push_error("[Mob] Received empty path.")
 		return
 
+func set_difficulty( v: int )->void:
+	_difficulty = v
+
+
 ### Lifetime Loop ###
 func _physics_process(_delta: float) -> void:
 	if path_index >= mob_path.size():
@@ -72,9 +79,8 @@ func mob_reaches_end()->void:
 	_mob_die()
 	
 func kill_mob() ->void:
-	mob_killed.emit()
 	_mob_die()
 
 func _mob_die()->void:
-	
+	mob_killed.emit(self)
 	queue_free()

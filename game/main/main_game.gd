@@ -2,11 +2,9 @@ extends Node
 
 @export var _starting_ectoplasm: int
 @export var _starting_core_charges: int
+@onready var level: Level = %Level
 
-var _wave := 0:
-	set(value):
-		_wave = value
-		_wave_label.text = "Wave: %s" % _wave
+
 var _ectoplasm: int:
 	set(value):
 		_ectoplasm = value
@@ -24,7 +22,7 @@ var _core_charges: int:
 
 @onready var _core_charges_label: Label = %CoreChargesLabel
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
-@onready var _wave_label: Label = %WaveLabel
+
 
 
 func _ready() -> void:
@@ -39,11 +37,6 @@ func _on_level_core_damaged() -> void:
 
 func _on_place_tower_button_pressed() -> void:
 	# TODO handle tower placement, ectoplasm spending
-	pass # Replace with function body.
-
-
-func _on_start_wave_button_pressed() -> void:
-	# TODO handle wave starting and counter updates here
 	pass # Replace with function body.
 
 

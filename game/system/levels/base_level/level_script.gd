@@ -11,6 +11,11 @@ func _ready() -> void:
 	mob_spawner.spawn_ghost_signal.connect(_on_spawn_ghost_signal)
 
 
+func start_wave( current_wave: int )->void:
+	mob_spawner.start()
+	mob_spawner.set_current_wave(current_wave)
+
+
 func _on_spawn_ghost_signal()->void:
 	_path = path_layer.build_path()
 	var mob: Mob = mob_spawner.spawn_ghost( _path )
