@@ -163,7 +163,6 @@ func _on_perception_area_body_entered(body: Node2D) -> void:
 
 	if enemy_contracts.has(body):
 		return
-
 	var contract := EnemyContract.new(body)
 
 	enemy_contracts[body] = contract
@@ -175,6 +174,5 @@ func _on_perception_area_body_exited(body: Node2D) -> void:
 		return
 
 	var contract: EnemyContract = enemy_contracts[body]
-
 	enemy_contracts.erase(body)
 	enemies_in_range.erase(contract)
