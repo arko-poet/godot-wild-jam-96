@@ -15,6 +15,58 @@ pause_menu_packed = ExtResource("2_kyrfy")
 
 [node name="UI" type="Control" parent="UILayer" unique_id=351983252]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelContainer" type="VBoxContainer" parent="UILayer/UI" unique_id=779302885]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="CoreChargesLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=285645343]
+layout_mode = 2
+text = "Core Charges: 0"
+
+[node name="EctoplasmLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=34089681]
+layout_mode = 2
+text = "Ectoplasm: 0"
+
+[node name="WaveLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=1632530861]
+layout_mode = 2
+text = "Wave: 0"
+
+[node name="PlaceTowerButton" type="Button" parent="UILayer/UI" unique_id=876169344]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 16.0
+grow_vertical = 0
+text = "Place Tower"
+
+[node name="StartWaveButton" type="Button" parent="UILayer/UI" unique_id=1676360846]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Start Wave"
+
+[node name="PauseButton" type="Button" parent="UILayer/UI" unique_id=409817397]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 32.0
+grow_horizontal = 0
+text = "PAUSE"
