@@ -1,5 +1,6 @@
 class_name Level extends Node2D
 
+signal core_damaged
 
 @onready var path_layer: PathLayer = %PathLayer
 @onready var mob_spawner: MobSpawner = %MobSpawner
@@ -12,4 +13,10 @@ func _ready() -> void:
 
 func _on_spawn_ghost_signal()->void:
 	_path = path_layer.build_path()
-	mob_spawner.spawn_ghost( _path )
+	var mob: Mob = mob_spawner.spawn_ghost( _path )
+
+	mob.mob_reached_end_of_path.connect(_on_mob_reached_end_of_path)
+	
+
+func _on_mob_reached_end_of_path() -> void:
+	core_damaged.emit()

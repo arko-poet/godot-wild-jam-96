@@ -18,7 +18,7 @@ func _on_ghost_spawner_timeout() -> void:
 	spawn_ghost_signal.emit()
 
 
-func spawn_ghost(path: Array[Vector2i]) -> void:
+func spawn_ghost(path: Array[Vector2i]) -> Mob:
 
 	if path.is_empty():
 		push_error("[MobSpawner] Cannot spawn ghost. Path is empty.")
@@ -42,3 +42,5 @@ func spawn_ghost(path: Array[Vector2i]) -> void:
 	add_child(spawn)
 
 	spawn.set_up_path(world_path)
+	
+	return spawn
