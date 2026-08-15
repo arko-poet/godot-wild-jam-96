@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://de1tqfi4cu8yf"]
+
+[ext_resource type="PackedScene" uid="uid://dhqu0rnayje85" path="res://game/entities/towers/Tower.tscn" id="1_ofpim"]
+[ext_resource type="Script" uid="uid://143djao01ro0" path="res://game/sandbox/towers_testing.gd" id="1_syksk"]
+[ext_resource type="Resource" uid="uid://d1kopu171ngjw" path="res://game/resources/towers/attack_tower.tres" id="2_syksk"]
+[ext_resource type="Script" uid="uid://bj20lhnl4mmwb" path="res://game/sandbox/test_controller.gd" id="3_gl1dy"]
+[ext_resource type="Texture2D" uid="uid://blj34dy6dqld7" path="res://game/assets/towers/prototype_enemy.png" id="4_ol8s6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
+radius = 20.024984
+
+[node name="TowersTesting" type="Node2D" unique_id=1873766869]
+script = ExtResource("1_syksk")
+
+[node name="Tower" parent="." unique_id=1787143782 instance=ExtResource("1_ofpim")]
+position = Vector2(340, 169)
+data = ExtResource("2_syksk")
+
+[node name="MobExample" type="CharacterBody2D" parent="." unique_id=1722744341 groups=["Mobs"]]
+script = ExtResource("3_gl1dy")
+
+[node name="Sprite2D" type="Sprite2D" parent="MobExample" unique_id=1719555449]
+texture = ExtResource("4_ol8s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobExample" unique_id=801920005]
+shape = SubResource("CircleShape2D_vgud1")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=525100753]
+
+[node name="CenterContainer" type="CenterContainer" parent="UI" unique_id=1330201164]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CenterContainer" unique_id=1742240568]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UI/CenterContainer/HBoxContainer" unique_id=1898797505]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/HBoxContainer/Panel" unique_id=297386636]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/CenterContainer/HBoxContainer/Panel/VBoxContainer" unique_id=1755875813]
+layout_mode = 2
+text = "ENEMY"
+
+[node name="EnemyDetails" type="RichTextLabel" parent="UI/CenterContainer/HBoxContainer/Panel/VBoxContainer" unique_id=2067505320]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+bbcode_enabled = true
+
+[node name="Panel2" type="Panel" parent="UI/CenterContainer/HBoxContainer" unique_id=661261191]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/HBoxContainer/Panel2" unique_id=1060521811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/CenterContainer/HBoxContainer/Panel2/VBoxContainer" unique_id=1899779552]
+layout_mode = 2
+text = "TOWER"
+
+[node name="TowerDetails" type="RichTextLabel" parent="UI/CenterContainer/HBoxContainer/Panel2/VBoxContainer" unique_id=1306818752]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+bbcode_enabled = true

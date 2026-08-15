@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dhqu0rnayje85"]
+
+[ext_resource type="Script" uid="uid://vmyo3m8sxbyj" path="res://game/entities/towers/tower.gd" id="1_0e2fs"]
+[ext_resource type="Texture2D" uid="uid://cg1bjbh845fvx" path="res://game/assets/towers/prototype_tower.png" id="2_ycjjm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
+
+[node name="Tower" type="Node2D" unique_id=1787143782]
+script = ExtResource("1_0e2fs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599717512]
+texture = ExtResource("2_ycjjm")
+
+[node name="PerceptionArea" type="Area2D" parent="." unique_id=1968859076]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea" unique_id=235875454]
+shape = SubResource("CircleShape2D_vgud1")
+
+[node name="VFXOrigin" type="Marker2D" parent="." unique_id=1798908915]
+
+[connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
+[connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
