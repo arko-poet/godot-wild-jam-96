@@ -67,6 +67,7 @@ func spawn_ghost(path: Array[Vector2i]) -> Mob:
 	spawn.set_up_path(world_path)
 	
 	if _ghost_spawn_count <= 0:
+		## Resets spawn count to total ghost span count for next wave. 
 		_ghost_spawn_count = total_ghost_spawn_count
 		_stop()
 	return spawn
