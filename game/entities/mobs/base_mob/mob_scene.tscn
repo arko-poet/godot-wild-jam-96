@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cvfsn6p6oe2yn"]
+
+[ext_resource type="Texture2D" uid="uid://ddsv26nuvaqf5" path="res://game/assets/ghosts/place_holder_ghost.png" id="1_andji"]
+[ext_resource type="Script" uid="uid://ggi8k3pnkatn" path="res://game/entities/mobs/base_mob/mob_script.gd" id="1_la6k7"]
+[ext_resource type="Script" uid="uid://c70h0u7e1oxgl" path="res://game/entities/mobs/base_mob/mob_body_script.gd" id="1_yywfr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jx01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_andji")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jx01"]
+radius = 18.110771
+
+[node name="Mob" type="Node2D" unique_id=1541290529]
+script = ExtResource("1_la6k7")
+
+[node name="MobBody" type="CharacterBody2D" parent="." unique_id=978749843]
+unique_name_in_owner = true
+script = ExtResource("1_yywfr")
+
+[node name="MobAnimatedSprite" type="AnimatedSprite2D" parent="MobBody" unique_id=316737625]
+sprite_frames = SubResource("SpriteFrames_4jx01")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobBody" unique_id=323462887]
+shape = SubResource("CircleShape2D_4jx01")
