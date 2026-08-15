@@ -11,7 +11,7 @@ signal spawn_ghost_signal()
 @export var total_ghost_spawn_count: int = 5
 
 
-## Created this variable so we can later use it to determin is we want to increase spawn count if we want to. 
+## Created this variable so we can later use it to determin if we want to increase spawn count if we want to. 
 var _current_wave: int = 0
 var _ghost_spawn_count: int 
 var _active_ghosts: Array[ Mob ]
