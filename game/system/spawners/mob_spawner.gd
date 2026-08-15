@@ -59,7 +59,7 @@ func spawn_ghost(path: Array[Vector2i]) -> Mob:
 	var spawn: Mob = ghost_mobs.instantiate()
 
 	spawn.global_position = world_path[0]
-	spawn.mob_killed.connect(_on_ghost_mob_died)
+	spawn.remove_from_manager_pool.connect(_on_ghost_mob_died)
 	add_child(spawn)
 	_active_ghosts.append(spawn)
 	_ghost_spawn_count -= 1

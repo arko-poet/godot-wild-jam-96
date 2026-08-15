@@ -1,7 +1,8 @@
 class_name Mob extends CharacterBody2D
 
-signal mob_killed( ref_to_self: Mob )
+signal mob_killed
 signal mob_reached_end_of_path
+signal remove_from_manager_pool( ref_to_self: Mob )
 
 @export var data: MobResource
 
@@ -79,8 +80,9 @@ func mob_reaches_end()->void:
 	_mob_die()
 	
 func kill_mob() ->void:
+	mob_killed.emit()
 	_mob_die()
 
 func _mob_die()->void:
-	mob_killed.emit(self)
+	remove_from_manager_pool.emit(self)
 	queue_free()
