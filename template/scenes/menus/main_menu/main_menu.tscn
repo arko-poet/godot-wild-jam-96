@@ -10,6 +10,7 @@
 script = ExtResource("2_gh2py")
 level_select_packed_scene = null
 confirm_new_game = true
+game_scene_path = "uid://cfdnt8lbn0dss"
 options_packed_scene = ExtResource("3_e2xrs")
 credits_packed_scene = ExtResource("4_58ijl")
 
