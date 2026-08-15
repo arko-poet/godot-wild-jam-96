@@ -39,7 +39,6 @@ func spawn_ghost(path: Array[Vector2i]) -> Mob:
 	var spawn: Mob = ghost_mobs.instantiate()
 
 	spawn.global_position = world_path[0]
-
 	add_child(spawn)
 
 	spawn.set_up_path(world_path)
