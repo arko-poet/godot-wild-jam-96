@@ -14,9 +14,9 @@ func _ready() -> void:
 func _on_spawn_ghost_signal()->void:
 	_path = path_layer.build_path()
 	var mob: Mob = mob_spawner.spawn_ghost( _path )
+
+	mob.mob_reached_end_of_path.connect(_on_mob_reached_end_of_path)
 	
-	mob.core_attacked.connect(_on_core_attacked)
 
-
-func _on_core_attacked() -> void:
+func _on_mob_reached_end_of_path() -> void:
 	core_damaged.emit()

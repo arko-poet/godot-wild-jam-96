@@ -33,6 +33,7 @@ func _ready() -> void:
 
 
 func _on_level_core_damaged() -> void:
+	# TODO this should use mob damage instead
 	_core_charges -= 1
 
 
