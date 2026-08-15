@@ -38,9 +38,10 @@ tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAA=")
 unique_name_in_owner = true
 script = ExtResource("3_fk1rh")
 ghost_mobs = ExtResource("4_uyg15")
+total_ghost_spawn_count = 2
 
 [node name="GhostSpawnerTimer" type="Timer" parent="MobSpawner" unique_id=315870253]
 unique_name_in_owner = true
-autostart = true
+wait_time = 2.0
 
 [editable path="TileMapVisualRoot/PathLayer"]
