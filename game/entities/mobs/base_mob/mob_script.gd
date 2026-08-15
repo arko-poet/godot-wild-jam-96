@@ -1,5 +1,7 @@
 class_name Mob extends Node2D
 
+signal core_attacked
+
 @onready var mob_body: MobBody = %MobBody
 
 
@@ -19,7 +21,7 @@ func set_up_path(path: Array[Vector2]) -> void:
 
 
 func _on_mob_reached_end_of_path()->void:
-	
+	core_attacked.emit()
 	_mob_die()
 	
 
