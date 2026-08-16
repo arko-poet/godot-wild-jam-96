@@ -13,6 +13,7 @@ script = ExtResource("1_la6k7")
 data = ExtResource("2_savdq")
 
 [node name="MobAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=316737625]
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_67lka")
 flip_h = true

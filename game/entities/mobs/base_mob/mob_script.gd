@@ -4,6 +4,9 @@ signal mob_killed
 signal mob_reached_end_of_path
 signal remove_from_manager_pool( ref_to_self: Mob )
 
+
+@onready var mob_animated_sprite: AnimatedSprite2D = %MobAnimatedSprite
+
 @export var data: MobResource
 
 # Runtime Stats
@@ -35,6 +38,7 @@ func initialize_from_resource() -> void:
 	speed = data.speed
 	loot = data.loot
 	damage = data.damage
+	mob_animated_sprite.set_sprite_frames(data.mob_sprite)
 	
 	# Add to required groups.
 	for target_group in data.groups:
