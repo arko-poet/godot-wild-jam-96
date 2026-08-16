@@ -9,6 +9,7 @@ var _ectoplasm: int:
 	set(value):
 		_ectoplasm = value
 		_ectoplasm_label.text = "Ectoplasm: %s" % _ectoplasm
+
 var _core_charges: int:
 	set(value):
 		_core_charges = max(value, 0)
@@ -28,7 +29,11 @@ var _core_charges: int:
 func _ready() -> void:
 	_ectoplasm = _starting_ectoplasm
 	_core_charges = _starting_core_charges
+	Event.ectoplasm_collected_signal.connect(_on_ectoplasm_collected_signal)
 
+
+func _on_ectoplasm_collected_signal()->void:
+	_ectoplasm += 1
 
 func _on_level_core_damaged() -> void:
 	# TODO this should use mob damage instead

@@ -1,14 +1,61 @@
 [gd_scene format=3 uid="uid://cvfsn6p6oe2yn"]
 
-[ext_resource type="Texture2D" uid="uid://ddsv26nuvaqf5" path="res://game/assets/ghosts/place_holder_ghost.png" id="1_andji"]
 [ext_resource type="Script" uid="uid://ggi8k3pnkatn" path="res://game/entities/mobs/base_mob/mob_script.gd" id="1_la6k7"]
 [ext_resource type="Resource" uid="uid://c0t3rtc1w03rl" path="res://game/resources/mobs/ghost_mob.tres" id="2_savdq"]
+[ext_resource type="Texture2D" uid="uid://ch01dokqfeqih" path="res://game/assets/ghosts/ghost_enermy1.png" id="3_savdq"]
+[ext_resource type="Script" uid="uid://ccunmongimtvu" path="res://game/system/spawners/ectoplasm_spawner.gd" id="4_67lka"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67lka"]
+atlas = ExtResource("3_savdq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tmvf"]
+atlas = ExtResource("3_savdq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v5jp"]
+atlas = ExtResource("3_savdq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0keq0"]
+atlas = ExtResource("3_savdq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4p24"]
+atlas = ExtResource("3_savdq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq7en"]
+atlas = ExtResource("3_savdq")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa4du"]
+atlas = ExtResource("3_savdq")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4jx01"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_andji")
+"texture": SubResource("AtlasTexture_67lka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tmvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v5jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0keq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4p24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq7en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa4du")
 }],
 "loop": 1,
 "name": &"default",
@@ -24,6 +71,10 @@ data = ExtResource("2_savdq")
 
 [node name="MobAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=316737625]
 sprite_frames = SubResource("SpriteFrames_4jx01")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=323462887]
 shape = SubResource("CircleShape2D_4jx01")
+
+[node name="EctoplasmSpawner" type="Node2D" parent="." unique_id=186805388]
+script = ExtResource("4_67lka")
