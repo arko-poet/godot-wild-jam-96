@@ -6,7 +6,7 @@ extends Resource
 
 @export_category("Parameters")
 @export var speed : float =100.0
-@export var health : int = 20
+@export var health : float = 20.0
 @export var loot: int = 1
 @export var damage: int = 1
 
