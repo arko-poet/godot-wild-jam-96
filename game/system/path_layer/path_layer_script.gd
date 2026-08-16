@@ -28,10 +28,15 @@ func _build_path() -> Array[Vector2i]:
 	var end_tiles := end_layer.get_used_cells()
 
 
-	assert(start_tiles.size() == 1, "StartLayer must have exactly one tile.")
+	assert(start_tiles.size() >= 1, "StartLayer must have at least one tile.")
 	assert(end_tiles.size() == 1, "EndLayer must have exactly one tile.")
 
 
+	## Sort start tiles by spawn_tile custom data.
+	start_tiles.sort_custom(_sort_start_tiles_by_spawn_order)
+
+
+	## The first spawn tile is the primary starting point.
 	_start_tile = start_tiles[0]
 	_end_tile = end_tiles[0]
 
@@ -81,5 +86,20 @@ func _build_path() -> Array[Vector2i]:
 		_path.append(current_tile)
 
 
-
 	return _path
+
+
+# This function is was created to sort the start tiles by assending order when compared the 
+# custom data assigned to each. 
+func _sort_start_tiles_by_spawn_order(
+	a: Vector2i,
+	b: Vector2i
+) -> bool:
+
+	var a_data: TileData = start_layer.get_cell_tile_data(a)
+	var b_data: TileData = start_layer.get_cell_tile_data(b)
+
+	var a_order: int = a_data.get_custom_data("spawn_tile")
+	var b_order: int = b_data.get_custom_data("spawn_tile")
+
+	return a_order < b_order

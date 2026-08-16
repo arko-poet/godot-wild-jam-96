@@ -3,18 +3,12 @@ class_name MobSpawner extends Node2D
 
 signal spawn_ghost_signal()
 
-## TODO Will create an array of differant mob types. for now just 1 Ghost Mob
 @export var ghost_mobs: PackedScene
 
 @onready var ghost_spawner_timer: Timer = %GhostSpawnerTimer
 @onready var path_layer: PathLayer = %PathLayer
 @export var total_ghost_spawn_count: int = 5
 
-
-## Created this variable so we can later use it to determin if we want to increase spawn count if we want to. 
-## or we can use this to determin the scaling of the mob health / speed. Decided not to get into that now as
-## you stated you wanted to work on this at a later time by increasiung the difficulty valriable I added to 
-## Base Mob from here before its spawned. 
 
 var _current_wave: int = 0
 var _ghost_spawn_count: int 
