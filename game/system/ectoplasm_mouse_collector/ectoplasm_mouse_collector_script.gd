@@ -2,7 +2,7 @@ class_name EctoplasmMouseCollector
 extends Area2D
 
 
-@onready var range: CollisionShape2D = %Range
+@onready var detection_range: CollisionShape2D = %Range
 
 @export var range_value: float = 1.0
 
@@ -16,4 +16,4 @@ func _process(_delta: float) -> void:
 
 
 func set_range(value: float) -> void:
-	range.scale = Vector2(value, value)
+	detection_range.scale = Vector2(value, value)

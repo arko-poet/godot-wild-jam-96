@@ -12,21 +12,20 @@ func _ready() -> void:
 
 
 ## For varied offest in spawn location
-@export var spawn_radius: float = 2.0
+@export var spawn_radius: float = 10.0
 
 
 func _on_mob_killed() -> void:
-	var ectoplasm: Ectoplasm = ECTOPLASM_SCENE.instantiate()
 	var parent: Mob = get_parent()
-	
+
 	for loot in parent.loot:
-		
-	
+		var ectoplasm: Ectoplasm = ECTOPLASM_SCENE.instantiate()
+
 		get_tree().current_scene.add_child(ectoplasm)
-		
+
 		var offset := Vector2(
 			randf_range(-spawn_radius, spawn_radius),
 			randf_range(-spawn_radius, spawn_radius)
 		)
-		
+
 		ectoplasm.global_position = global_position + offset
