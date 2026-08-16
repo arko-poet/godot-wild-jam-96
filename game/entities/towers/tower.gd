@@ -20,6 +20,8 @@ var target_group: String
 var enemies_in_range: Array[EnemyContract] = []
 var enemy_contracts: Dictionary = {}
 
+var preview_mode :bool = true
+
 func _ready() -> void:
 	if data == null:
 		push_error("Tower has no TowerResource assigned.")
@@ -55,8 +57,15 @@ func upgrade_range(amount: float) -> void:
 	perception_radius += amount
 	update_perception_radius()
 
+func set_preview_mode(enabled: bool) -> void:
+	preview_mode = enabled
+
+func set_preview_color(color: Color) -> void:
+	modulate = color
+	pass
+
 func _process(delta: float) -> void:
-	if data == null:
+	if data == null or preview_mode == true:
 		return
 
 	charge(delta)
