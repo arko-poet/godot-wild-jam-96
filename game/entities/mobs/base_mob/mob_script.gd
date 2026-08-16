@@ -47,18 +47,15 @@ func _run_dificulty_curve()->void:
 	var health_ratio_gain: float = _difficulty * health_curve
 	max_health += health_ratio_gain
 	current_health = max_health
-	print(" max_health ", max_health)
 	
 	
 	# Speed Dificutly increase
 	var speed_ratio_gain: float = _difficulty * speed_curve * 0.2 * 35
 	speed += speed_ratio_gain 
-	print("speed: ", speed)
 	
 	# Loot Dificutly increase
 	var loot_ratio_gain: int = _difficulty * 3
 	loot += loot_ratio_gain
-	print( "loot: ", loot )
 
 
 

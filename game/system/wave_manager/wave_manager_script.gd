@@ -26,7 +26,6 @@ func _next_wave()->void:
 	_current_wave += 1
 	_wave_label.text =  "Wave: %s" % _current_wave
 	Event.next_wave_trigered(_current_wave)
-	print(_current_wave)
 
 
 func trigger_next_wave()->void:
