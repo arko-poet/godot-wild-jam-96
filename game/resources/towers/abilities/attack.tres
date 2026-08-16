@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SingleTargetAttack" format=3 uid="uid://8cklpgs4b6cj"]
+
+[ext_resource type="Script" uid="uid://y1057qxndjqk" path="res://game/entities/towers/abilities/single_target_attack.gd" id="1_7bjfi"]
+
+[resource]
+script = ExtResource("1_7bjfi")
+metadata/_custom_type_script = "uid://y1057qxndjqk"

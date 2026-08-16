@@ -1,0 +1,19 @@
+[gd_scene format=4 uid="uid://dg60arx7lqg2x"]
+
+[ext_resource type="TileSet" uid="uid://hwwjnjvnp1fn" path="res://game/system/path_layer/path_tile_set_resource.tres" id="1_meste"]
+[ext_resource type="Script" uid="uid://b82ksl2tudnv8" path="res://game/system/path_layer/path_layer_script.gd" id="2_x2yeu"]
+
+[node name="PathLayer" type="TileMapLayer" unique_id=740346887]
+tile_map_data = PackedByteArray("AAAcAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAZAAkAAAAAAAAAAAAYAAkAAAAAAAAAAAAYAAgAAAAAAAAAAAAXAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAcAAAAAAAAAAAAVAAcAAAAAAAAAAAAUAAcAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAAdAAoAAAAAAAAAAAA=")
+tile_set = ExtResource("1_meste")
+script = ExtResource("2_x2yeu")
+
+[node name="StartLayer" type="TileMapLayer" parent="." unique_id=1010244544]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAdAAoAAAAAAAAAAAA=")
+tile_set = ExtResource("1_meste")
+
+[node name="EndLayer" type="TileMapLayer" parent="." unique_id=352255070]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAAAAYAAAAAAAAAAAA=")
+tile_set = ExtResource("1_meste")

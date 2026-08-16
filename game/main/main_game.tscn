@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cfdnt8lbn0dss"]
+
+[ext_resource type="Script" uid="uid://dn5y485b6qbvf" path="res://game/main/main_game.gd" id="1_70w2d"]
+[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="1_tje7e"]
+[ext_resource type="PackedScene" uid="uid://e0xyt51xgvgy" path="res://template/scenes/windows/pause_menu_layer.tscn" id="4_4r55p"]
+[ext_resource type="PackedScene" uid="uid://cbu3fe1tdehc5" path="res://game/system/levels/base_level/level.tscn" id="4_7gsoh"]
+[ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="4_nc71o"]
+[ext_resource type="PackedScene" uid="uid://cqw8xxwipplig" path="res://template/scenes/windows/level_lost_layer.tscn" id="5_uflg0"]
+[ext_resource type="Script" uid="uid://16dwdo7xq106" path="res://game/system/wave_manager/wave_manager_script.gd" id="8_fjfis"]
+[ext_resource type="PackedScene" uid="uid://b0ewbj0w6affe" path="res://game/system/ectoplasm_mouse_collector/ectoplasm_mouse_collector.tscn" id="10_evtg3"]
+[ext_resource type="PackedScene" uid="uid://cfh8bx503xjl1" path="res://game/system/ui/tower_confirmation/tower_confirmation_popup.tscn" id="7_uflg0"]
+
+
+
+[node name="MainGame" type="Node" unique_id=1950236070]
+script = ExtResource("1_70w2d")
+_starting_ectoplasm = 100
+_starting_core_charges = 1
+
+[node name="PauseMenuController" type="Node" parent="." unique_id=1922467190]
+unique_name_in_owner = true
+script = ExtResource("1_tje7e")
+pause_menu_packed = ExtResource("4_4r55p")
+
+[node name="WinLoseManager" type="Node" parent="." unique_id=1623973300]
+unique_name_in_owner = true
+script = ExtResource("4_nc71o")
+main_menu_scene_path = "uid://u6r2rlq7u5uy"
+game_lost_scene = ExtResource("5_uflg0")
+
+[node name="Level" parent="." unique_id=1206293609 instance=ExtResource("4_7gsoh")]
+unique_name_in_owner = true
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1834987568]
+
+[node name="UI" type="Control" parent="UILayer" unique_id=351983252]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LabelContainer" type="VBoxContainer" parent="UILayer/UI" unique_id=779302885]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CoreChargesLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=285645343]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Core Charges: 0"
+
+[node name="EctoplasmLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=34089681]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ectoplasm: 0"
+
+[node name="WaveLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=1632530861]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Wave: 0"
+
+[node name="PlaceTowerButton" type="Button" parent="UILayer/UI" unique_id=876169344]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 16.0
+grow_vertical = 0
+text = "Place Tower"
+
+[node name="StartWaveButton" type="Button" parent="UILayer/UI" unique_id=1676360846]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Start Wave"
+
+[node name="PauseButton" type="Button" parent="UILayer/UI" unique_id=409817397]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 32.0
+grow_horizontal = 0
+text = "PAUSE"
+
+
+[node name="EctoplasmMouseCollector" parent="." unique_id=1134838315 instance=ExtResource("10_evtg3")]
+[node name="TowerConfirmationPopup" parent="UILayer/UI" unique_id=643378081 instance=ExtResource("7_uflg0")]
+layout_mode = 1
+
+[node name="WaveManager" type="Node" parent="." unique_id=159233388]
+unique_name_in_owner = true
+script = ExtResource("8_fjfis")
+
+[connection signal="core_damaged" from="Level" to="." method="_on_level_core_damaged"]
+[connection signal="pressed" from="UILayer/UI/PlaceTowerButton" to="." method="_on_place_tower_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/PauseButton" to="." method="_on_pause_button_pressed"]

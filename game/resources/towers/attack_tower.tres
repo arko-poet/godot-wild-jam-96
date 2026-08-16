@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TowerResource" format=3 uid="uid://d1kopu171ngjw"]
+
+[ext_resource type="Script" uid="uid://bchbyouil8i2v" path="res://game/entities/towers/tower_resource.gd" id="1_ruo4i"]
+[ext_resource type="Resource" uid="uid://8cklpgs4b6cj" path="res://game/resources/towers/abilities/attack.tres" id="2_onmi0"]
+[ext_resource type="Texture2D" uid="uid://cg1bjbh845fvx" path="res://game/assets/towers/prototype_tower.png" id="2_vhvc1"]
+
+[resource]
+script = ExtResource("1_ruo4i")
+tower_sprite = ExtResource("2_vhvc1")
+perception_radius = 50.0
+activation_cost = 1.0
+purchase_price = 10
+special_ability = ExtResource("2_onmi0")
+metadata/_custom_type_script = "uid://bchbyouil8i2v"

@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" format=3 uid="uid://hwwjnjvnp1fn"]
+
+[ext_resource type="Texture2D" uid="uid://cglsljn5q1vpr" path="res://game/assets/tile_sets/place_holder_path_tile.png" id="1_x4bet"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c7wb3"]
+texture = ExtResource("1_x4bet")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+custom_data_layer_0/name = "start"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_c7wb3")

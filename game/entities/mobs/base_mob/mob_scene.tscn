@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvfsn6p6oe2yn"]
+
+[ext_resource type="Script" uid="uid://ggi8k3pnkatn" path="res://game/entities/mobs/base_mob/mob_script.gd" id="1_la6k7"]
+[ext_resource type="Resource" uid="uid://c0t3rtc1w03rl" path="res://game/resources/mobs/ghost_mob.tres" id="2_savdq"]
+[ext_resource type="SpriteFrames" uid="uid://dg8jti0bl5lk2" path="res://game/resources/mobs/ghost_sprite_frames.tres" id="3_67lka"]
+[ext_resource type="Script" uid="uid://ccunmongimtvu" path="res://game/system/spawners/ectoplasm_spawner.gd" id="4_67lka"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jx01"]
+radius = 18.110771
+
+[node name="Mob" type="CharacterBody2D" unique_id=978749843]
+script = ExtResource("1_la6k7")
+data = ExtResource("2_savdq")
+
+[node name="MobAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=316737625]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_67lka")
+autoplay = "default"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=323462887]
+shape = SubResource("CircleShape2D_4jx01")
+
+[node name="EctoplasmSpawner" type="Node2D" parent="." unique_id=186805388]
+script = ExtResource("4_67lka")

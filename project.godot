@@ -26,11 +26,12 @@ AppConfig="*uid://cjke6crjg14a0"
 SceneLoader="*uid://cbwmrnp0af35y"
 ProjectMusicController="*uid://r5t485lr3p7t"
 ProjectUISoundController="*uid://cc37235kj4384"
+Event="*uid://ddkyaotj0gt16"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
@@ -46,9 +47,8 @@ folder_colors={
 "res://game/assets/": "purple",
 "res://game/assets/art/": "purple",
 "res://game/assets/audio/": "purple",
-"res://game/resources/": "orange",
-"res://game/scenes/": "blue",
-"res://game/scripts/": "yellow"
+"res://game/autoloads/": "yellow",
+"res://game/system/": "orange"
 }
 
 [gui]
