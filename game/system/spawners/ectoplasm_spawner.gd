@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 ## For varied offest in spawn location
-@export var spawn_radius: float = 2.0
+@export var spawn_radius: float = 10.0
 
 
 func _on_mob_killed() -> void:

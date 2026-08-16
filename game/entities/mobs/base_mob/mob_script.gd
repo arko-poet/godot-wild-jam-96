@@ -23,7 +23,7 @@ var path_index: int = 0
 
 # Value to use to determin how fast or how much hp a Mob will have. 
 var _difficulty: int = 0
-@export var health_curve: float = 0.5
+@export var health_curve: float = 1.3
 @export var speed_curve: float = 1.5
 
 func _ready():
@@ -32,8 +32,8 @@ func _ready():
 			push_error("Mob has no MobResource assigned.")
 			return
 	
-	_run_dificulty_curve()
 	initialize_from_resource()
+	_run_dificulty_curve()
 	_update_health_bar()
 
 func _update_health_bar()->void:
@@ -45,15 +45,20 @@ func _run_dificulty_curve()->void:
 	
 	# Health dificulty increase
 	var health_ratio_gain: float = _difficulty * health_curve
-	data.health = data.health + health_ratio_gain
+	max_health += health_ratio_gain
+	current_health = max_health
+	print(" max_health ", max_health)
+	
 	
 	# Speed Dificutly increase
 	var speed_ratio_gain: float = _difficulty * speed_curve * 0.2 * 35
-	data.speed = speed_ratio_gain + data.speed
+	speed += speed_ratio_gain 
+	print("speed: ", speed)
 	
 	# Loot Dificutly increase
-	var loot_ratio_gain: int = _difficulty * 5
-	data.loot = loot_ratio_gain
+	var loot_ratio_gain: int = _difficulty * 3
+	loot += loot_ratio_gain
+	print( "loot: ", loot )
 
 
 
