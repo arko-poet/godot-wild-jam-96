@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cqw8xxwipplig"]
+
+[ext_resource type="PackedScene" uid="uid://cmk4cak0n00u7" path="res://template/scenes/windows/level_lost_window.tscn" id="1_mw61d"]
+[ext_resource type="Script" uid="uid://b642vm6q6p5y1" path="res://template/scenes/windows/level_lost_layer.gd" id="1_nladh"]
+
+[node name="LevelLostLayer" type="CanvasLayer" unique_id=393261318]
+script = ExtResource("1_nladh")
+
+[node name="LevelLostWindow" parent="." unique_id=493104306 instance=ExtResource("1_mw61d")]
+unique_name_in_owner = true
+
+[connection signal="main_menu_pressed" from="LevelLostWindow" to="." method="_on_level_lost_window_main_menu_pressed"]
+[connection signal="restart_pressed" from="LevelLostWindow" to="." method="_on_level_lost_window_restart_pressed"]

@@ -16,6 +16,7 @@ data = ExtResource("2_savdq")
 unique_name_in_owner = true
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_67lka")
+autoplay = "default"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=323462887]

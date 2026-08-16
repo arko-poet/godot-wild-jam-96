@@ -5,16 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://e0xyt51xgvgy" path="res://template/scenes/windows/pause_menu_layer.tscn" id="4_4r55p"]
 [ext_resource type="PackedScene" uid="uid://cbu3fe1tdehc5" path="res://game/system/levels/base_level/level.tscn" id="4_7gsoh"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="4_nc71o"]
-[ext_resource type="PackedScene" uid="uid://cmk4cak0n00u7" path="res://template/scenes/windows/level_lost_window.tscn" id="5_nc71o"]
+[ext_resource type="PackedScene" uid="uid://cqw8xxwipplig" path="res://template/scenes/windows/level_lost_layer.tscn" id="5_uflg0"]
+[ext_resource type="Script" uid="uid://16dwdo7xq106" path="res://game/system/wave_manager/wave_manager_script.gd" id="8_fjfis"]
 [ext_resource type="PackedScene" uid="uid://b0ewbj0w6affe" path="res://game/system/ectoplasm_mouse_collector/ectoplasm_mouse_collector.tscn" id="10_evtg3"]
 [ext_resource type="PackedScene" uid="uid://cfh8bx503xjl1" path="res://game/system/ui/tower_confirmation/tower_confirmation_popup.tscn" id="7_uflg0"]
-[ext_resource type="Script" uid="uid://16dwdo7xq106" path="res://game/system/wave_manager/wave_manager_script.gd" id="8_fjfis"]
+
 
 
 [node name="MainGame" type="Node" unique_id=1950236070]
 script = ExtResource("1_70w2d")
 _starting_ectoplasm = 100
-_starting_core_charges = 100
+_starting_core_charges = 1
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=1922467190]
 unique_name_in_owner = true
@@ -24,7 +25,8 @@ pause_menu_packed = ExtResource("4_4r55p")
 [node name="WinLoseManager" type="Node" parent="." unique_id=1623973300]
 unique_name_in_owner = true
 script = ExtResource("4_nc71o")
-game_lost_scene = ExtResource("5_nc71o")
+main_menu_scene_path = "uid://u6r2rlq7u5uy"
+game_lost_scene = ExtResource("5_uflg0")
 
 [node name="Level" parent="." unique_id=1206293609 instance=ExtResource("4_7gsoh")]
 unique_name_in_owner = true
