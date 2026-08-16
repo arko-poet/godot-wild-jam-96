@@ -1,5 +1,8 @@
 class_name TowerResource
 extends Resource
+@export_category("Identity")
+@export var display_name: String = "Title"
+@export_multiline() var description: String = "Lorem ipsum mikalasur pantur matruym..."
 
 @export_category("Visuals")
 @export var tower_sprite: Texture2D

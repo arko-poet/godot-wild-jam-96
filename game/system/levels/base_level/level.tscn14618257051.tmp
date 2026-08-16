@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dg60arx7lqg2x" path="res://game/system/path_layer/path_layer_scene.tscn" id="2_mj2gk"]
 [ext_resource type="Script" uid="uid://chgbt5wt25778" path="res://game/system/spawners/mob_spawner.gd" id="3_fk1rh"]
 [ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="4_uyg15"]
-[ext_resource type="PackedScene" uid="uid://da5t23dc7a4x3" path="res://game/system/tower_placement/tower_placement_controller.tscn" id="6_0x1cl"]
+[ext_resource type="PackedScene" uid="uid://dhqu0rnayje85" path="res://game/entities/towers/Tower.tscn" id="6_0x1cl"]
+[ext_resource type="Resource" uid="uid://d1kopu171ngjw" path="res://game/resources/towers/attack_tower.tres" id="7_7ovgr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0x1cl"]
 texture = ExtResource("2_c7wb3")
@@ -39,17 +40,14 @@ tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAA=")
 unique_name_in_owner = true
 script = ExtResource("3_fk1rh")
 ghost_mobs = ExtResource("4_uyg15")
-total_ghost_spawn_count = 2
 
 [node name="GhostSpawnerTimer" type="Timer" parent="MobSpawner" unique_id=315870253]
 unique_name_in_owner = true
-wait_time = 2.0
+one_shot = true
+autostart = true
 
-[node name="TowerPlacementController" parent="." unique_id=193345204 node_paths=PackedStringArray("ground_layer", "path_layer", "towers_container") instance=ExtResource("6_0x1cl")]
-ground_layer = NodePath("../TileMapVisualRoot/GroundLayer")
-path_layer = NodePath("../TileMapVisualRoot/PathLayer")
-towers_container = NodePath("../BuildingsContainer")
-
-[node name="BuildingsContainer" type="Node2D" parent="." unique_id=622046105]
+[node name="Tower" parent="." unique_id=1787143782 instance=ExtResource("6_0x1cl")]
+position = Vector2(688, 333)
+data = ExtResource("7_7ovgr")
 
 [editable path="TileMapVisualRoot/PathLayer"]

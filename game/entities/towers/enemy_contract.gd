@@ -16,9 +16,9 @@ var speed: float:
 	get:
 		return mob.speed
 
-var path_progress: float:
+var path_progress: int:
 	get:
-		return mob.path_progress
+		return mob.path_index
 
 var global_position: Vector2:
 	get:

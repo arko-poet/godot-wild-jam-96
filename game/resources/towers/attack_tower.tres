@@ -9,5 +9,6 @@ script = ExtResource("1_ruo4i")
 tower_sprite = ExtResource("2_vhvc1")
 perception_radius = 50.0
 activation_cost = 1.0
+purchase_price = 10
 special_ability = ExtResource("2_onmi0")
 metadata/_custom_type_script = "uid://bchbyouil8i2v"
