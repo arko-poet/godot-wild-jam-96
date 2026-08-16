@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cbu3fe1tdehc5" path="res://game/system/levels/base_level/level.tscn" id="4_7gsoh"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="4_nc71o"]
 [ext_resource type="PackedScene" uid="uid://cmk4cak0n00u7" path="res://template/scenes/windows/level_lost_window.tscn" id="5_nc71o"]
+[ext_resource type="PackedScene" uid="uid://b0ewbj0w6affe" path="res://game/system/ectoplasm_mouse_collector/ectoplasm_mouse_collector.tscn" id="10_evtg3"]
 [ext_resource type="PackedScene" uid="uid://cfh8bx503xjl1" path="res://game/system/ui/tower_confirmation/tower_confirmation_popup.tscn" id="7_uflg0"]
 [ext_resource type="Script" uid="uid://16dwdo7xq106" path="res://game/system/wave_manager/wave_manager_script.gd" id="8_fjfis"]
+
 
 [node name="MainGame" type="Node" unique_id=1950236070]
 script = ExtResource("1_70w2d")
@@ -91,6 +93,8 @@ offset_bottom = 32.0
 grow_horizontal = 0
 text = "PAUSE"
 
+
+[node name="EctoplasmMouseCollector" parent="." unique_id=1134838315 instance=ExtResource("10_evtg3")]
 [node name="TowerConfirmationPopup" parent="UILayer/UI" unique_id=643378081 instance=ExtResource("7_uflg0")]
 layout_mode = 1
 
