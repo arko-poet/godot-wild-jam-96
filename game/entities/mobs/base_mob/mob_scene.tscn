@@ -9,7 +9,6 @@
 radius = 18.110771
 
 [node name="Mob" type="CharacterBody2D" unique_id=978749843]
-collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_la6k7")
 data = ExtResource("2_savdq")

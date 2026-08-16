@@ -104,7 +104,6 @@ func _physics_process(delta: float) -> void:
 
 	var direction := global_position.direction_to(target)
 	velocity = direction * speed
-	print(global_position)
 	move_and_slide()
 
 

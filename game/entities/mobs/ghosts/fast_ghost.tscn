@@ -12,4 +12,6 @@ health = 10.0
 metadata/_custom_type_script = "uid://bm37gvgbf7jip"
 
 [node name="FastGhost" unique_id=978749843 instance=ExtResource("1_vaooq")]
+modulate = Color(1, 0.5058824, 1, 1)
+collision_layer = 1
 data = SubResource("Resource_1xdhc")

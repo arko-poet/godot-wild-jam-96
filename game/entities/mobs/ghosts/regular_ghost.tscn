@@ -3,3 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="1_t80vs"]
 
 [node name="RegularGhost" unique_id=978749843 instance=ExtResource("1_t80vs")]
+collision_layer = 1

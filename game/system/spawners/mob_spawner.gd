@@ -27,7 +27,6 @@ func _on_ghost_mob_died( ghost_mob: Mob )->void:
 		Event.wave_ended()
 
 func spawn_ghost(path: Array[Vector2i]) -> Mob:
-	print("spoa")
 	var ghost_wave_index: int = _current_wave - 1
 
 	if ghost_wave_index >= ghost_mobs.size():
