@@ -48,7 +48,7 @@ func _run_dificulty_curve()->void:
 	data.health = data.health + health_ratio_gain
 	
 	# Speed Dificutly increase
-	var speed_ratio_gain: float = _difficulty * speed_curve * 0.2 * 50
+	var speed_ratio_gain: float = _difficulty * speed_curve * 0.2 * 35
 	data.speed = speed_ratio_gain + data.speed
 	
 	# Loot Dificutly increase
@@ -85,21 +85,26 @@ func set_difficulty( v: int )->void:
 
 
 ### Lifetime Loop ###
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if path_index >= mob_path.size():
 		velocity = Vector2.ZERO
 		mob_reaches_end()
 		return
 
-	var target := mob_path[path_index]
-	var direction := global_position.direction_to(target)
-	velocity = direction * speed
-	move_and_slide()
-	
-	if global_position.distance_to(target) < 2.0:
+	var target: Vector2 = mob_path[path_index]
+	var distance := global_position.distance_to(target)
 
+	if distance <= speed * delta:
 		global_position = target
 		path_index += 1
+		velocity = Vector2.ZERO
+		return
+
+	var direction := global_position.direction_to(target)
+	velocity = direction * speed
+
+	move_and_slide()
+
 
 ### Event Handlers ###
 func take_damage(amount:int) -> void:
