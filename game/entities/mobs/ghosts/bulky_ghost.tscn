@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://vrh2te7glph5"]
+
+[ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="1_skgx1"]
+[ext_resource type="Resource" uid="uid://c4dxi8gdoqhp8" path="res://game/resources/mobs/bulky_ghost_mob.tres" id="2_vdove"]
+
+[node name="BulkyGhost" unique_id=978749843 instance=ExtResource("1_skgx1")]
+data = ExtResource("2_vdove")

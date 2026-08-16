@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c1e4xaxjx8bxk"]
+
+[ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="1_vaooq"]
+[ext_resource type="SpriteFrames" uid="uid://0tt6d8djhcnl" path="res://game/resources/mobs/fast_ghost_mob.tres" id="2_731uo"]
+[ext_resource type="Script" uid="uid://bm37gvgbf7jip" path="res://game/entities/mobs/base_mob/mob_resource.gd" id="3_86qj3"]
+
+[sub_resource type="Resource" id="Resource_1xdhc"]
+script = ExtResource("3_86qj3")
+mob_sprite = ExtResource("2_731uo")
+speed = 150.0
+health = 10.0
+metadata/_custom_type_script = "uid://bm37gvgbf7jip"
+
+[node name="FastGhost" unique_id=978749843 instance=ExtResource("1_vaooq")]
+data = SubResource("Resource_1xdhc")

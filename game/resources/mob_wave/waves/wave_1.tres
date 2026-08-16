@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MobWaveResource" format=3 uid="uid://gh10bfk6gbea"]
+
+[ext_resource type="Script" uid="uid://ctcfqxecmpdx4" path="res://game/resources/mob_wave/base_class/mob_wave_resource_script.gd" id="1_3yg1w"]
+[ext_resource type="PackedScene" uid="uid://cy4bvvmdav8y6" path="res://game/entities/mobs/ghosts/regular_ghost.tscn" id="1_aqxay"]
+[ext_resource type="PackedScene" uid="uid://c1e4xaxjx8bxk" path="res://game/entities/mobs/ghosts/fast_ghost.tscn" id="2_0uslq"]
+[ext_resource type="PackedScene" uid="uid://vrh2te7glph5" path="res://game/entities/mobs/ghosts/bulky_ghost.tscn" id="3_to4ey"]
+
+[resource]
+script = ExtResource("1_3yg1w")
+enemy_mobs = Dictionary[int, PackedScene]({
+0: ExtResource("1_aqxay"),
+1: ExtResource("2_0uslq"),
+2: ExtResource("3_to4ey")
+})
+metadata/_custom_type_script = "uid://ctcfqxecmpdx4"

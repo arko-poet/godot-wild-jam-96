@@ -28,11 +28,18 @@ func _build_path() -> Array[Vector2i]:
 	var end_tiles := end_layer.get_used_cells()
 
 
-	assert(start_tiles.size() >= 1, "StartLayer must have at least one tile.")
-	assert(end_tiles.size() == 1, "EndLayer must have exactly one tile.")
+	assert(
+		start_tiles.size() >= 1,
+		"StartLayer must have at least one tile."
+	)
+
+	assert(
+		end_tiles.size() == 1,
+		"EndLayer must have exactly one tile."
+	)
 
 
-	## Sort start tiles by spawn_tile custom data.
+	## Sort start tiles by their "spawn_tile" custom data.
 	start_tiles.sort_custom(_sort_start_tiles_by_spawn_order)
 
 
@@ -58,21 +65,20 @@ func _build_path() -> Array[Vector2i]:
 
 	while current_tile != _end_tile:
 
-		var next_tile := Vector2i.ZERO
-		var found_next := false
+		var candidates: Array[Vector2i] = []
 
 
+		## Find all valid neighboring path tiles.
 		for direction in directions:
 
 			var candidate = current_tile + direction
 
 			if candidate in _path_tiles and candidate not in _path:
-				next_tile = candidate
-				found_next = true
-				break
+				candidates.append(candidate)
 
 
-		if not found_next:
+		## No valid neighboring tiles.
+		if candidates.is_empty():
 
 			push_error(
 				"[PathLayer] Could not find path from %s to %s. Current tile: %s"
@@ -82,7 +88,16 @@ func _build_path() -> Array[Vector2i]:
 			return []
 
 
-		current_tile = next_tile
+		## Sort candidates by distance to the end tile.
+		candidates.sort_custom(
+			func(a: Vector2i, b: Vector2i) -> bool:
+				return a.distance_to(_end_tile) < b.distance_to(_end_tile)
+		)
+
+
+		## Select the candidate closest to the end.
+		current_tile = candidates[0]
+
 		_path.append(current_tile)
 
 

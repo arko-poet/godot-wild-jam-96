@@ -1,0 +1,6 @@
+[gd_resource type="Resource" format=3 uid="uid://dc38mhlyshfb3"]
+
+[ext_resource type="Script" uid="uid://ctcfqxecmpdx4" path="res://game/resources/mob_wave/base_class/mob_wave_resource_script.gd" id="1_uo1va"]
+
+[resource]
+script = ExtResource("1_uo1va")
