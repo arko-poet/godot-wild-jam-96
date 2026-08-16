@@ -1,0 +1,114 @@
+class_name RubbingSurface
+extends Area2D
+
+@export_category("Debug Display")
+@export var show_debug_labels := true
+@export var show_sprite:= false
+
+@onready var sprite : Sprite2D = $Sprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var rubbing_detector: RubbingDetector = $RubbingDetector
+@onready var charge_controller: ChargeController = $ChargeController
+
+@onready var intensity_label: Label = $MetricLabelsContainer/IntensityLabel
+@onready var charge_label: Label = $MetricLabelsContainer/ChargeLabel
+@onready var charge_rate_label: Label = $MetricLabelsContainer/ChargeRateLabel
+
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	sprite.visible = show_sprite
+
+func _input_event(
+	_viewport: Node,
+	event: InputEvent,
+	_shape_idx: int
+) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				rubbing_detector.start_rubbing()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if not event.pressed:
+				rubbing_detector.stop_rubbing()
+
+
+func _on_mouse_entered() -> void:
+	rubbing_detector.set_mouse_inside(true)
+
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		rubbing_detector.start_rubbing()
+
+
+func _on_mouse_exited() -> void:
+	rubbing_detector.set_mouse_inside(false)
+
+
+func _physics_process(delta: float) -> void:
+	charge_controller.update(
+		delta,
+		rubbing_detector.rubbing_intensity
+	)
+
+	update_debug_labels()
+
+# Getters to act as a public interface for the Rubbing Surface.
+func get_charge() -> float:
+	return charge_controller.get_charge()
+
+
+func get_charge_ratio() -> float:
+	return charge_controller.get_charge_ratio()
+
+
+func get_charge_rate() -> float:
+	return charge_controller.get_charge_rate()
+
+func get_charge_status() -> ChargeController.ChargeStatus:
+	return charge_controller.get_status()
+
+# Setters that can be used during runtime to "Upgrade" Rubbing Surface component
+func set_max_charge(value: float) -> void:
+	charge_controller.set_max_charge(value)
+
+func set_charge_generation_rate(value: float) -> void:
+	charge_controller.set_charge_generation_rate(value)
+
+func set_charge_discharge_rate(value: float) -> void:
+	charge_controller.set_charge_discharge_rate(value)
+
+func apply_charge_config(config: ChargeConfig) -> void:
+	charge_controller.apply_config(config)
+
+# Debug Labels
+func update_debug_labels() -> void:
+	if not show_debug_labels:
+		intensity_label.hide()
+		charge_label.hide()
+		charge_rate_label.hide()
+		return
+
+	intensity_label.show()
+	charge_label.show()
+	charge_rate_label.show()
+
+	var intensity := rubbing_detector.rubbing_intensity
+	var charge := charge_controller.charge
+	var charge_rate := charge_controller.get_charge_rate()
+
+	intensity_label.text = "Intensity: %.2f" % intensity
+	charge_label.text = "Charge: %.1f / %.1f" % [
+		charge,
+		charge_controller.max_charge
+	]
+
+	charge_rate_label.text = "Charge Rate: %+.2f /s" % charge_rate
+
+	if charge_rate >= 0.0:
+		charge_rate_label.modulate = Color.GREEN
+	else:
+		charge_rate_label.modulate = Color.RED
