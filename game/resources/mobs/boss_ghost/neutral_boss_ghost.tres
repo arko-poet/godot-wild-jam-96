@@ -8,4 +8,5 @@ script = ExtResource("2_5bnd7")
 mob_sprite = ExtResource("1_e8m08")
 speed = 60.0
 health = 50.0
+mob_type = 2
 metadata/_custom_type_script = "uid://bm37gvgbf7jip"

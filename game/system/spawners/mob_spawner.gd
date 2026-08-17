@@ -2,7 +2,7 @@ class_name MobSpawner extends Node2D
 
 
 signal spawn_ghost_signal()
-
+signal ghost_spawned( ghost: Mob )
 
 @export var ghost_mob_scene: PackedScene
 
@@ -10,8 +10,9 @@ signal spawn_ghost_signal()
 
 @onready var ghost_spawner_timer: Timer = %GhostSpawnerTimer
 @onready var path_layer: PathLayer = %PathLayer
-@export var total_ghost_spawn_count: int = 5
 
+var _current_mob_resource: MobResource
+var _current_batch_index: int = 0
 
 ## Created this variable so we can later use it to determin if we want to increase spawn count if we want to. 
 ## or we can use this to determin the scaling of the mob health / speed. Decided not to get into that now as
@@ -23,7 +24,6 @@ var _ghost_spawn_count: int
 var _active_ghosts: Array[ Mob ]
 
 func _ready() -> void:
-	_ghost_spawn_count = total_ghost_spawn_count
 	ghost_spawner_timer.timeout.connect(_on_ghost_spawner_timeout)
 	Event.next_wave_trigered_signal.connect(_start)
 
@@ -40,7 +40,7 @@ func _on_ghost_mob_died( ghost_mob: Mob )->void:
 	if _active_ghosts.size() == 0:
 		Event.wave_ended()
 
-func spawn_ghost(path: Array[Vector2i]) -> Mob:
+func spawn_ghost(path: Array[Vector2i]) -> void:
 
 	if path.is_empty():
 		push_error("[MobSpawner] Cannot spawn ghost. Path is empty.")
@@ -57,23 +57,53 @@ func spawn_ghost(path: Array[Vector2i]) -> Mob:
 		world_path.append(world_position)
 
 
+	var current_wave_resource: WaveResource = waves[_current_wave]
+
+	var mob_resources: Array[MobResource] = current_wave_resource.ghosts.keys()
+
+	if _current_mob_resource == null:
+
+		if _current_batch_index >= mob_resources.size():
+			print("[MobSpawner] Finished spawning wave.")
+			_stop()
+			return
+
+		_current_mob_resource = mob_resources[_current_batch_index]
+
+		_ghost_spawn_count = current_wave_resource.ghosts[
+			_current_mob_resource
+		]
 
 	var spawn: Mob = ghost_mob_scene.instantiate()
 
+	spawn.data = _current_mob_resource
 	spawn.global_position = world_path[0]
-	spawn.remove_from_manager_pool.connect(_on_ghost_mob_died)
+
+	spawn.remove_from_manager_pool.connect(
+		_on_ghost_mob_died
+	)
+
 	spawn.set_difficulty(_current_wave)
+
 	add_child(spawn)
 	_active_ghosts.append(spawn)
-	_ghost_spawn_count -= 1
+	ghost_spawned.emit(spawn)
 
 	spawn.set_up_path(world_path)
+
+	_ghost_spawn_count -= 1
 	
 	if _ghost_spawn_count <= 0:
-		## Resets spawn count to total ghost span count for next wave. 
-		_ghost_spawn_count = total_ghost_spawn_count
-		_stop()
-	return spawn
+
+		_current_mob_resource = null
+		_current_batch_index += 1
+
+
+		# Check if there are more mob types
+		if _current_batch_index >= mob_resources.size():
+			
+			_stop()
+
 
 
 

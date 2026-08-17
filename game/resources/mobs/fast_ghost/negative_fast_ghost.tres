@@ -9,4 +9,5 @@ mob_sprite = ExtResource("1_d46pl")
 speed = 150.0
 health = 10.0
 current_charge = 1
+mob_type = 1
 metadata/_custom_type_script = "uid://bm37gvgbf7jip"
