@@ -26,5 +26,5 @@ extends Resource
 @export var target_group : String = "Mobs"
 
 @export_category("Shape")
-## which tiles is the tower going to occupy
+## which tiles is the tower going to occupy, use negatives for proper centering
 @export var footprint: Array[Vector2i] = [Vector2i.ZERO]
