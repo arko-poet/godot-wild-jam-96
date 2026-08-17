@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MobResource" format=3 uid="uid://bbrv8xhw21vr1"]
+
+[ext_resource type="SpriteFrames" uid="uid://dg8jti0bl5lk2" path="res://game/resources/mobs/ghost_sprite_frames.tres" id="1_41ry2"]
+[ext_resource type="Script" uid="uid://bm37gvgbf7jip" path="res://game/entities/mobs/base_mob/mob_resource.gd" id="2_cx7te"]
+
+[resource]
+script = ExtResource("2_cx7te")
+mob_sprite = ExtResource("1_41ry2")
+speed = 150.0
+health = 10.0
+current_charge = 2
+metadata/_custom_type_script = "uid://bm37gvgbf7jip"

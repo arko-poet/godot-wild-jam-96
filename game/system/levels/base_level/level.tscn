@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dxyg50dwonbwg" path="res://game/assets/tile_sets/place_holder.png" id="2_c7wb3"]
 [ext_resource type="PackedScene" uid="uid://dg60arx7lqg2x" path="res://game/system/path_layer/path_layer_scene.tscn" id="2_mj2gk"]
 [ext_resource type="Script" uid="uid://chgbt5wt25778" path="res://game/system/spawners/mob_spawner.gd" id="3_fk1rh"]
-[ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="4_uyg15"]
 [ext_resource type="PackedScene" uid="uid://da5t23dc7a4x3" path="res://game/system/tower_placement/tower_placement_controller.tscn" id="6_0x1cl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0x1cl"]
@@ -38,7 +37,6 @@ tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAA=")
 [node name="MobSpawner" type="Node2D" parent="." unique_id=685284413]
 unique_name_in_owner = true
 script = ExtResource("3_fk1rh")
-ghost_mobs = ExtResource("4_uyg15")
 total_ghost_spawn_count = 2
 
 [node name="GhostSpawnerTimer" type="Timer" parent="MobSpawner" unique_id=315870253]

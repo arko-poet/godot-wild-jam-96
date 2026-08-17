@@ -3,8 +3,10 @@ class_name MobSpawner extends Node2D
 
 signal spawn_ghost_signal()
 
-## TODO Will create an array of differant mob types. for now just 1 Ghost Mob
-@export var ghost_mobs: PackedScene
+
+@export var ghost_mob_scene: PackedScene
+
+@export var waves: Array[ WaveResource ]
 
 @onready var ghost_spawner_timer: Timer = %GhostSpawnerTimer
 @onready var path_layer: PathLayer = %PathLayer
@@ -56,7 +58,7 @@ func spawn_ghost(path: Array[Vector2i]) -> Mob:
 
 
 
-	var spawn: Mob = ghost_mobs.instantiate()
+	var spawn: Mob = ghost_mob_scene.instantiate()
 
 	spawn.global_position = world_path[0]
 	spawn.remove_from_manager_pool.connect(_on_ghost_mob_died)

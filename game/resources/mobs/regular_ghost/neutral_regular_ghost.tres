@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MobResource" format=3 uid="uid://dofm3o5ypmujs"]
+
+[ext_resource type="SpriteFrames" uid="uid://dg8jti0bl5lk2" path="res://game/resources/mobs/ghost_sprite_frames.tres" id="1_7u8cw"]
+[ext_resource type="Script" uid="uid://bm37gvgbf7jip" path="res://game/entities/mobs/base_mob/mob_resource.gd" id="2_nltew"]
+
+[resource]
+script = ExtResource("2_nltew")
+mob_sprite = ExtResource("1_7u8cw")
+metadata/_custom_type_script = "uid://bm37gvgbf7jip"
