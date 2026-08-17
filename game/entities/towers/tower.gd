@@ -7,6 +7,8 @@ extends Node2D
 @onready var perception_area: Area2D = $PerceptionArea
 @onready var perception_shape: CollisionShape2D = $PerceptionArea/CollisionShape2D
 @onready var vfx_origin: Marker2D = $VFXOrigin
+@onready var range_indicator: Node2D = $RangeIndicator
+@onready var range_visual: Sprite2D = $RangeIndicator/Visual
 
 
 var current_charges: float = 0.0
@@ -22,13 +24,19 @@ var enemy_contracts: Dictionary = {}
 
 var preview_mode :bool = true
 
+## This is a temporary variable. Once we figure out whether we want to have the 
+## tower range visibilities setup differently, we should change this alongside with
+## Part of the implementation (check _ready)
+var default_tower_range_visibility = false 
+
 func _ready() -> void:
 	if data == null:
 		push_error("Tower has no TowerResource assigned.")
 		return
-	
+	if preview_mode == false:
+		add_to_group("Towers")
 	initialize_from_resource()
-	
+	set_range_indicator_visible(default_tower_range_visibility)
 	queue_redraw()
 
 func initialize_from_resource() -> void:
@@ -52,6 +60,7 @@ func update_perception_radius() -> void:
 		perception_shape.shape = circle
 
 	circle.radius = perception_radius
+	set_range_indicator_range(perception_radius)
 
 func upgrade_range(amount: float) -> void:
 	perception_radius += amount
@@ -185,3 +194,17 @@ func _on_perception_area_body_exited(body: Node2D) -> void:
 	var contract: EnemyContract = enemy_contracts[body]
 	enemy_contracts.erase(body)
 	enemies_in_range.erase(contract)
+
+
+func set_range_indicator_visible(visible: bool) -> void:
+	if preview_mode == true:
+		# Preventing Potential future controls from interacting weirdly with preview towers.
+		range_indicator.visible = true
+		return
+	range_indicator.visible = visible
+
+func set_range_indicator_range(range: float) -> void:
+	var texture := range_visual.texture as GradientTexture2D
+
+	texture.width = int(range * 2.0)
+	texture.height = int(range * 2.0)
