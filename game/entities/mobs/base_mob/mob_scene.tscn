@@ -25,6 +25,7 @@ shape = SubResource("CircleShape2D_4jx01")
 
 [node name="EctoplasmSpawner" type="Node2D" parent="." unique_id=186805388]
 script = ExtResource("4_67lka")
+spawn_radius = 32.0
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1610558023]
 unique_name_in_owner = true
