@@ -13,6 +13,7 @@ extends Area2D
 @onready var intensity_label: Label = $MetricLabelsContainer/IntensityLabel
 @onready var charge_label: Label = $MetricLabelsContainer/ChargeLabel
 @onready var charge_rate_label: Label = $MetricLabelsContainer/ChargeRateLabel
+@onready var status_label: Label = $MetricLabelsContainer/StatusLabel
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
@@ -30,6 +31,7 @@ func _input_event(
 				rubbing_detector.start_rubbing()
 
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -44,14 +46,21 @@ func _on_mouse_entered() -> void:
 		rubbing_detector.start_rubbing()
 
 
+
 func _on_mouse_exited() -> void:
 	rubbing_detector.set_mouse_inside(false)
 
 
 func _physics_process(delta: float) -> void:
+	
+	var charging_sign = 1
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		charging_sign = -1
+	
 	charge_controller.update(
 		delta,
-		rubbing_detector.rubbing_intensity
+		rubbing_detector.rubbing_intensity,
+		charging_sign
 	)
 
 	update_debug_labels()
@@ -99,6 +108,7 @@ func update_debug_labels() -> void:
 	var intensity := rubbing_detector.rubbing_intensity
 	var charge := charge_controller.charge
 	var charge_rate := charge_controller.get_charge_rate()
+	var status := charge_controller.get_status_name()
 
 	intensity_label.text = "Intensity: %.2f" % intensity
 	charge_label.text = "Charge: %.1f / %.1f" % [
@@ -112,3 +122,5 @@ func update_debug_labels() -> void:
 		charge_rate_label.modulate = Color.GREEN
 	else:
 		charge_rate_label.modulate = Color.RED
+
+	status_label.text = status
