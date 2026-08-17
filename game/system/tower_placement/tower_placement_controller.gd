@@ -82,20 +82,23 @@ func update_preview() -> void:
 	)
 
 	preview_tower.global_position = snapped_position
-
+		
 	placement_valid = is_valid_placement(current_cell)
 
 	update_preview_visual()
 
 func is_valid_placement(cell: Vector2i) -> bool:
-	if not is_ground(cell):
-		return false
+	for footprint_cell in preview_tower.footprint:
+		var grid_cell := footprint_cell + cell
+	
+		if not is_ground(grid_cell):
+			return false
 
-	if is_path(cell):
-		return false
+		if is_path(grid_cell):
+			return false
 
-	if is_occupied(cell):
-		return false
+		if is_occupied(grid_cell):
+			return false
 
 	return true
 

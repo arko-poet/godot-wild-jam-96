@@ -24,3 +24,7 @@ extends Resource
 @export_category("Targeting")
 @export var targeting_priority: TargetingPriority.Type = TargetingPriority.Type.FURTHEST_ALONG_PATH
 @export var target_group : String = "Mobs"
+
+@export_category("Shape")
+## which tiles is the tower going to occupy
+@export var footprint: Array[Vector2i] = [Vector2i.ZERO]
