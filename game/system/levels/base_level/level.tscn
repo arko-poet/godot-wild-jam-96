@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://da5t23dc7a4x3" path="res://game/system/tower_placement/tower_placement_controller.tscn" id="6_0x1cl"]
 [ext_resource type="Script" uid="uid://clx1emo7cvkrb" path="res://game/resources/waves/wave_resource_script.gd" id="6_7ovgr"]
 [ext_resource type="Resource" uid="uid://c2y2w6c4pkxb2" path="res://game/resources/waves/test_wave_1_resource.tres" id="7_ruild"]
+[ext_resource type="Script" uid="uid://bm37gvgbf7jip" path="res://game/entities/mobs/base_mob/mob_resource.gd" id="8_6bo20"]
+[ext_resource type="Resource" uid="uid://chxux3f5v0lfs" path="res://game/resources/mobs/boss_ghost/positive_boss_ghost.tres" id="9_gjc8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0x1cl"]
 texture = ExtResource("2_c7wb3")
@@ -17,6 +19,13 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_4jx01"]
 tile_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_0x1cl")
+
+[sub_resource type="Resource" id="Resource_d38cy"]
+script = ExtResource("6_7ovgr")
+ghosts = Dictionary[ExtResource("8_6bo20"), int]({
+ExtResource("9_gjc8c"): 5
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
 
 [node name="Level" type="Node2D" unique_id=1206293609]
 script = ExtResource("1_mj2gk")
@@ -41,7 +50,7 @@ tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAA=")
 unique_name_in_owner = true
 script = ExtResource("3_fk1rh")
 ghost_mob_scene = ExtResource("5_0x1cl")
-waves = Array[ExtResource("6_7ovgr")]([ExtResource("7_ruild"), ExtResource("7_ruild"), ExtResource("7_ruild")])
+waves = Array[ExtResource("6_7ovgr")]([ExtResource("7_ruild"), SubResource("Resource_d38cy"), ExtResource("7_ruild")])
 
 [node name="GhostSpawnerTimer" type="Timer" parent="MobSpawner" unique_id=315870253]
 unique_name_in_owner = true
