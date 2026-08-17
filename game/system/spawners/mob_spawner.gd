@@ -14,10 +14,6 @@ signal ghost_spawned( ghost: Mob )
 var _current_mob_resource: MobResource
 var _current_batch_index: int = 0
 
-## Created this variable so we can later use it to determin if we want to increase spawn count if we want to. 
-## or we can use this to determin the scaling of the mob health / speed. Decided not to get into that now as
-## you stated you wanted to work on this at a later time by increasiung the difficulty valriable I added to 
-## Base Mob from here before its spawned. 
 
 var _current_wave: int = 0
 var _ghost_spawn_count: int 
@@ -57,9 +53,9 @@ func spawn_ghost(path: Array[Vector2i]) -> void:
 		world_path.append(world_position)
 
 
-	var current_wave_resource: WaveResource = waves[_current_wave]
+	var wave_resource: WaveResource = waves[_current_wave]
 
-	var mob_resources: Array[MobResource] = current_wave_resource.ghosts.keys()
+	var mob_resources: Array[MobResource] = wave_resource.ghosts.keys()
 
 	if _current_mob_resource == null:
 
@@ -70,7 +66,7 @@ func spawn_ghost(path: Array[Vector2i]) -> void:
 
 		_current_mob_resource = mob_resources[_current_batch_index]
 
-		_ghost_spawn_count = current_wave_resource.ghosts[
+		_ghost_spawn_count = wave_resource.ghosts[
 			_current_mob_resource
 		]
 
