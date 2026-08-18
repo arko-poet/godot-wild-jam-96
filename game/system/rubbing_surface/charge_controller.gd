@@ -3,10 +3,11 @@ extends Node
 
 
 enum ChargeStatus {
+	OVERCHARGED_NEGATIVE,
+	CHARGED_NEGATIVE,
 	NO_CHARGE,
-	LOW,
-	CHARGED,
-	OVERCHARGED
+	CHARGED_POSITIVE,
+	OVERCHARGED_POSITIVE
 }
 
 
@@ -14,13 +15,11 @@ enum ChargeStatus {
 @export var config: ChargeConfig
 
 
-var max_charge: float = 200.0
+var max_charge: float = 20.0
 var charge_generation_rate: float = 10.0
 var charge_discharge_rate: float = 5.0
-
-var low_charge_threshold: float = 0.20
-var charged_threshold: float = 0.50
-var overcharged_threshold: float = 1.00
+var charged_threshold: float = 0.2
+var overcharged_threshold: float = 1.0
 
 var charge: float = 0.0
 var charge_generation: float = 0.0
@@ -38,22 +37,25 @@ func apply_config(new_config: ChargeConfig) -> void:
 	charge_generation_rate = new_config.charge_generation_rate
 	charge_discharge_rate = new_config.charge_discharge_rate
 
-	low_charge_threshold = new_config.low_charge_threshold
 	charged_threshold = new_config.charged_threshold
 	overcharged_threshold = new_config.overcharged_threshold
 
 	charge = clamp(charge, 0.0, max_charge)
 
 
-func update(delta: float, rubbing_intensity: float) -> void:
-	charge_generation = (
+func update(delta: float, rubbing_intensity: float, charging_sign:int) -> void:
+	charge_generation = charging_sign*(
 		rubbing_intensity * charge_generation_rate
 	)
 
 	charge += charge_generation * delta
-	charge -= charge_discharge_rate * delta
-
-	charge = clamp(charge, 0.0, max_charge)
+	if (charge >= 0):
+		charge -= charge_discharge_rate * delta
+		charge = clamp(charge, 0, max_charge)
+	else:
+		charge += charge_discharge_rate * delta
+		charge = clamp(charge, -max_charge, 0)
+	
 
 
 func get_charge() -> float:
@@ -72,22 +74,29 @@ func get_charge_percentage() -> float:
 
 
 func get_charge_rate() -> float:
-	return charge_generation - charge_discharge_rate
-
+	if (charge > 0):
+		return charge_generation - charge_discharge_rate
+	elif charge <0:
+		return charge_generation + charge_discharge_rate
+	else:
+		return 0
 
 func get_status() -> ChargeStatus:
 	var ratio := get_charge_ratio()
 
-	if ratio < low_charge_threshold:
+	if abs(ratio) < charged_threshold:
 		return ChargeStatus.NO_CHARGE
 
-	if ratio < charged_threshold:
-		return ChargeStatus.LOW
+	if abs(ratio) < overcharged_threshold:
+		if ratio > 0:
+			return ChargeStatus.CHARGED_POSITIVE
+		else:
+			return ChargeStatus.CHARGED_NEGATIVE
 
-	if ratio < overcharged_threshold:
-		return ChargeStatus.CHARGED
-
-	return ChargeStatus.OVERCHARGED
+	if ratio >0:
+		return ChargeStatus.OVERCHARGED_POSITIVE
+	else:
+		return ChargeStatus.OVERCHARGED_NEGATIVE
 
 
 func get_status_name() -> String:

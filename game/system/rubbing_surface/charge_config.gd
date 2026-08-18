@@ -10,9 +10,6 @@ extends Resource
 
 @export_category("Charge Status Thresholds")
 @export_range(0.0, 1.0, 0.01)
-var low_charge_threshold: float = 0.20
-
-@export_range(0.0, 1.0, 0.01)
 var charged_threshold: float = 0.50
 
 @export_range(0.0, 1.0, 0.01)

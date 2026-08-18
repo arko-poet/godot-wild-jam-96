@@ -7,6 +7,7 @@ signal confirmation_requested(
 
 signal placement_cancelled
 
+
 @export_category("References")
 @export var ground_layer: TileMapLayer
 @export var path_layer: TileMapLayer
@@ -81,21 +82,24 @@ func update_preview() -> void:
 		ground_layer.map_to_local(current_cell)
 	)
 
-	preview_tower.global_position = snapped_position
-
+	preview_tower.global_position = snapped_position + get_tower_placement_offset()
+		
 	placement_valid = is_valid_placement(current_cell)
 
 	update_preview_visual()
 
 func is_valid_placement(cell: Vector2i) -> bool:
-	if not is_ground(cell):
-		return false
+	for footprint_cell in preview_tower.footprint:
+		var grid_cell := footprint_cell + cell
+	
+		if not is_ground(grid_cell):
+			return false
 
-	if is_path(cell):
-		return false
+		if is_path(grid_cell):
+			return false
 
-	if is_occupied(cell):
-		return false
+		if is_occupied(grid_cell):
+			return false
 
 	return true
 
@@ -153,9 +157,10 @@ func confirm_placement() -> void:
 	tower.preview_mode = false
 	towers_container.add_child(tower)
 	
-	tower.global_position = get_cell_world_position(current_cell)
+	tower.global_position = get_cell_world_position(current_cell) + get_tower_placement_offset()
 
-	occupied_cells[current_cell] = tower
+	for footprint_cell in tower.footprint:
+		occupied_cells[current_cell + footprint_cell] = tower
 	
 	stop_placement()
 
@@ -175,3 +180,14 @@ func get_cell_world_position(cell: Vector2i) -> Vector2:
 	return ground_layer.to_global(
 		ground_layer.map_to_local(cell)
 	)
+
+
+func get_tower_placement_offset() -> Vector2:
+	var min_cell := Vector2i.MAX
+	var max_cell := Vector2i.MIN
+	
+	for cell in preview_tower.footprint:
+		min_cell = min_cell.min(cell)
+		max_cell = max_cell.max(cell)
+	
+	return Vector2((max_cell - min_cell) * ground_layer.tile_set.tile_size) / 2.0

@@ -22,6 +22,8 @@ var target_group: String
 var enemies_in_range: Array[EnemyContract] = []
 var enemy_contracts: Dictionary = {}
 
+var footprint: Array[Vector2i]
+
 var preview_mode :bool = true
 
 ## This is a temporary variable. Once we figure out whether we want to have the 
@@ -49,6 +51,8 @@ func initialize_from_resource() -> void:
 	target_group = data.target_group
 
 	vfx_origin.position = data.vfx_origin
+	
+	footprint = data.footprint
 
 	update_perception_radius()
 

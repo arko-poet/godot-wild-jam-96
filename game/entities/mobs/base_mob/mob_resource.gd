@@ -12,7 +12,8 @@ enum MobType { REGULAR_GHOST, FAST_GHOST, BOSS_GHOST}
 @export var health : float = 20.0
 @export var loot: int = 1
 @export var damage: int = 1
-@export var current_charge: Charge 
+
+@export var charge_type: Enums.ChargeType = Enums.ChargeType.NEUTRAL
 @export var mob_type: MobType
 
 @export_category("Grouping")
