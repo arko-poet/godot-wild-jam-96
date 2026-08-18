@@ -58,6 +58,11 @@ func _ready() -> void:
 		return
 	if preview_mode == false:
 		add_to_group("Towers")
+	
+	# Duplicating Texture to prevent Towers from accessing the same Texture2D 
+	var texture2d = range_visual.texture as GradientTexture2D
+	range_visual.texture = texture2d.duplicate(true)
+	
 	initialize_from_resource()
 	set_range_indicator_visible(default_tower_range_visibility)
 	queue_redraw()
