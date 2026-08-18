@@ -60,7 +60,6 @@ func _on_place_tower_button_pressed() -> void:
 	if _ectoplasm >= preselected_tower.purchase_price :
 		_level._start_building_placement(preselected_tower)
 		ectoplasm_cost = preselected_tower.purchase_price
-	pass # Replace with function body.
 
 
 func _on_pause_button_pressed() -> void:
@@ -77,3 +76,7 @@ func _on_confirmation_confirmed() -> void:
 	
 func _on_confirmation_cancelled() -> void:
 	_level.tower_placement_controller.cancel_confirmation()
+
+
+func _on_wave_manager_wave_limit_exceeded() -> void:
+	_win_lose_manager.game_won()
