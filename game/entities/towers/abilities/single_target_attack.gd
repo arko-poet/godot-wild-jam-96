@@ -17,7 +17,10 @@ func activate(
 		return
 
 	var target := context.targets[0]
-
+	
+	var damage_packet = DamagePacket.new()
+	damage_packet.amount = damage *context.power
+	damage_packet.charge_sign = Enums.ChargeType.NEUTRAL
 	target.take_damage(
-		damage * context.power
+		damage_packet
 	)

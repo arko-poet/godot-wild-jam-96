@@ -9,6 +9,7 @@ extends Resource
 @export var health : float = 20.0
 @export var loot: int = 1
 @export var damage: int = 1
+@export var charge_type: Enums.ChargeType = Enums.ChargeType.NEUTRAL
 
 @export_category("Grouping")
 @export var groups : Array[String] = ["Mobs"]
