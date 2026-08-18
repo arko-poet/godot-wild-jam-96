@@ -15,6 +15,8 @@ extends Area2D
 @onready var charge_rate_label: Label = $MetricLabelsContainer/ChargeRateLabel
 @onready var status_label: Label = $MetricLabelsContainer/StatusLabel
 
+var is_enabled : bool = true
+
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
@@ -56,10 +58,15 @@ func _physics_process(delta: float) -> void:
 	var charging_sign = 1
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		charging_sign = -1
+	var rubbing_intensity = rubbing_detector.rubbing_intensity
 	
+	# Allows "Disabling" the Rubbing by preventing it from generating Charge.
+	if not is_enabled:
+		rubbing_intensity = 0
+		
 	charge_controller.update(
 		delta,
-		rubbing_detector.rubbing_intensity,
+		rubbing_intensity,
 		charging_sign
 	)
 
@@ -80,6 +87,30 @@ func get_charge_rate() -> float:
 func get_charge_status() -> ChargeController.ChargeStatus:
 	return charge_controller.get_status()
 
+# Created this to help the towers with knowing whether the Charge is Positive, Negative or Neutral.
+func get_charge_type() -> Enums.ChargeType:
+	var charge_status = get_charge_status()
+	match charge_status:
+		ChargeController.ChargeStatus.OVERCHARGED_NEGATIVE:
+			return Enums.ChargeType.NEGATIVE
+		ChargeController.ChargeStatus.CHARGED_NEGATIVE:
+			return Enums.ChargeType.NEGATIVE
+		ChargeController.ChargeStatus.CHARGED_POSITIVE:
+			return Enums.ChargeType.POSITIVE
+		ChargeController.ChargeStatus.OVERCHARGED_POSITIVE:
+			return Enums.ChargeType.POSITIVE
+		_ :
+			return Enums.ChargeType.NEUTRAL
+
+# Created this to help the towers know when it gets Overcharged!
+func is_overcharged() -> bool:
+	var charge_status = get_charge_status()
+	var overcharged_statuses = [ChargeController.ChargeStatus.OVERCHARGED_POSITIVE, ChargeController.ChargeStatus.OVERCHARGED_NEGATIVE]
+	if charge_status in overcharged_statuses:
+		return true
+	else:
+		return false
+
 # Setters that can be used during runtime to "Upgrade" Rubbing Surface component
 func set_max_charge(value: float) -> void:
 	charge_controller.set_max_charge(value)
@@ -89,6 +120,16 @@ func set_charge_generation_rate(value: float) -> void:
 
 func set_charge_discharge_rate(value: float) -> void:
 	charge_controller.set_charge_discharge_rate(value)
+
+func increment_charge_generation_rate(value:float) -> void:
+	var previous_value = charge_controller.charge_generation_rate
+	var new_value = previous_value+value
+	charge_controller.set_charge_generation_rate(new_value)
+
+func increment_charge_discharge_rate(value:float) -> void:
+	var previous_value = charge_controller.charge_discharge_rate
+	var new_value = max(0,previous_value+value)
+	charge_controller.set_charge_discharge_rate(new_value)
 
 func apply_charge_config(config: ChargeConfig) -> void:
 	charge_controller.apply_config(config)
