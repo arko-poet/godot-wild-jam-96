@@ -12,8 +12,10 @@ func get_target_count() -> int:
 func activate(
 	context: TowerAbilityContext
 ) -> void:
-
+	var damage_packet = DamagePacket.new()
+	damage_packet.amount = damage *context.power
+	damage_packet.charge_sign = Enums.ChargeType.NEUTRAL
 	for target in context.targets:
 		target.take_damage(
-			damage * context.power
+			damage_packet
 		)

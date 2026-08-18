@@ -16,6 +16,7 @@ var current_health : float = 1.0
 var speed : float = 100.0
 var loot : int
 var damage : int
+var charge_type : Enums.ChargeType = Enums.ChargeType.NEUTRAL
 
 # Pathfinding Variables
 var mob_path: Array[Vector2]
@@ -68,6 +69,7 @@ func initialize_from_resource() -> void:
 	speed = data.speed
 	loot = data.loot
 	damage = data.damage
+	charge_type = data.charge_type
 	mob_animated_sprite.set_sprite_frames(data.mob_sprite)
 	
 	# Add to required groups.
@@ -109,8 +111,21 @@ func _physics_process(delta: float) -> void:
 
 
 ### Event Handlers ###
-func take_damage(amount:int) -> void:
-	current_health -= amount
+func take_damage(damage:DamagePacket) -> void:
+	# Calculate the Damage Taken based on DamagePacket
+	var charge_damage_bonus : float = 0
+	if (
+		(charge_type == Enums.ChargeType.POSITIVE and damage.charge_sign == Enums.ChargeType.NEGATIVE)
+		or (charge_type == Enums.ChargeType.NEGATIVE and damage.charge_sign == Enums.ChargeType.POSITIVE)
+		):
+		# Edit here to change how the Charge applies extra damage.
+		# With the current implementation it only applies double damage.
+		charge_damage_bonus = damage.amount
+	
+	var damage_to_inflict = damage.amount + charge_damage_bonus
+	
+	# Apply Damage
+	current_health -= damage_to_inflict
 	if current_health <= 0:
 		kill_mob()
 	
