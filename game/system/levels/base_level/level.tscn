@@ -116,7 +116,7 @@ tile_map_data = PackedByteArray("AAAWAAgAAQAGAAQAAAAWAAcAAQAGAAQAAAAOAAsAAQAFAAU
 tile_map_data = PackedByteArray("AAAeAAQAAQAEAAMAAAA=")
 
 [node name="EndLayer" parent="TileMapVisualRoot/PathLayer" index="1" unique_id=352255070]
-tile_map_data = PackedByteArray("AAAAAAsAAQADAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAAsAAQAEAAMAAAA=")
 
 [node name="MobSpawner" type="Node2D" parent="." unique_id=685284413]
 unique_name_in_owner = true
