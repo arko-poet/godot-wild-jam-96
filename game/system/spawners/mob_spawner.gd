@@ -26,9 +26,9 @@ func _stop() -> void:
 
 
 func _start(current_wave: int) -> void:
-	if current_wave < 0 or current_wave >= waves.size():
+	if current_wave < 0 or current_wave - 1 >= waves.size():
 		push_error(
-			"[MobSpawner] Invalid wave index: %d" % current_wave
+			"[MobSpawner] No more waves left to spawn."
 		)
 		return
 
@@ -53,11 +53,11 @@ func spawn_ghost(path: Array[Vector2i]) -> void:
 		push_error("[MobSpawner] Cannot spawn ghost. Path is empty.")
 		return
 
-	if _current_wave < 0 or _current_wave >= waves.size():
+	if _current_wave < 0 or _current_wave - 1 >= waves.size():
 		push_error("[MobSpawner] Invalid current wave.")
 		return
 
-	var current_wave_resource: WaveResource = waves[_current_wave]
+	var current_wave_resource: WaveResource = waves[_current_wave - 1]
 
 	var mob_resources: Array[MobResource] = \
 		current_wave_resource.ghosts.keys()
@@ -122,4 +122,4 @@ func spawn_ghost(path: Array[Vector2i]) -> void:
 
 
 func _on_ghost_spawner_timeout() -> void:
-	ghost_spawned.emit()
+	spawn_ghost_signal.emit()
