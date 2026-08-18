@@ -1,6 +1,12 @@
 class_name Tower
 extends Node2D
 
+enum TowerState{
+	OK,
+	SUPERCHARGED,
+	DISABLED
+}
+
 @export var data: TowerResource
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -9,7 +15,8 @@ extends Node2D
 @onready var vfx_origin: Marker2D = $VFXOrigin
 @onready var range_indicator: Node2D = $RangeIndicator
 @onready var range_visual: Sprite2D = $RangeIndicator/Visual
-
+@onready var rubbing_surface : RubbingSurface = $RubbingSurface
+@onready var internal_state_timer : Timer = $InternalStateTimer
 
 var current_charges: float = 0.0
 
@@ -26,10 +33,24 @@ var footprint: Array[Vector2i]
 
 var preview_mode :bool = true
 
+## Super Charge
+var supercharge_charge_rate_multiplier : float
+var supercharge_power_multiplier : float
+var supercharge_range_multiplier: float
+
+const overdrive_time :float = 10.0 # 10 Seconds of supercharge/ overdrive.
+var overdrive_cooldown: float # Followed by a Cooldown during which the tower is inactive.
+var tower_state : TowerState = TowerState.OK
+
+## Current Multipliers
+var charge_rate_multiplier :float = 1.0
+var power_multiplier: float =1.0
+var range_multipler: float =1.0
+
 ## This is a temporary variable. Once we figure out whether we want to have the 
 ## tower range visibilities setup differently, we should change this alongside with
 ## Part of the implementation (check _ready)
-var default_tower_range_visibility = false 
+@export var default_tower_range_visibility = false 
 
 func _ready() -> void:
 	if data == null:
@@ -53,7 +74,15 @@ func initialize_from_resource() -> void:
 	vfx_origin.position = data.vfx_origin
 	
 	footprint = data.footprint
-
+	
+	# Initialize Supercharging parameters
+	supercharge_charge_rate_multiplier = data.supercharge_charge_rate_multiplier
+	supercharge_power_multiplier = data.supercharge_power_multiplier
+	supercharge_range_multiplier = data.supercharge_range_multipler
+	overdrive_cooldown = data.overdrive_cooldown
+	if (data.charging_configuration != null):
+		rubbing_surface.apply_charge_config(data.charging_configuration)
+	
 	update_perception_radius()
 
 func update_perception_radius() -> void:
@@ -62,9 +91,10 @@ func update_perception_radius() -> void:
 	if circle == null:
 		circle = CircleShape2D.new()
 		perception_shape.shape = circle
-
-	circle.radius = perception_radius
-	set_range_indicator_range(perception_radius)
+	
+	var rendered_range = perception_radius*range_multipler
+	circle.radius = rendered_range
+	set_range_indicator_range(rendered_range)
 
 func upgrade_range(amount: float) -> void:
 	perception_radius += amount
@@ -80,24 +110,24 @@ func set_preview_color(color: Color) -> void:
 func _process(delta: float) -> void:
 	if data == null or preview_mode == true:
 		return
-
+	update_supercharge()
 	charge(delta)
 
 	if can_activate():
 		activate()
 
 
-func charge(delta: float) -> void:
-	current_charges += data.charge_rate * delta
+func charge(delta: float) -> void:	
+	current_charges += charge_rate * charge_rate_multiplier * delta
 
 	current_charges = min(
 		current_charges,
-		data.activation_cost
+		activation_cost
 	)
 
 
 func can_activate() -> bool:
-	return current_charges >= data.activation_cost
+	return current_charges >= activation_cost
 
 
 func activate() -> void:
@@ -112,16 +142,29 @@ func activate() -> void:
 
 	if ability.requires_targets() and targets.is_empty():
 		return
-
+	
 	var context := TowerAbilityContext.new(
 		get_vfx_origin(),
-		data.power,
-		targets
+		power*power_multiplier,
+		targets,
+		rubbing_surface.get_charge_type()
 	)
 
 	ability.activate(context)
 
-	current_charges -= data.activation_cost
+	current_charges -= activation_cost
+
+func update_supercharge():
+	if rubbing_surface.is_overcharged() and tower_state == TowerState.OK:
+		# Enter Supercharged State, disable rubbing_surface and start Overdrive Timer.
+		tower_state = TowerState.SUPERCHARGED
+		rubbing_surface.is_enabled = false
+		charge_rate_multiplier = supercharge_charge_rate_multiplier
+		power_multiplier = supercharge_power_multiplier
+		range_multipler = supercharge_range_multiplier
+		
+		internal_state_timer.start(overdrive_time)
+		update_perception_radius()
 
 
 func get_vfx_origin() -> Vector2:
@@ -212,3 +255,25 @@ func set_range_indicator_range(range: float) -> void:
 
 	texture.width = int(range * 2.0)
 	texture.height = int(range * 2.0)
+
+
+func _on_internal_state_timer_timeout() -> void:
+	if tower_state == TowerState.SUPERCHARGED:
+		# Disable Tower for a cooldown.
+		tower_state = TowerState.DISABLED
+		
+		# Getting the charge_rate_multiplier to zero pretty much deactivates the tower.
+		charge_rate_multiplier = 0.0
+		power_multiplier = 1.0
+		range_multipler = 1.0
+		
+		# Start internal State timer again for the cooldown duration
+		internal_state_timer.start(overdrive_cooldown)
+		update_perception_radius()
+	
+	if tower_state == TowerState.DISABLED:
+		# Re-enable Tower.
+		tower_state = TowerState.OK
+		charge_rate_multiplier = 1.0
+		rubbing_surface.is_enabled = true
+		

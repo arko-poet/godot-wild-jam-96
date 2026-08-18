@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dhqu0rnayje85"]
 
 [ext_resource type="Script" uid="uid://vmyo3m8sxbyj" path="res://game/entities/towers/tower.gd" id="1_0e2fs"]
-[ext_resource type="Texture2D" uid="uid://cg1bjbh845fvx" path="res://game/assets/towers/prototype_tower.png" id="2_ycjjm"]
+[ext_resource type="Texture2D" uid="uid://b7u2g0mj3rr1g" path="res://game/assets/towers/prototype_tower_large.png" id="2_o2swp"]
 [ext_resource type="Shader" uid="uid://73hk1rqg6q6q" path="res://game/entities/towers/range_indicator.gdshader" id="3_5brqy"]
+[ext_resource type="PackedScene" uid="uid://bus3m22c22i1j" path="res://game/system/rubbing_surface/rubbing_surface.tscn" id="4_xayqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
 
@@ -19,11 +20,15 @@ shader_parameter/line_color = Color(1, 1, 1, 0.8)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vgud1"]
 gradient = SubResource("Gradient_o2swp")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw6bx"]
+size = Vector2(64, 64)
+
 [node name="Tower" type="Node2D" unique_id=1787143782]
 script = ExtResource("1_0e2fs")
+default_tower_range_visibility = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599717512]
-texture = ExtResource("2_ycjjm")
+texture = ExtResource("2_o2swp")
 
 [node name="PerceptionArea" type="Area2D" parent="." unique_id=1968859076]
 
@@ -38,5 +43,21 @@ shape = SubResource("CircleShape2D_vgud1")
 material = SubResource("ShaderMaterial_jsyln")
 texture = SubResource("GradientTexture2D_vgud1")
 
+[node name="RubbingSurface" parent="." unique_id=1880943059 instance=ExtResource("4_xayqd")]
+
+[node name="Sprite2D" parent="RubbingSurface" index="0" unique_id=787626526]
+visible = false
+
+[node name="CollisionShape2D" parent="RubbingSurface" index="1" unique_id=556403593]
+shape = SubResource("RectangleShape2D_aw6bx")
+
+[node name="MetricLabelsContainer" parent="RubbingSurface" index="4" unique_id=1120814076]
+offset_bottom = -48.0
+
+[node name="InternalStateTimer" type="Timer" parent="." unique_id=246748010]
+
 [connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
 [connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
+[connection signal="timeout" from="InternalStateTimer" to="." method="_on_internal_state_timer_timeout"]
+
+[editable path="RubbingSurface"]
