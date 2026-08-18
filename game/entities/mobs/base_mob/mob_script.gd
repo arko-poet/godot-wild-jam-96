@@ -86,7 +86,7 @@ func initialize_from_resource() -> void:
 	damage = data.damage
 	charge_type = data.charge_type
 	mob_animated_sprite.set_sprite_frames(data.mob_sprite)
-	charge = data.current_charge
+	charge_type = data.charge_type
 	mob_type = data.mob_type
 	
 	# Add to required groups.

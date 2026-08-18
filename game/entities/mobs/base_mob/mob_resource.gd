@@ -1,7 +1,6 @@
 class_name MobResource
 extends Resource
 
-enum Charge { NEUTURAL, NEGATIVE, POSITIVE }
 enum MobType { REGULAR_GHOST, FAST_GHOST, BOSS_GHOST}
 
 @export_category("Visuals")
