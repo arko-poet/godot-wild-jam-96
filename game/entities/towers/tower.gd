@@ -306,7 +306,7 @@ func apply_scaling_data(scaling_data: TowerUpgradeResource):
 	supercharge_charge_rate_multiplier += scaling_data.supercharge_charge_rate_multiplier
 	supercharge_power_multiplier += scaling_data.supercharge_power_multiplier
 	supercharge_range_multiplier += scaling_data.supercharge_range_multipler
-	overdrive_cooldown += scaling_data.overdrive_cooldown
+	overdrive_cooldown = max(0,overdrive_cooldown - scaling_data.overdrive_cooldown)
 	
 	rubbing_surface.increment_charge_generation_rate(scaling_data.charge_generation_rate)
 	rubbing_surface.increment_charge_discharge_rate(scaling_data.charge_discharge_rate)

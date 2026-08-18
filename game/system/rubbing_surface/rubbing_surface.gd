@@ -128,7 +128,7 @@ func increment_charge_generation_rate(value:float) -> void:
 
 func increment_charge_discharge_rate(value:float) -> void:
 	var previous_value = charge_controller.charge_discharge_rate
-	var new_value = previous_value+value
+	var new_value = max(0,previous_value+value)
 	charge_controller.set_charge_discharge_rate(new_value)
 
 func apply_charge_config(config: ChargeConfig) -> void:
