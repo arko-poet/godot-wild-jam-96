@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://84jj6pqc0t6j"]
+
+[ext_resource type="Texture2D" uid="uid://ch01dokqfeqih" path="res://game/assets/ghosts/ghost_enermy1.png" id="1_1worp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67lka"]
+atlas = ExtResource("1_1worp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tmvf"]
+atlas = ExtResource("1_1worp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v5jp"]
+atlas = ExtResource("1_1worp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0keq0"]
+atlas = ExtResource("1_1worp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4p24"]
+atlas = ExtResource("1_1worp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq7en"]
+atlas = ExtResource("1_1worp")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa4du"]
+atlas = ExtResource("1_1worp")
+region = Rect2(192, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67lka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tmvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v5jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0keq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4p24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq7en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa4du")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]

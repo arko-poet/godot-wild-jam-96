@@ -42,4 +42,8 @@ text = "Charge: "
 [node name="ChargeRateLabel" type="Label" parent="MetricLabelsContainer" unique_id=1798113566]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Charge: "
+text = "Charge Rate: "
+
+[node name="StatusLabel" type="Label" parent="MetricLabelsContainer" unique_id=10310825]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8

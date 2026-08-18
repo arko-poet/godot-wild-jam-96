@@ -41,10 +41,11 @@ towers have different charge characteristics.
 
 A Charge Status enum is also setup with a logic to allow configuring percentile based threshold to map
 charge levels to these statuses. By default
-- 0% : No Charge.
-- 1-19% : Low
-- 20-49%: Charged
-- 50+%: Overcharged
+- `-90% or below` : Overcharged Negatively
+- `-90% to -20%` : Charged Negatively
+- `-20% to +20%` : No Charge.
+- `20% to 90%` : Charged Positively
+- `90% or higher`: Overcharged Positively
 
 The `RubbingSurface` exposes this status in case we want to implement logic based on these statuses.
 Alternatively we can have the logic directly depend on charge_percentage which is also exposed.
@@ -61,3 +62,7 @@ Some Debugging parameters have been setup to allow displaying the Intensity, the
 charge per second. Also a Sprite was added to make testing easier, I don't know if we will keep it, remove
 it entirely or change it to something specific. 
 You can find those in the inspector for the `RubbingSurface` 
+
+# Update (Negative CHarging added)
+To charge the RubbingSurface, a user needs to press their Left Mouse Button and start rubbing. 
+If they are also holding down the Right Mouse Button the Charging is signed Negatively. 
