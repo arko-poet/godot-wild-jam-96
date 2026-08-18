@@ -48,16 +48,19 @@ offset_bottom = 40.0
 [node name="CoreChargesLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=285645343]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "Core Charges: 0"
 
 [node name="EctoplasmLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=34089681]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "Ectoplasm: 0"
 
 [node name="WaveLabel" type="Label" parent="UILayer/UI/LabelContainer" unique_id=1632530861]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "Wave: 0"
 
 [node name="PlaceTowerButton" type="Button" parent="UILayer/UI" unique_id=876169344]

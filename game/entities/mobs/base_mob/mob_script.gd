@@ -16,7 +16,10 @@ var current_health : float = 1.0
 var speed : float = 100.0
 var loot : int
 var damage : int
+
 var charge_type : Enums.ChargeType = Enums.ChargeType.NEUTRAL
+var mob_type: MobResource.MobType
+
 
 # Pathfinding Variables
 var mob_path: Array[Vector2]
@@ -25,7 +28,7 @@ var path_index: int = 0
 # Value to use to determin how fast or how much hp a Mob will have. 
 var _difficulty: int = 0
 @export var health_curve: float = 1.3
-@export var speed_curve: float = 1.5
+
 
 func _ready():
 	if data == null:
@@ -36,6 +39,22 @@ func _ready():
 	initialize_from_resource()
 	_run_dificulty_curve()
 	_update_health_bar()
+	_modulate_color_by_mob_type()
+
+func _modulate_color_by_mob_type()->void:
+	## this is mainly for debuggin / playtesting untill we implement actual sprite changes for ghost types. 
+	
+	match mob_type:
+		
+		MobResource.MobType.FAST_GHOST:
+			
+			set_modulate( Color.AQUA ) 
+		
+		MobResource.MobType.BOSS_GHOST:
+			
+			set_modulate( Color.DARK_BLUE )
+
+
 
 func _update_health_bar()->void:
 	health_bar.set_max(max_health)
@@ -49,10 +68,6 @@ func _run_dificulty_curve()->void:
 	max_health += health_ratio_gain
 	current_health = max_health
 	
-	
-	# Speed Dificutly increase
-	var speed_ratio_gain: float = _difficulty * speed_curve * 0.2 * 35
-	speed += speed_ratio_gain 
 	
 	# Loot Dificutly increase
 	var loot_ratio_gain: int = _difficulty * 3
@@ -71,6 +86,8 @@ func initialize_from_resource() -> void:
 	damage = data.damage
 	charge_type = data.charge_type
 	mob_animated_sprite.set_sprite_frames(data.mob_sprite)
+	charge_type = data.charge_type
+	mob_type = data.mob_type
 	
 	# Add to required groups.
 	for target_group in data.groups:

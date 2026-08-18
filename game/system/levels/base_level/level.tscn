@@ -4,8 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dxyg50dwonbwg" path="res://game/assets/tile_sets/place_holder.png" id="2_c7wb3"]
 [ext_resource type="PackedScene" uid="uid://dg60arx7lqg2x" path="res://game/system/path_layer/path_layer_scene.tscn" id="2_mj2gk"]
 [ext_resource type="Script" uid="uid://chgbt5wt25778" path="res://game/system/spawners/mob_spawner.gd" id="3_fk1rh"]
-[ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="4_uyg15"]
+[ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="5_0x1cl"]
 [ext_resource type="PackedScene" uid="uid://da5t23dc7a4x3" path="res://game/system/tower_placement/tower_placement_controller.tscn" id="6_0x1cl"]
+[ext_resource type="Script" uid="uid://clx1emo7cvkrb" path="res://game/resources/waves/wave_resource_script.gd" id="6_7ovgr"]
+[ext_resource type="Resource" uid="uid://c2y2w6c4pkxb2" path="res://game/resources/waves/test_wave_1_resource.tres" id="7_ruild"]
+[ext_resource type="Script" uid="uid://bm37gvgbf7jip" path="res://game/entities/mobs/base_mob/mob_resource.gd" id="8_6bo20"]
+[ext_resource type="Resource" uid="uid://chxux3f5v0lfs" path="res://game/resources/mobs/boss_ghost/positive_boss_ghost.tres" id="9_gjc8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0x1cl"]
 texture = ExtResource("2_c7wb3")
@@ -15,6 +19,13 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_4jx01"]
 tile_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_0x1cl")
+
+[sub_resource type="Resource" id="Resource_d38cy"]
+script = ExtResource("6_7ovgr")
+ghosts = Dictionary[ExtResource("8_6bo20"), int]({
+ExtResource("9_gjc8c"): 3
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
 
 [node name="Level" type="Node2D" unique_id=1206293609]
 script = ExtResource("1_mj2gk")
@@ -27,10 +38,10 @@ tile_set = SubResource("TileSet_4jx01")
 
 [node name="PathLayer" parent="TileMapVisualRoot" unique_id=740346887 instance=ExtResource("2_mj2gk")]
 unique_name_in_owner = true
-tile_map_data = PackedByteArray("AAAWAAgAAAAAAAAAAAAWAAcAAAAAAAAAAAAOAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAAAAAAAAAAdAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAZAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAQAAAAAAAAAAAAWAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAATAAsAAAAAAAAAAAASAAsAAAAAAAAAAAARAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAADAAsAAAAAAAAAAAACAAsAAAAAAAAAAAABAAsAAAAAAAAAAAAAAAsAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAWAAgAAAAAAAAAAAAWAAcAAAAAAAAAAAAOAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAAAAAAAAAAdAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAbAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAZAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAQAAAAAAAAAAAAWAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAATAAsAAAAAAAAAAAASAAsAAAAAAAAAAAARAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAADAAsAAAAAAAAAAAACAAsAAAAAAAAAAAABAAsAAAAAAAAAAAAAAAsAAAAAAAAAAAAeAAQAAAAAAAAAAAA=")
 
 [node name="StartLayer" parent="TileMapVisualRoot/PathLayer" index="0" unique_id=1010244544]
-tile_map_data = PackedByteArray("AAAdAAQAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAeAAQAAAAAAAAAAAA=")
 
 [node name="EndLayer" parent="TileMapVisualRoot/PathLayer" index="1" unique_id=352255070]
 tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAA=")
@@ -38,12 +49,11 @@ tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAA=")
 [node name="MobSpawner" type="Node2D" parent="." unique_id=685284413]
 unique_name_in_owner = true
 script = ExtResource("3_fk1rh")
-ghost_mobs = ExtResource("4_uyg15")
-total_ghost_spawn_count = 2
+ghost_mob_scene = ExtResource("5_0x1cl")
+waves = Array[ExtResource("6_7ovgr")]([ExtResource("7_ruild"), SubResource("Resource_d38cy"), ExtResource("7_ruild")])
 
 [node name="GhostSpawnerTimer" type="Timer" parent="MobSpawner" unique_id=315870253]
 unique_name_in_owner = true
-wait_time = 2.0
 
 [node name="TowerPlacementController" parent="." unique_id=193345204 node_paths=PackedStringArray("ground_layer", "path_layer", "towers_container") instance=ExtResource("6_0x1cl")]
 ground_layer = NodePath("../TileMapVisualRoot/GroundLayer")
