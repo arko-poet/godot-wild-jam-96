@@ -17,3 +17,8 @@ tile_set = ExtResource("1_meste")
 unique_name_in_owner = true
 tile_map_data = PackedByteArray("AAAAAAYAAAAAAAAAAAA=")
 tile_set = ExtResource("1_meste")
+
+[node name="CrossingLayer" type="TileMapLayer" parent="." unique_id=1724893282]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAAAAYAAAAAAAAAAAA=")
+tile_set = ExtResource("1_meste")
