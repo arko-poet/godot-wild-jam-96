@@ -35,3 +35,6 @@ extends Resource
 @export var supercharge_range_multipler : float = 1.0
 @export var overdrive_cooldown : float 
 @export var charging_configuration : ChargeConfig
+
+@export_category("Scaling")
+@export var upgrade_path : Array[TowerUpgradeResource] = []
