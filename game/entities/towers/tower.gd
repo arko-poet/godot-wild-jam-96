@@ -165,6 +165,7 @@ func update_supercharge():
 		
 		internal_state_timer.start(overdrive_time)
 		update_perception_radius()
+		print("ENTERING SUPERCHARGED STATE")
 
 
 func get_vfx_origin() -> Vector2:
@@ -270,10 +271,13 @@ func _on_internal_state_timer_timeout() -> void:
 		# Start internal State timer again for the cooldown duration
 		internal_state_timer.start(overdrive_cooldown)
 		update_perception_radius()
+		print("ENTERING DISABLED STATE")
+		return
 	
 	if tower_state == TowerState.DISABLED:
 		# Re-enable Tower.
 		tower_state = TowerState.OK
 		charge_rate_multiplier = 1.0
 		rubbing_surface.is_enabled = true
-		
+		print("RETURNING TO OK STATE")
+		return

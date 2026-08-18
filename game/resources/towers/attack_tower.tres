@@ -24,6 +24,6 @@ footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vec
 supercharge_charge_rate_multiplier = 10.0
 supercharge_power_multiplier = 2.0
 supercharge_range_multipler = 2.0
-overdrive_cooldown = 30.0
+overdrive_cooldown = 120.0
 charging_configuration = SubResource("Resource_o2swp")
 metadata/_custom_type_script = "uid://bchbyouil8i2v"
