@@ -18,6 +18,9 @@ func build_path() -> Array[Vector2i]:
 	return _path
 
 
+## WARNING the path crossing don't work for all directions
+## this is just a temporary solution to make current level work
+## later we can replace this with Path2D
 func _build_path() -> Array[Vector2i]:
 	## Grab path tile positions.
 	_path_tiles = get_used_cells()
