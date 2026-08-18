@@ -19,7 +19,6 @@ func build_path() -> Array[Vector2i]:
 
 
 func _build_path() -> Array[Vector2i]:
-	print("start")
 	## Grab path tile positions.
 	_path_tiles = get_used_cells()
 
@@ -56,7 +55,6 @@ func _build_path() -> Array[Vector2i]:
 
 
 	while current_tile != _end_tile:
-		print(current_tile)
 		var next_tile := Vector2i.ZERO
 		var found_next := false
 
