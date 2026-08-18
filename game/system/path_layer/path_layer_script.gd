@@ -3,6 +3,7 @@ class_name PathLayer extends TileMapLayer
 
 @onready var start_layer: TileMapLayer = %StartLayer
 @onready var end_layer: TileMapLayer = %EndLayer
+@onready var crossing_layer: TileMapLayer = %CrossingLayer
 
 
 var _path_tiles: Array[Vector2i]
@@ -26,6 +27,7 @@ func _build_path() -> Array[Vector2i]:
 	## Grab start and end positions.
 	var start_tiles := start_layer.get_used_cells()
 	var end_tiles := end_layer.get_used_cells()
+	var crossing_tiles := crossing_layer.get_used_cells()
 
 
 	assert(start_tiles.size() == 1, "StartLayer must have exactly one tile.")
@@ -46,10 +48,10 @@ func _build_path() -> Array[Vector2i]:
 
 
 	var directions := [
-		Vector2i.UP,
-		Vector2i.DOWN,
 		Vector2i.LEFT,
-		Vector2i.RIGHT
+		Vector2i.DOWN,
+		Vector2i.RIGHT,
+		Vector2i.UP
 	]
 
 
@@ -63,7 +65,7 @@ func _build_path() -> Array[Vector2i]:
 
 			var candidate = current_tile + direction
 
-			if candidate in _path_tiles and candidate not in _path:
+			if candidate in _path_tiles and (candidate not in _path or candidate in crossing_tiles):
 				next_tile = candidate
 				found_next = true
 				break

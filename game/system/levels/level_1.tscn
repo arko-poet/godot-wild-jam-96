@@ -16,4 +16,7 @@ tile_map_data = PackedByteArray("AAAbAP//AQAEAAMAAAA=")
 [node name="EndLayer" parent="TileMapVisualRoot/PathLayer" index="1" unique_id=352255070]
 tile_map_data = PackedByteArray("AAACAAgAAQAEAAMAAAA=")
 
+[node name="CrossingLayer" parent="TileMapVisualRoot/PathLayer" index="2" unique_id=1724893282]
+tile_map_data = PackedByteArray("AAAAAAYAAQACAAAAAAAQAAkAAQAEAAMAAAA=")
+
 [editable path="TileMapVisualRoot/PathLayer"]
