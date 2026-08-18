@@ -8,7 +8,7 @@ var _active_wave: bool = false
 @onready var start_wave_button: Button = $"../UILayer/UI/StartWaveButton"
 
 func _ready() -> void:
-	_wave_label.text =  "Wave: %s" % _current_wave
+	_wave_label.text =  "100/ %s" % _current_wave
 	start_wave_button.pressed.connect(_on_start_wave_button)
 	Event.wave_ended_signal.connect(_on_wave_ended_signal)
 
@@ -24,7 +24,7 @@ func _on_wave_ended_signal()->void:
 
 func _next_wave()->void:
 	_current_wave += 1
-	_wave_label.text =  "Wave: %s" % _current_wave
+	_wave_label.text =  "100/ %s" % _current_wave
 	Event.next_wave_trigered(_current_wave)
 
 

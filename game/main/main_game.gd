@@ -8,12 +8,12 @@ extends Node
 var _ectoplasm: int:
 	set(value):
 		_ectoplasm = value
-		_ectoplasm_label.text = "Ectoplasm: %s" % _ectoplasm
+		_ectoplasm_label.text = str(_ectoplasm)
 
 var _core_charges: int:
 	set(value):
 		_core_charges = max(value, 0)
-		_core_charges_label.text = "Core Charges: %s" % _core_charges
+		core_charges_count.text = "100/%s" % _core_charges
 		
 		if _core_charges == 0:
 			_win_lose_manager.game_lost()
@@ -22,8 +22,8 @@ var _core_charges: int:
 @onready var _win_lose_manager: Node = %WinLoseManager
 @onready var _level : Level = %Level
 @onready var _ui : Control = $UILayer/UI
-@onready var _core_charges_label: Label = %CoreChargesLabel
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
+@onready var core_charges_count: Label = %CoreChargesCount
 
 
 @onready var confirmation_popup: TowerConfirmationPopup = \
