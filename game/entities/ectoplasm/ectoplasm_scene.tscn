@@ -1,50 +1,7 @@
 [gd_scene format=3 uid="uid://dk80bjowjtg8w"]
 
-[ext_resource type="Texture2D" uid="uid://cehcu0av4ivfo" path="res://game/assets/ectoplasm/ectoplasm_sprite_sheet.png" id="1_1ty7s"]
 [ext_resource type="Script" uid="uid://c7gdnqn7citcl" path="res://game/entities/ectoplasm/ectoplasm_script.gd" id="1_70ohq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_70ohq"]
-atlas = ExtResource("1_1ty7s")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjevg"]
-atlas = ExtResource("1_1ty7s")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmca3"]
-atlas = ExtResource("1_1ty7s")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6ifl"]
-atlas = ExtResource("1_1ty7s")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dm3qf"]
-atlas = ExtResource("1_1ty7s")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4jx01"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_70ohq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xjevg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nmca3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j6ifl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dm3qf")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://c55tbhxxayvpk" path="res://game/assets/ectoplasm/ectoplasm.png" id="2_70ohq"]
 
 [sub_resource type="Animation" id="Animation_70ohq"]
 resource_name = "collect"
@@ -279,12 +236,10 @@ _data = {
 [node name="Ectoplasm" type="Node2D" unique_id=501606545]
 script = ExtResource("1_70ohq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1509616501]
+[node name="AnimatedSprite2D" type="Sprite2D" parent="." unique_id=1540659531]
 modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_4jx01")
-autoplay = "default"
-frame_progress = 0.9948266
+texture = ExtResource("2_70ohq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=334336806]
 unique_name_in_owner = true
