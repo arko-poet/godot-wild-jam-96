@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dn5y485b6qbvf" path="res://game/main/main_game.gd" id="1_70w2d"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="1_tje7e"]
 [ext_resource type="PackedScene" uid="uid://e0xyt51xgvgy" path="res://template/scenes/windows/pause_menu_layer.tscn" id="4_4r55p"]
+[ext_resource type="PackedScene" uid="uid://cbu3fe1tdehc5" path="res://game/system/levels/base_level/level.tscn" id="4_7gsoh"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="4_nc71o"]
 [ext_resource type="PackedScene" uid="uid://cqw8xxwipplig" path="res://template/scenes/windows/level_lost_layer.tscn" id="5_uflg0"]
-[ext_resource type="PackedScene" uid="uid://b602m5ep1r77y" path="res://game/system/levels/level_1.tscn" id="7_evtg3"]
 [ext_resource type="PackedScene" uid="uid://cfh8bx503xjl1" path="res://game/system/ui/tower_confirmation/tower_confirmation_popup.tscn" id="7_uflg0"]
 [ext_resource type="Script" uid="uid://16dwdo7xq106" path="res://game/system/wave_manager/wave_manager_script.gd" id="8_fjfis"]
 [ext_resource type="PackedScene" uid="uid://b0ewbj0w6affe" path="res://game/system/ectoplasm_mouse_collector/ectoplasm_mouse_collector.tscn" id="10_evtg3"]
@@ -13,7 +13,7 @@
 [node name="MainGame" type="Node" unique_id=1950236070]
 script = ExtResource("1_70w2d")
 _starting_ectoplasm = 100
-_starting_core_charges = 1
+_starting_core_charges = 1000
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=1922467190]
 unique_name_in_owner = true
@@ -26,7 +26,7 @@ script = ExtResource("4_nc71o")
 main_menu_scene_path = "uid://u6r2rlq7u5uy"
 game_lost_scene = ExtResource("5_uflg0")
 
-[node name="Level" parent="." unique_id=1561797605 instance=ExtResource("7_evtg3")]
+[node name="Level" parent="." unique_id=1206293609 instance=ExtResource("4_7gsoh")]
 unique_name_in_owner = true
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1834987568]
@@ -109,3 +109,4 @@ script = ExtResource("8_fjfis")
 [connection signal="pressed" from="UILayer/UI/PlaceTowerButton" to="." method="_on_place_tower_button_pressed"]
 [connection signal="pressed" from="UILayer/UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
 [connection signal="pressed" from="UILayer/UI/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="wave_limit_exceeded" from="WaveManager" to="." method="_on_wave_manager_wave_limit_exceeded"]
