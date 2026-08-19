@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="WaveResource" format=3 uid="uid://c2y2w6c4pkxb2"]
 
 [ext_resource type="Script" uid="uid://bm37gvgbf7jip" path="res://game/entities/mobs/base_mob/mob_resource.gd" id="1_a5o2h"]
-[ext_resource type="Resource" uid="uid://dofm3o5ypmujs" path="res://game/resources/mobs/regular_ghost/neutral_regular_ghost.tres" id="2_3jihf"]
 [ext_resource type="Script" uid="uid://clx1emo7cvkrb" path="res://game/resources/waves/wave_resource_script.gd" id="5_0lrap"]
 
 [resource]
 script = ExtResource("5_0lrap")
 ghosts = Dictionary[ExtResource("1_a5o2h"), int]({
-ExtResource("2_3jihf"): 2
+null: 0
 })
 metadata/_custom_type_script = "uid://clx1emo7cvkrb"
