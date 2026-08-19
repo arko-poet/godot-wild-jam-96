@@ -1,11 +1,13 @@
 class_name WaveManager extends Node
 
+signal wave_limit_exceeded
 
 @onready var _wave_label: Label = %WaveLabel
 var _current_wave: int = 0
 var _active_wave: bool = false
 
 @onready var start_wave_button: Button = $"../UILayer/UI/StartWaveButton"
+@onready var level: Level = %Level
 
 func _ready() -> void:
 	_wave_label.text =  "%s/100" % _current_wave

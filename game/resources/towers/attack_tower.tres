@@ -1,8 +1,32 @@
 [gd_resource type="Resource" script_class="TowerResource" format=3 uid="uid://d1kopu171ngjw"]
 
+[ext_resource type="Script" uid="uid://dv41c0f80vxun" path="res://game/system/rubbing_surface/charge_config.gd" id="1_g6ioj"]
 [ext_resource type="Script" uid="uid://bchbyouil8i2v" path="res://game/entities/towers/tower_resource.gd" id="1_ruo4i"]
 [ext_resource type="Resource" uid="uid://8cklpgs4b6cj" path="res://game/resources/towers/abilities/attack.tres" id="2_onmi0"]
 [ext_resource type="Texture2D" uid="uid://b7u2g0mj3rr1g" path="res://game/assets/towers/prototype_tower_large.png" id="3_onmi0"]
+[ext_resource type="Script" uid="uid://5sjlicbvpgxd" path="res://game/entities/towers/tower_upgrades/tower_upgrade_resource.gd" id="5_2oi5b"]
+
+[sub_resource type="Resource" id="Resource_o2swp"]
+script = ExtResource("1_g6ioj")
+max_charge = 100.0
+charge_generation_rate = 20.0
+charged_threshold = 0.3
+metadata/_custom_type_script = "uid://dv41c0f80vxun"
+
+[sub_resource type="Resource" id="Resource_l1xd4"]
+script = ExtResource("5_2oi5b")
+range = 50.0
+metadata/_custom_type_script = "uid://5sjlicbvpgxd"
+
+[sub_resource type="Resource" id="Resource_xayqd"]
+script = ExtResource("5_2oi5b")
+range = 100.0
+metadata/_custom_type_script = "uid://5sjlicbvpgxd"
+
+[sub_resource type="Resource" id="Resource_aw6bx"]
+script = ExtResource("5_2oi5b")
+range = 150.0
+metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("1_ruo4i")
@@ -12,4 +36,10 @@ activation_cost = 1.0
 purchase_price = 10
 special_ability = ExtResource("2_onmi0")
 footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1)])
+supercharge_charge_rate_multiplier = 10.0
+supercharge_power_multiplier = 2.0
+supercharge_range_multipler = 2.0
+overdrive_cooldown = 120.0
+charging_configuration = SubResource("Resource_o2swp")
+upgrade_path = Array[ExtResource("5_2oi5b")]([SubResource("Resource_l1xd4"), SubResource("Resource_xayqd"), SubResource("Resource_aw6bx")])
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

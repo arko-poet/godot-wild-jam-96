@@ -17,6 +17,10 @@ func start_wave( current_wave: int )->void:
 	mob_spawner.set_current_wave(current_wave)
 
 
+func get_number_of_waves() -> int:
+	return mob_spawner.waves.size()
+
+
 func _on_ghost_spawned( ghost:Mob )->void:
 	
 	ghost.mob_reached_end_of_path.connect(_on_mob_reached_end_of_path)

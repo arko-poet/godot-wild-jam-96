@@ -85,6 +85,7 @@ func _on_level_core_damaged() -> void:
 
 var ectoplasm_cost = 0
 
+
 func _on_pause_button_pressed() -> void:
 	_pause_menu_controller.pause()
 
@@ -99,3 +100,7 @@ func _on_confirmation_confirmed() -> void:
 	
 func _on_confirmation_cancelled() -> void:
 	_level.tower_placement_controller.cancel_confirmation()
+
+
+func _on_wave_manager_wave_limit_exceeded() -> void:
+	_win_lose_manager.game_won()
