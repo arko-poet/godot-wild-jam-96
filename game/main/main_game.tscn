@@ -12,7 +12,6 @@
 [ext_resource type="Resource" uid="uid://bmtutj00q57ak" path="res://game/resources/towers/attack_towers/t3/attack_tower_fast_perceptive.tres" id="6_5e54f"]
 [ext_resource type="Resource" uid="uid://b7b0py26dl5we" path="res://game/resources/towers/attack_towers/t3/attack_tower_fast_powerful.tres" id="7_6oj41"]
 [ext_resource type="PackedScene" uid="uid://cfh8bx503xjl1" path="res://game/system/ui/tower_confirmation/tower_confirmation_popup.tscn" id="7_uflg0"]
-[ext_resource type="Theme" uid="uid://c327w5y3dq2wv" path="res://game/resources/ui/main_ui_theme.tres" id="8_5swsr"]
 [ext_resource type="Script" uid="uid://16dwdo7xq106" path="res://game/system/wave_manager/wave_manager_script.gd" id="8_fjfis"]
 [ext_resource type="Resource" uid="uid://3ig7cij7fci6" path="res://game/resources/towers/attack_towers/t3/attack_tower_perceptive_powerful.tres" id="8_naq3g"]
 [ext_resource type="Theme" uid="uid://31qvfffwlc80" path="res://game/resources/ui/tower_selection_ui_theme.tres" id="9_k7j2b"]
@@ -26,37 +25,6 @@ font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_pejan"]
 font_size = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7j2b"]
-bg_color = Color(0.16862746, 0.20784314, 0.25490198, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw1l1"]
-bg_color = Color(0.654902, 0.69411767, 0.74509805, 1)
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0j2t"]
-bg_color = Color(0.16862746, 0.20784314, 0.25490198, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_d0j2t"]
 font_size = 8
@@ -105,9 +73,8 @@ mouse_filter = 2
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 120.0
+offset_right = 108.0
 grow_vertical = 2
-theme = ExtResource("8_5swsr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainUiContainer" unique_id=417723582]
 layout_mode = 2
@@ -136,24 +103,19 @@ size_flags_vertical = 4
 [node name="X1" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=982641637]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "X1"
-
-[node name="Margin" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=38060336]
-custom_minimum_size = Vector2(5, 0)
-layout_mode = 2
 
 [node name="X2" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=1391817401]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "X2"
-
-[node name="Margin2" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=1024416138]
-custom_minimum_size = Vector2(5, 0)
-layout_mode = 2
 
 [node name="X3" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=645777733]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "X3"
 
 [node name="Margin3" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1475218312]
@@ -308,11 +270,7 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1894443271]
 layout_mode = 2
-theme = ExtResource("9_k7j2b")
 theme_override_font_sizes/font_size = 8
-theme_override_styles/normal = SubResource("StyleBoxFlat_k7j2b")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gw1l1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_d0j2t")
 text = "Upgrade
 Towers
 
@@ -351,7 +309,6 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 42.0
 grow_horizontal = 0
-theme = ExtResource("8_5swsr")
 theme_override_font_sizes/font_size = 16
 text = "Start Wave"
 
