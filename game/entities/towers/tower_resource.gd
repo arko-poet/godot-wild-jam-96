@@ -8,6 +8,7 @@ extends Resource
 @export var tower_sprite: Texture2D
 @export var perception_radius: float = 64.0
 @export var vfx_origin: Vector2 = Vector2.ZERO
+@export var modulate_color := Color.WHITE
 
 @export_category("Activation")
 @export var charge_rate: float = 1.0

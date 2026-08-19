@@ -29,6 +29,7 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 script = ExtResource("2_5fwxq")
 tower_sprite = ExtResource("4_oqi2l")
 perception_radius = 128.0
+modulate_color = Color(0.8392157, 0.8392157, 0.8901961, 1)
 charge_rate = 2.0
 power = 0.5
 purchase_price = 500

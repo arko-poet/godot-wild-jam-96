@@ -82,6 +82,8 @@ func initialize_from_resource() -> void:
 	
 	footprint = data.footprint
 	
+	sprite.modulate = data.modulate_color
+	
 	# Initialize Supercharging parameters
 	supercharge_charge_rate_multiplier = data.supercharge_charge_rate_multiplier
 	supercharge_power_multiplier = data.supercharge_power_multiplier
