@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cfh8bx503xjl1" path="res://game/system/ui/tower_confirmation/tower_confirmation_popup.tscn" id="7_uflg0"]
 [ext_resource type="Script" uid="uid://16dwdo7xq106" path="res://game/system/wave_manager/wave_manager_script.gd" id="8_fjfis"]
 [ext_resource type="Resource" uid="uid://3ig7cij7fci6" path="res://game/resources/towers/attack_towers/t3/attack_tower_perceptive_powerful.tres" id="8_naq3g"]
-[ext_resource type="Theme" uid="uid://31qvfffwlc80" path="res://game/resources/ui/tower_selection_ui_theme.tres" id="9_k7j2b"]
 [ext_resource type="PackedScene" uid="uid://b0ewbj0w6affe" path="res://game/system/ectoplasm_mouse_collector/ectoplasm_mouse_collector.tscn" id="10_evtg3"]
 [ext_resource type="Texture2D" uid="uid://c55tbhxxayvpk" path="res://game/assets/ectoplasm/ectoplasm.png" id="11_k7j2b"]
 [ext_resource type="PackedScene" uid="uid://b602m5ep1r77y" path="res://game/system/levels/level_1.tscn" id="12_arblt"]
@@ -186,7 +185,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("9_k7j2b")
 icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
@@ -199,7 +197,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("9_k7j2b")
 icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
@@ -212,7 +209,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("9_k7j2b")
 icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
@@ -225,7 +221,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("9_k7j2b")
 icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
@@ -238,7 +233,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("9_k7j2b")
 icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
@@ -251,7 +245,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("9_k7j2b")
 icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
@@ -264,7 +257,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("9_k7j2b")
 icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
