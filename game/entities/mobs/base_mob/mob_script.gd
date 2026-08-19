@@ -7,6 +7,7 @@ signal remove_from_manager_pool( ref_to_self: Mob )
 
 @onready var mob_animated_sprite: AnimatedSprite2D = %MobAnimatedSprite
 @onready var health_bar: ProgressBar = %HealthBar
+@onready var charge_particle_effect: ChargeParticleEffect = %ChargeParticleEffect
 
 @export var data: MobResource
 
@@ -40,6 +41,25 @@ func _ready():
 	_run_dificulty_curve()
 	_update_health_bar()
 	_modulate_color_by_mob_type()
+	_check_charge_for_vfx()
+
+func _check_charge_for_vfx() -> void:
+	print("\n[Mob] Checking charge VFX...")
+	print("[Mob] Charge type: ", data.charge_type)
+
+	match charge_type:
+		
+		Enums.ChargeType.NEGATIVE:
+			print("[Mob] Negative charge")
+			charge_particle_effect.display_charge_effect(false)
+
+		Enums.ChargeType.POSITIVE:
+			print("[Mob] Positive charge")
+			charge_particle_effect.display_charge_effect(true)
+
+		Enums.ChargeType.NEUTRAL:
+			print("[Mob] Neutral charge")
+			charge_particle_effect.emitting = false
 
 func _modulate_color_by_mob_type()->void:
 	## this is mainly for debuggin / playtesting untill we implement actual sprite changes for ghost types. 
@@ -48,11 +68,11 @@ func _modulate_color_by_mob_type()->void:
 		
 		MobResource.MobType.FAST_GHOST:
 			
-			set_modulate( Color.AQUA ) 
+			mob_animated_sprite.set_modulate( Color.AQUA ) 
 		
 		MobResource.MobType.BOSS_GHOST:
 			
-			set_modulate( Color.DARK_BLUE )
+			mob_animated_sprite.set_modulate( Color.DARK_BLUE )
 
 
 
@@ -86,7 +106,6 @@ func initialize_from_resource() -> void:
 	damage = data.damage
 	charge_type = data.charge_type
 	mob_animated_sprite.set_sprite_frames(data.mob_sprite)
-	charge_type = data.charge_type
 	mob_type = data.mob_type
 	
 	# Add to required groups.
