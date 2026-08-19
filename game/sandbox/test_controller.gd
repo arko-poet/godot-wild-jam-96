@@ -21,7 +21,6 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(amount: float) -> void:
 	health -= amount
-	print("Mob took ", amount, " damage. HP: ", health)
 
 	if health <= 0:
 		queue_free()

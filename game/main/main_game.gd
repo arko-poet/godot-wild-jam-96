@@ -117,6 +117,8 @@ func _on_wave_manager_wave_limit_exceeded() -> void:
 
 
 func _on_upgrade_tower_button_pressed() -> void:
+	
+	
 	if _ectoplasm < _tower_upgrade_cost:
 		return
 	
@@ -125,6 +127,7 @@ func _on_upgrade_tower_button_pressed() -> void:
 	for tower in towers:
 		if tower is Tower:
 			tower.level_up()
+	_tower_upgrades_purchased += 1
 
 
 func _update_tower_upgrade_cost() -> void:
