@@ -2,19 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dn5y485b6qbvf" path="res://game/main/main_game.gd" id="1_70w2d"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="1_tje7e"]
-[ext_resource type="Script" uid="uid://bchbyouil8i2v" path="res://game/entities/towers/tower_resource.gd" id="2_6n5r1"]
-[ext_resource type="Resource" uid="uid://d1kopu171ngjw" path="res://game/resources/towers/attack_towers/t1/attack_tower.tres" id="3_kqlce"]
 [ext_resource type="PackedScene" uid="uid://e0xyt51xgvgy" path="res://template/scenes/windows/pause_menu_layer.tscn" id="4_4r55p"]
-[ext_resource type="Resource" uid="uid://bfw04x7cw044o" path="res://game/resources/towers/attack_towers/t2/attack_tower_fast.tres" id="4_7082i"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="4_nc71o"]
-[ext_resource type="Resource" uid="uid://csiarfm06pi2c" path="res://game/resources/towers/attack_towers/t2/attack_tower_perceptive.tres" id="5_r670b"]
 [ext_resource type="PackedScene" uid="uid://cqw8xxwipplig" path="res://template/scenes/windows/level_lost_layer.tscn" id="5_uflg0"]
-[ext_resource type="Resource" uid="uid://cgjqijgdxqtqf" path="res://game/resources/towers/attack_towers/t2/attack_tower_powerful.tres" id="6_5e54f"]
-[ext_resource type="Resource" uid="uid://bmtutj00q57ak" path="res://game/resources/towers/attack_towers/t3/attack_tower_fast_perceptive.tres" id="7_6oj41"]
 [ext_resource type="PackedScene" uid="uid://cfh8bx503xjl1" path="res://game/system/ui/tower_confirmation/tower_confirmation_popup.tscn" id="7_uflg0"]
 [ext_resource type="Script" uid="uid://16dwdo7xq106" path="res://game/system/wave_manager/wave_manager_script.gd" id="8_fjfis"]
-[ext_resource type="Resource" uid="uid://b7b0py26dl5we" path="res://game/resources/towers/attack_towers/t3/attack_tower_fast_powerful.tres" id="8_naq3g"]
-[ext_resource type="Resource" uid="uid://3ig7cij7fci6" path="res://game/resources/towers/attack_towers/t3/attack_tower_perceptive_powerful.tres" id="9_hw6kc"]
+[ext_resource type="PackedScene" uid="uid://duhaegn7babl3" path="res://game/system/ui/tower_purchase/tower_purchase_button.tscn" id="9_k7j2b"]
 [ext_resource type="PackedScene" uid="uid://b0ewbj0w6affe" path="res://game/system/ectoplasm_mouse_collector/ectoplasm_mouse_collector.tscn" id="10_evtg3"]
 [ext_resource type="Texture2D" uid="uid://c55tbhxxayvpk" path="res://game/assets/ectoplasm/ectoplasm.png" id="11_k7j2b"]
 [ext_resource type="PackedScene" uid="uid://b602m5ep1r77y" path="res://game/system/levels/level_1.tscn" id="12_arblt"]
@@ -32,7 +25,6 @@ font_size = 8
 script = ExtResource("1_70w2d")
 _starting_ectoplasm = 250
 _starting_core_charges = 100
-tower_resources = Array[ExtResource("2_6n5r1")]([ExtResource("3_kqlce"), ExtResource("4_7082i"), ExtResource("5_r670b"), ExtResource("6_5e54f"), ExtResource("7_6oj41"), ExtResource("8_naq3g"), ExtResource("9_hw6kc")])
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=1922467190]
 unique_name_in_owner = true
@@ -158,11 +150,67 @@ size_flags_vertical = 3
 [node name="ScrollContainer" type="ScrollContainer" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border" unique_id=731625424]
 layout_mode = 2
 
-[node name="TowerButtonContainer" type="VBoxContainer" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer" unique_id=551544960]
+[node name="TowerButtonCointainer" type="VBoxContainer" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer" unique_id=551544960]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Margin" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=2117199626]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Tower1" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=730728458 instance=ExtResource("9_k7j2b")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Margin2" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=1415638157]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Tower2" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=402601792 instance=ExtResource("9_k7j2b")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Margin3" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=830122273]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Tower3" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=1999681037 instance=ExtResource("9_k7j2b")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Margin4" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=1155328824]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Tower4" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=377820543 instance=ExtResource("9_k7j2b")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Margin5" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=59540280]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Tower5" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=1122184686 instance=ExtResource("9_k7j2b")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Margin6" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=1699850814]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Tower6" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=574149692 instance=ExtResource("9_k7j2b")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Margin7" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=1102440558]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Tower7" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/TowerButtonCointainer" unique_id=649955516 instance=ExtResource("9_k7j2b")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Margin5" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1951273301]
 custom_minimum_size = Vector2(0, 20)

@@ -1,5 +1,7 @@
 extends Node
 
+const TowerPurchaseButtonScene := preload("res://game/system/ui/tower_purchase/tower_purchase_button.tscn")
+
 @export var _starting_ectoplasm: int
 @export var _starting_core_charges: int
 @onready var level: Level = %Level
@@ -24,11 +26,9 @@ var _core_charges: int:
 @onready var _ui : Control = $UILayer/UI
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
 @onready var core_charges_count: Label = %CoreChargesCount
+@onready var tower_button_container: VBoxContainer = %TowerButtonContainer
 
-
-
-# Currently all buttons have the attack tower resource untill all 7 towers are created. 
-@export var tower_buttons: Dictionary[ Button, TowerResource ]
+@export var tower_resources: Array[TowerResource]
 
 @export var speed_buttons: Array[Button]
 
@@ -37,7 +37,6 @@ var _core_charges: int:
 
 
 func _ready() -> void:
-	_connect_tower_buttons()
 	_connect_speed_buttons()
 	_ectoplasm = _starting_ectoplasm
 	_core_charges = _starting_core_charges
@@ -54,24 +53,20 @@ func _ready() -> void:
 		_on_confirmation_cancelled
 	)
 	
-	_set_tower_button_modulates()
+	_build_tower_buttons()
 
 
 func _connect_speed_buttons()->void:
 	for button in speed_buttons:
 		button.pressed.connect( _on_speed_button_pressed.bind(button))
 
-func _connect_tower_buttons() -> void:
-	for button in tower_buttons.keys():
-		button.pressed.connect(_on_tower_button_pressed.bind(button))
-
 
 func _on_speed_button_pressed(button: Button) -> void:
 	var button_index := speed_buttons.find(button)
 	Engine.time_scale = button_index + 1.0 # Array index + 1.0 to determin engine speed 
 
-func _on_tower_button_pressed(button: Button) -> void:
-	var preselected_tower: TowerResource = tower_buttons.get(button)
+func _on_tower_button_pressed(button: TowerPurchaseButton) -> void:
+	var preselected_tower: TowerResource = button.tower_resource
 	if _ectoplasm >= preselected_tower.purchase_price :
 		_level._start_building_placement(preselected_tower)
 		ectoplasm_cost = preselected_tower.purchase_price
@@ -108,8 +103,12 @@ func _on_wave_manager_wave_limit_exceeded() -> void:
 	_win_lose_manager.game_won()
 
 
-func _set_tower_button_modulates() -> void:
-	for tower_button: Button in tower_buttons.keys():
-		var tower_resource: TowerResource = tower_buttons.get(tower_button)
+func _build_tower_buttons() -> void:
+	for tower_resource: TowerResource in tower_resources:
+		var tower_button: TowerPurchaseButton = TowerPurchaseButtonScene.instantiate()
+		tower_button_container.add_child(tower_button)
+		tower_button.pressed.connect(_on_tower_button_pressed.bind(tower_button))
 		tower_button.icon = tower_resource.tower_sprite
 		tower_button.modulate = tower_resource.modulate_color
+		tower_button.tower_resource = tower_resource
+		
