@@ -16,15 +16,19 @@
 [ext_resource type="Resource" uid="uid://3ig7cij7fci6" path="res://game/resources/towers/attack_towers/t3/attack_tower_perceptive_powerful.tres" id="8_naq3g"]
 [ext_resource type="Theme" uid="uid://31qvfffwlc80" path="res://game/resources/ui/tower_selection_ui_theme.tres" id="9_k7j2b"]
 [ext_resource type="PackedScene" uid="uid://b0ewbj0w6affe" path="res://game/system/ectoplasm_mouse_collector/ectoplasm_mouse_collector.tscn" id="10_evtg3"]
-[ext_resource type="Texture2D" uid="uid://b7u2g0mj3rr1g" path="res://game/assets/towers/prototype_tower_large.png" id="10_gw1l1"]
 [ext_resource type="Texture2D" uid="uid://c55tbhxxayvpk" path="res://game/assets/ectoplasm/ectoplasm.png" id="11_k7j2b"]
 [ext_resource type="PackedScene" uid="uid://b602m5ep1r77y" path="res://game/system/levels/level_1.tscn" id="12_arblt"]
+[ext_resource type="Texture2D" uid="uid://b7x2ej5v7npqq" path="res://game/assets/towers/tower.png" id="15_kqlce"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gw1l1"]
 font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_pejan"]
 font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syksk"]
+atlas = ExtResource("15_kqlce")
+region = Rect2(16, 16, 64, 64)
 
 [sub_resource type="LabelSettings" id="LabelSettings_d0j2t"]
 font_size = 8
@@ -183,7 +187,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_k7j2b")
-icon = ExtResource("10_gw1l1")
+icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
 [node name="Margin2" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=1415638157]
@@ -196,7 +200,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_k7j2b")
-icon = ExtResource("10_gw1l1")
+icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
 [node name="Margin3" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=830122273]
@@ -209,7 +213,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_k7j2b")
-icon = ExtResource("10_gw1l1")
+icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
 [node name="Margin4" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=1155328824]
@@ -222,7 +226,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_k7j2b")
-icon = ExtResource("10_gw1l1")
+icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
 [node name="Margin5" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=59540280]
@@ -235,7 +239,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_k7j2b")
-icon = ExtResource("10_gw1l1")
+icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
 [node name="Margin6" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=1699850814]
@@ -248,7 +252,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_k7j2b")
-icon = ExtResource("10_gw1l1")
+icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
 [node name="Margin7" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=1102440558]
@@ -261,7 +265,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_k7j2b")
-icon = ExtResource("10_gw1l1")
+icon = SubResource("AtlasTexture_syksk")
 icon_alignment = 1
 
 [node name="Margin5" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1951273301]

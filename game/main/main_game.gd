@@ -53,6 +53,8 @@ func _ready() -> void:
 	confirmation_popup.cancelled.connect(
 		_on_confirmation_cancelled
 	)
+	
+	_set_tower_button_modulates()
 
 
 func _connect_speed_buttons()->void:
@@ -104,3 +106,10 @@ func _on_confirmation_cancelled() -> void:
 
 func _on_wave_manager_wave_limit_exceeded() -> void:
 	_win_lose_manager.game_won()
+
+
+func _set_tower_button_modulates() -> void:
+	for tower_button: Button in tower_buttons.keys():
+		var tower_resource: TowerResource = tower_buttons.get(tower_button)
+		tower_button.icon = tower_resource.tower_sprite
+		tower_button.modulate = tower_resource.modulate_color
