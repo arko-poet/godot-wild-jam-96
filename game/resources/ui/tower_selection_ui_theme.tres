@@ -6,6 +6,10 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hw237"]
 bg_color = Color(0.16862746, 0.20784314, 0.25490198, 1)
@@ -34,6 +38,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
+Button/font_sizes/font_size = 8
 Button/styles/hover = SubResource("StyleBoxFlat_sqqvl")
 Button/styles/normal = SubResource("StyleBoxFlat_hw237")
 Button/styles/pressed = SubResource("StyleBoxFlat_hy5yl")

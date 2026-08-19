@@ -25,12 +25,15 @@ var _core_charges: int:
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
 @onready var core_charges_count: Label = %CoreChargesCount
 
+# Currently all buttons have the attack tower resource untill all 7 towers are created. 
+@export var tower_buttons: Dictionary[ Button, TowerResource ]
 
 @onready var confirmation_popup: TowerConfirmationPopup = \
 	$UILayer/UI/TowerConfirmationPopup
 
 
 func _ready() -> void:
+	_connect_tower_buttons()
 	_ectoplasm = _starting_ectoplasm
 	_core_charges = _starting_core_charges
 	Event.ectoplasm_collected_signal.connect(_on_ectoplasm_collected_signal)
@@ -46,6 +49,21 @@ func _ready() -> void:
 		_on_confirmation_cancelled
 	)
 
+
+
+func _connect_tower_buttons() -> void:
+	for button in tower_buttons.keys():
+		button.pressed.connect(_on_tower_button_pressed.bind(button))
+
+
+func _on_tower_button_pressed(button: Button) -> void:
+	var preselected_tower: TowerResource = tower_buttons.get(button)
+	if _ectoplasm >= preselected_tower.purchase_price :
+		_level._start_building_placement(preselected_tower)
+		ectoplasm_cost = preselected_tower.purchase_price
+
+
+
 func _on_ectoplasm_collected_signal()->void:
 	_ectoplasm += 1
 
@@ -54,14 +72,6 @@ func _on_level_core_damaged() -> void:
 	_core_charges -= 1
 
 var ectoplasm_cost = 0
-func _on_place_tower_button_pressed() -> void:
-	# TODO handle tower placement, ectoplasm spending
-	var preselected_tower = load("res://game/resources/towers/attack_tower.tres") as TowerResource
-	if _ectoplasm >= preselected_tower.purchase_price :
-		_level._start_building_placement(preselected_tower)
-		ectoplasm_cost = preselected_tower.purchase_price
-	pass # Replace with function body.
-
 
 func _on_pause_button_pressed() -> void:
 	_pause_menu_controller.pause()

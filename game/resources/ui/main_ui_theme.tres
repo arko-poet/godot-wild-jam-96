@@ -17,6 +17,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
+Button/font_sizes/font_size = 8
 Button/styles/hover = ExtResource("1_klxjx")
 Button/styles/normal = ExtResource("2_2lkxm")
 Button/styles/pressed = ExtResource("3_st2yc")
