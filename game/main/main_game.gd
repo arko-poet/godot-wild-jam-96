@@ -1,5 +1,7 @@
 extends Node
 
+const UPGRADE_SCALING_FACTOR := 1000
+
 @export var _starting_ectoplasm: int
 @export var _starting_core_charges: int
 @onready var level: Level = %Level
@@ -18,12 +20,23 @@ var _core_charges: int:
 		if _core_charges == 0:
 			_win_lose_manager.game_lost()
 
+var _tower_upgrade_cost: int:
+	set(value):
+		_tower_upgrade_cost = value
+		_upgrade_tower_button.text = "Upgrade\nTowers\n\n%s" % _tower_upgrade_cost
+var _tower_upgrades_purchased := 0:
+	set(value):
+		_tower_upgrades_purchased = value
+		_update_tower_upgrade_cost()
+
 @onready var _pause_menu_controller: Node = %PauseMenuController
 @onready var _win_lose_manager: Node = %WinLoseManager
 @onready var _level : Level = %Level
+
 @onready var _ui : Control = $UILayer/UI
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
 @onready var core_charges_count: Label = %CoreChargesCount
+@onready var _upgrade_tower_button: Button = %UpgradeTowerButton
 
 
 
@@ -53,6 +66,8 @@ func _ready() -> void:
 	confirmation_popup.cancelled.connect(
 		_on_confirmation_cancelled
 	)
+	
+	_update_tower_upgrade_cost()
 
 
 func _connect_speed_buttons()->void:
@@ -104,3 +119,18 @@ func _on_confirmation_cancelled() -> void:
 
 func _on_wave_manager_wave_limit_exceeded() -> void:
 	_win_lose_manager.game_won()
+
+
+func _on_upgrade_tower_button_pressed() -> void:
+	if _ectoplasm < _tower_upgrade_cost:
+		return
+	
+	_ectoplasm -= _tower_upgrade_cost
+	var towers: Array[Node] = get_tree().get_nodes_in_group(&"Towers")
+	for tower in towers:
+		if tower is Tower:
+			tower.level_up()
+
+
+func _update_tower_upgrade_cost() -> void:
+	_tower_upgrade_cost = UPGRADE_SCALING_FACTOR * (1 + _tower_upgrades_purchased)

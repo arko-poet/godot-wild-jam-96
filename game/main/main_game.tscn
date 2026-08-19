@@ -262,7 +262,8 @@ icon_alignment = 1
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1894443271]
+[node name="UpgradeTowerButton" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1894443271]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Upgrade
@@ -334,5 +335,6 @@ script = ExtResource("8_fjfis")
 
 [connection signal="core_damaged" from="Level" to="." method="_on_level_core_damaged"]
 [connection signal="pressed" from="UILayer/UI/MainUiContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/MainUiContainer/VBoxContainer/UpgradeTowerButton" to="." method="_on_upgrade_tower_button_pressed"]
 [connection signal="pressed" from="UILayer/UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
 [connection signal="wave_limit_exceeded" from="WaveManager" to="." method="_on_wave_manager_wave_limit_exceeded"]
