@@ -68,6 +68,7 @@ func _ready() -> void:
 	)
 	
 	_update_tower_upgrade_cost()
+	_set_tower_button_modulates()
 
 
 func _connect_speed_buttons()->void:
@@ -134,3 +135,8 @@ func _on_upgrade_tower_button_pressed() -> void:
 
 func _update_tower_upgrade_cost() -> void:
 	_tower_upgrade_cost = UPGRADE_SCALING_FACTOR * (1 + _tower_upgrades_purchased)
+func _set_tower_button_modulates() -> void:
+	for tower_button: Button in tower_buttons.keys():
+		var tower_resource: TowerResource = tower_buttons.get(tower_button)
+		tower_button.icon = tower_resource.tower_sprite
+		tower_button.modulate = tower_resource.modulate_color
