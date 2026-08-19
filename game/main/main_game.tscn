@@ -55,7 +55,7 @@ expand_margin_bottom = 5.0
 [sub_resource type="LabelSettings" id="LabelSettings_d0j2t"]
 font_size = 8
 
-[node name="MainGame" type="Node" unique_id=1950236070 node_paths=PackedStringArray("tower_buttons")]
+[node name="MainGame" type="Node" unique_id=1950236070 node_paths=PackedStringArray("tower_buttons", "speed_buttons")]
 script = ExtResource("1_70w2d")
 _starting_ectoplasm = 100
 _starting_core_charges = 1
@@ -68,6 +68,7 @@ NodePath("UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Bo
 NodePath("UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer/Tower6"): ExtResource("2_gw1l1"),
 NodePath("UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer/Tower7"): ExtResource("2_gw1l1")
 }
+speed_buttons = [NodePath("UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons/X1"), NodePath("UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons/X2"), NodePath("UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons/X3")]
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=1922467190]
 unique_name_in_owner = true
@@ -93,45 +94,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="LabelContainer" type="VBoxContainer" parent="UILayer/UI" unique_id=779302885]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="StartWaveButton" type="Button" parent="UILayer/UI" unique_id=1676360846]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -186.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 42.0
-grow_horizontal = 0
-theme = ExtResource("8_5swsr")
-theme_override_font_sizes/font_size = 16
-text = "Start Wave"
-
-[node name="WaveLabel" type="Label" parent="UILayer/UI/StartWaveButton" unique_id=165852345]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -95.0
-offset_top = 10.0
-offset_right = 97.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "100/100"
-horizontal_alignment = 1
-
-[node name="TowerConfirmationPopup" parent="UILayer/UI" unique_id=643378081 instance=ExtResource("7_uflg0")]
-layout_mode = 1
 
 [node name="MainUiContainer" type="PanelContainer" parent="UILayer/UI" unique_id=1278955814]
 layout_mode = 1
@@ -166,6 +128,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="X1" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=982641637]
+unique_name_in_owner = true
 layout_mode = 2
 text = "X1"
 
@@ -174,6 +137,7 @@ custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="X2" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=1391817401]
+unique_name_in_owner = true
 layout_mode = 2
 text = "X2"
 
@@ -182,6 +146,7 @@ custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="X3" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=645777733]
+unique_name_in_owner = true
 layout_mode = 2
 text = "X3"
 
@@ -370,11 +335,45 @@ text = "100,000"
 label_settings = SubResource("LabelSettings_d0j2t")
 horizontal_alignment = 1
 
+[node name="StartWaveButton" type="Button" parent="UILayer/UI" unique_id=1676360846]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -186.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme = ExtResource("8_5swsr")
+theme_override_font_sizes/font_size = 16
+text = "Start Wave"
+
+[node name="WaveLabel" type="Label" parent="UILayer/UI/StartWaveButton" unique_id=165852345]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = 10.0
+offset_right = 97.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="TowerConfirmationPopup" parent="UILayer/UI" unique_id=643378081 instance=ExtResource("7_uflg0")]
+layout_mode = 1
+
 [node name="EctoplasmMouseCollector" parent="." unique_id=1134838315 instance=ExtResource("10_evtg3")]
 
 [node name="WaveManager" type="Node" parent="." unique_id=159233388]
 unique_name_in_owner = true
 script = ExtResource("8_fjfis")
 
-[connection signal="pressed" from="UILayer/UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainUiContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]

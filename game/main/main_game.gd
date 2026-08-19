@@ -25,8 +25,12 @@ var _core_charges: int:
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
 @onready var core_charges_count: Label = %CoreChargesCount
 
+
+
 # Currently all buttons have the attack tower resource untill all 7 towers are created. 
 @export var tower_buttons: Dictionary[ Button, TowerResource ]
+
+@export var speed_buttons: Array[Button]
 
 @onready var confirmation_popup: TowerConfirmationPopup = \
 	$UILayer/UI/TowerConfirmationPopup
@@ -34,6 +38,7 @@ var _core_charges: int:
 
 func _ready() -> void:
 	_connect_tower_buttons()
+	_connect_speed_buttons()
 	_ectoplasm = _starting_ectoplasm
 	_core_charges = _starting_core_charges
 	Event.ectoplasm_collected_signal.connect(_on_ectoplasm_collected_signal)
@@ -50,11 +55,18 @@ func _ready() -> void:
 	)
 
 
+func _connect_speed_buttons()->void:
+	for button in speed_buttons:
+		button.pressed.connect( _on_speed_button_pressed.bind(button))
 
 func _connect_tower_buttons() -> void:
 	for button in tower_buttons.keys():
 		button.pressed.connect(_on_tower_button_pressed.bind(button))
 
+
+func _on_speed_button_pressed(button: Button) -> void:
+	var button_index := speed_buttons.find(button)
+	Engine.time_scale = button_index + 1.0 # Array index + 1.0 to determin engine speed 
 
 func _on_tower_button_pressed(button: Button) -> void:
 	var preselected_tower: TowerResource = tower_buttons.get(button)
