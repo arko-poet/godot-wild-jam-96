@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="TowerResource" format=3 uid="uid://bmtutj00q57ak"]
+
+[ext_resource type="Script" uid="uid://dv41c0f80vxun" path="res://game/system/rubbing_surface/charge_config.gd" id="1_e0mey"]
+[ext_resource type="Script" uid="uid://bchbyouil8i2v" path="res://game/entities/towers/tower_resource.gd" id="2_5fwxq"]
+[ext_resource type="Resource" uid="uid://8cklpgs4b6cj" path="res://game/resources/towers/abilities/attack.tres" id="3_8lc2r"]
+[ext_resource type="Texture2D" uid="uid://b7x2ej5v7npqq" path="res://game/assets/towers/tower.png" id="4_oqi2l"]
+[ext_resource type="Script" uid="uid://5sjlicbvpgxd" path="res://game/entities/towers/tower_upgrades/tower_upgrade_resource.gd" id="5_n6qw4"]
+
+[sub_resource type="Resource" id="Resource_o2swp"]
+script = ExtResource("1_e0mey")
+metadata/_custom_type_script = "uid://dv41c0f80vxun"
+
+[sub_resource type="Resource" id="Resource_l1xd4"]
+script = ExtResource("5_n6qw4")
+range = 50.0
+metadata/_custom_type_script = "uid://5sjlicbvpgxd"
+
+[sub_resource type="Resource" id="Resource_xayqd"]
+script = ExtResource("5_n6qw4")
+range = 100.0
+metadata/_custom_type_script = "uid://5sjlicbvpgxd"
+
+[sub_resource type="Resource" id="Resource_aw6bx"]
+script = ExtResource("5_n6qw4")
+range = 150.0
+metadata/_custom_type_script = "uid://5sjlicbvpgxd"
+
+[resource]
+script = ExtResource("2_5fwxq")
+tower_sprite = ExtResource("4_oqi2l")
+perception_radius = 128.0
+modulate_color = Color(0.8392157, 0.8392157, 0.8901961, 1)
+charge_rate = 2.0
+power = 0.5
+purchase_price = 500
+special_ability = ExtResource("3_8lc2r")
+charging_configuration = SubResource("Resource_o2swp")
+upgrade_path = Array[ExtResource("5_n6qw4")]([SubResource("Resource_l1xd4"), SubResource("Resource_xayqd"), SubResource("Resource_aw6bx")])
+metadata/_custom_type_script = "uid://bchbyouil8i2v"

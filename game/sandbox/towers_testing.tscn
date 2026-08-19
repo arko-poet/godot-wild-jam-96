@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dhqu0rnayje85" path="res://game/entities/towers/Tower.tscn" id="1_ofpim"]
 [ext_resource type="Script" uid="uid://143djao01ro0" path="res://game/sandbox/towers_testing.gd" id="1_syksk"]
-[ext_resource type="Resource" uid="uid://d1kopu171ngjw" path="res://game/resources/towers/attack_tower.tres" id="2_syksk"]
+[ext_resource type="Resource" uid="uid://d1kopu171ngjw" path="res://game/resources/towers/attack_towers/t1/attack_tower.tres" id="2_syksk"]
 [ext_resource type="Script" uid="uid://bj20lhnl4mmwb" path="res://game/sandbox/test_controller.gd" id="3_gl1dy"]
 [ext_resource type="Texture2D" uid="uid://blj34dy6dqld7" path="res://game/assets/towers/prototype_enemy.png" id="4_ol8s6"]
 
