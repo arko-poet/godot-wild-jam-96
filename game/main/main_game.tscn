@@ -375,5 +375,7 @@ layout_mode = 1
 unique_name_in_owner = true
 script = ExtResource("8_fjfis")
 
+[connection signal="core_damaged" from="Level" to="." method="_on_level_core_damaged"]
 [connection signal="pressed" from="UILayer/UI/MainUiContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UILayer/UI/StartWaveButton" to="." method="_on_start_wave_button_pressed"]
+[connection signal="wave_limit_exceeded" from="WaveManager" to="." method="_on_wave_manager_wave_limit_exceeded"]
