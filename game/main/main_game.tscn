@@ -58,7 +58,7 @@ font_size = 8
 [node name="MainGame" type="Node" unique_id=1950236070 node_paths=PackedStringArray("tower_buttons", "speed_buttons")]
 script = ExtResource("1_70w2d")
 _starting_ectoplasm = 100
-_starting_core_charges = 1
+_starting_core_charges = 100
 tower_buttons = {
 NodePath("UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer/Tower1"): ExtResource("2_gw1l1"),
 NodePath("UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer/Tower2"): ExtResource("2_gw1l1"),
