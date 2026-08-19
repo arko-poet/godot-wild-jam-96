@@ -82,6 +82,8 @@ func initialize_from_resource() -> void:
 	
 	footprint = data.footprint
 	
+	sprite.modulate = data.modulate_color
+	
 	# Initialize Supercharging parameters
 	supercharge_charge_rate_multiplier = data.supercharge_charge_rate_multiplier
 	supercharge_power_multiplier = data.supercharge_power_multiplier
@@ -151,10 +153,11 @@ func activate() -> void:
 		return
 	
 	var context := TowerAbilityContext.new(
-		get_vfx_origin(),
+		self,
 		power*power_multiplier,
 		targets,
-		rubbing_surface.get_charge_type()
+		rubbing_surface.get_charge_type(),
+		self
 	)
 
 	ability.activate(context)

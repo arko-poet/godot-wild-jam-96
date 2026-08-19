@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c38pre04vijye"]
+
+[ext_resource type="Script" uid="uid://slhpwfxi86yw" path="res://game/system/vfx_scenes/base_homing_vfx.gd" id="1_chqj3"]
+[ext_resource type="Texture2D" uid="uid://bh7s4wlv22y0c" path="res://game/assets/vfx/yellow_8.png" id="2_7x52h"]
+
+[node name="BaseHomingVFX" type="Node2D" unique_id=421966830]
+script = ExtResource("1_chqj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=233249997]
+texture = ExtResource("2_7x52h")
