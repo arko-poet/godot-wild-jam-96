@@ -25,10 +25,6 @@ font_size = 8
 [sub_resource type="LabelSettings" id="LabelSettings_pejan"]
 font_size = 8
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_syksk"]
-atlas = ExtResource("15_kqlce")
-region = Rect2(16, 16, 64, 64)
-
 [sub_resource type="LabelSettings" id="LabelSettings_d0j2t"]
 font_size = 8
 
@@ -185,7 +181,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = SubResource("AtlasTexture_syksk")
+icon = ExtResource("15_kqlce")
 icon_alignment = 1
 
 [node name="Margin2" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=1415638157]
@@ -197,7 +193,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = SubResource("AtlasTexture_syksk")
+icon = ExtResource("15_kqlce")
 icon_alignment = 1
 
 [node name="Margin3" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=830122273]
@@ -209,7 +205,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = SubResource("AtlasTexture_syksk")
+icon = ExtResource("15_kqlce")
 icon_alignment = 1
 
 [node name="Margin4" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=1155328824]
@@ -221,7 +217,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = SubResource("AtlasTexture_syksk")
+icon = ExtResource("15_kqlce")
 icon_alignment = 1
 
 [node name="Margin5" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=59540280]
@@ -233,7 +229,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = SubResource("AtlasTexture_syksk")
+icon = ExtResource("15_kqlce")
 icon_alignment = 1
 
 [node name="Margin6" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=1699850814]
@@ -245,7 +241,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = SubResource("AtlasTexture_syksk")
+icon = ExtResource("15_kqlce")
 icon_alignment = 1
 
 [node name="Margin7" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer/TowerButtons/HBoxContainer/Border/ScrollContainer/ButtonCointainer" unique_id=1102440558]
@@ -257,7 +253,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = SubResource("AtlasTexture_syksk")
+icon = ExtResource("15_kqlce")
 icon_alignment = 1
 
 [node name="Margin5" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1951273301]
