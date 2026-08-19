@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://duhaegn7babl3"]
+
+[ext_resource type="Texture2D" uid="uid://b7x2ej5v7npqq" path="res://game/assets/towers/tower.png" id="1_qg5g0"]
+[ext_resource type="Script" uid="uid://vjxixcfn0fyw" path="res://game/system/ui/tower_purchase/tower_purchase_button.gd" id="2_ieygo"]
+
+[node name="TowerPurchaseButton" type="Button" unique_id=730728458]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("1_qg5g0")
+icon_alignment = 1
+script = ExtResource("2_ieygo")
+
+[node name="CostLabel" type="Label" parent="." unique_id=525049639]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
