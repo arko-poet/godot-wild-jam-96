@@ -13,7 +13,7 @@ var _ectoplasm: int:
 var _core_charges: int:
 	set(value):
 		_core_charges = max(value, 0)
-		core_charges_count.text = "100/%s" % _core_charges
+		core_charges_count.text = "%s/%s" % [_core_charges, _starting_core_charges]
 		
 		if _core_charges == 0:
 			_win_lose_manager.game_lost()
