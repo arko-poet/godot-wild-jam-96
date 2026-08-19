@@ -28,3 +28,13 @@ extends Resource
 @export_category("Shape")
 ## which tiles is the tower going to occupy, use negatives for proper centering
 @export var footprint: Array[Vector2i] = [Vector2i.ZERO]
+
+@export_category("Supercharge")
+@export var supercharge_charge_rate_multiplier : float = 1.0
+@export var supercharge_power_multiplier : float = 1.0
+@export var supercharge_range_multipler : float = 1.0
+@export var overdrive_cooldown : float 
+@export var charging_configuration : ChargeConfig
+
+@export_category("Scaling")
+@export var upgrade_path : Array[TowerUpgradeResource] = []

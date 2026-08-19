@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="1_tje7e"]
 [ext_resource type="Resource" uid="uid://d1kopu171ngjw" path="res://game/resources/towers/attack_tower.tres" id="2_gw1l1"]
 [ext_resource type="PackedScene" uid="uid://e0xyt51xgvgy" path="res://template/scenes/windows/pause_menu_layer.tscn" id="4_4r55p"]
+[ext_resource type="PackedScene" uid="uid://cbu3fe1tdehc5" path="res://game/system/levels/base_level/level.tscn" id="4_7gsoh"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="4_nc71o"]
 [ext_resource type="PackedScene" uid="uid://cqw8xxwipplig" path="res://template/scenes/windows/level_lost_layer.tscn" id="5_uflg0"]
 [ext_resource type="PackedScene" uid="uid://cfh8bx503xjl1" path="res://game/system/ui/tower_confirmation/tower_confirmation_popup.tscn" id="7_uflg0"]

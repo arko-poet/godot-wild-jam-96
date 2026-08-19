@@ -27,6 +27,7 @@ SceneLoader="*uid://cbwmrnp0af35y"
 ProjectMusicController="*uid://r5t485lr3p7t"
 ProjectUISoundController="*uid://cc37235kj4384"
 Event="*uid://ddkyaotj0gt16"
+TowerUpgradeManager="*uid://cskwn53bpq81w"
 
 [display]
 
