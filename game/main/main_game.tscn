@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b7u2g0mj3rr1g" path="res://game/assets/towers/prototype_tower_large.png" id="10_gw1l1"]
 [ext_resource type="Texture2D" uid="uid://c55tbhxxayvpk" path="res://game/assets/ectoplasm/ectoplasm.png" id="11_k7j2b"]
 [ext_resource type="PackedScene" uid="uid://b602m5ep1r77y" path="res://game/system/levels/level_1.tscn" id="12_arblt"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="14_gw1l1"]
+[ext_resource type="AudioStream" uid="uid://c3ys33y3f70ih" path="res://game/assets/audio/music/gameplay-track1.mp3" id="15_d0j2t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gw1l1"]
 font_size = 8
@@ -331,6 +333,9 @@ layout_mode = 1
 [node name="WaveManager" type="Node" parent="." unique_id=159233388]
 unique_name_in_owner = true
 script = ExtResource("8_fjfis")
+
+[node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("14_gw1l1")]
+stream = ExtResource("15_d0j2t")
 
 [connection signal="core_damaged" from="Level" to="." method="_on_level_core_damaged"]
 [connection signal="pressed" from="UILayer/UI/MainUiContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
