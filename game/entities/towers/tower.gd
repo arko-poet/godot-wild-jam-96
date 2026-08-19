@@ -153,10 +153,11 @@ func activate() -> void:
 		return
 	
 	var context := TowerAbilityContext.new(
-		get_vfx_origin(),
+		self,
 		power*power_multiplier,
 		targets,
-		rubbing_surface.get_charge_type()
+		rubbing_surface.get_charge_type(),
+		self
 	)
 
 	ability.activate(context)
