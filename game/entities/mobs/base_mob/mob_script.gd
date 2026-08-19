@@ -70,8 +70,8 @@ func _run_dificulty_curve()->void:
 	
 	
 	# Loot Dificutly increase
-	var loot_ratio_gain: int = _difficulty * 3
-	loot += loot_ratio_gain
+	#var loot_ratio_gain: int = _difficulty * 3
+	#loot += loot_ratio_gain
 
 
 
