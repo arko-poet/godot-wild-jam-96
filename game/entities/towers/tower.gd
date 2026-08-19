@@ -17,6 +17,7 @@ enum TowerState{
 @onready var range_visual: Sprite2D = $RangeIndicator/Visual
 @onready var rubbing_surface : RubbingSurface = $RubbingSurface
 @onready var internal_state_timer : Timer = $InternalStateTimer
+@onready var tower_level_label: Label = %TowerLevelLabel
 
 var tower_ability : TowerAbility
 var level = 1
@@ -67,6 +68,7 @@ func _ready() -> void:
 	
 	initialize_from_resource()
 	set_range_indicator_visible(default_tower_range_visibility)
+	_update_level_label()
 	queue_redraw()
 
 func initialize_from_resource() -> void:
@@ -300,6 +302,7 @@ func level_up():
 	# Apply Scaling Data
 	if scaling_data != null:
 		apply_scaling_data(scaling_data)
+	_update_level_label()
 
 func apply_scaling_data(scaling_data: TowerUpgradeResource):
 	power += scaling_data.power
@@ -317,3 +320,7 @@ func apply_scaling_data(scaling_data: TowerUpgradeResource):
 	if scaling_data.ability_replacement != null:
 		tower_ability = scaling_data.ability_replacement
 	update_perception_radius()
+
+
+func _update_level_label() -> void:
+	tower_level_label.text = "Lvl %d" % level

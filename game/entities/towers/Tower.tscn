@@ -23,6 +23,11 @@ gradient = SubResource("Gradient_o2swp")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw6bx"]
 size = Vector2(64, 64)
 
+[sub_resource type="LabelSettings" id="LabelSettings_o2swp"]
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Tower" type="Node2D" unique_id=1787143782]
 script = ExtResource("1_0e2fs")
 default_tower_range_visibility = true
@@ -55,6 +60,19 @@ shape = SubResource("RectangleShape2D_aw6bx")
 offset_bottom = -48.0
 
 [node name="InternalStateTimer" type="Timer" parent="." unique_id=246748010]
+
+[node name="TowerLevelLabel" type="Label" parent="." unique_id=511289234]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -41.0
+offset_right = 20.0
+offset_bottom = -33.0
+grow_horizontal = 2
+text = "Lvl l"
+label_settings = SubResource("LabelSettings_o2swp")
 
 [connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
 [connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
