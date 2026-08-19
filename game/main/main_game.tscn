@@ -68,7 +68,7 @@ mouse_filter = 2
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 174.0
+offset_right = 108.0
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainUiContainer" unique_id=417723582]
@@ -98,16 +98,19 @@ size_flags_vertical = 4
 [node name="X1" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=982641637]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "X1"
 
 [node name="X2" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=1391817401]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "X2"
 
 [node name="X3" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=645777733]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "X3"
 
 [node name="Margin3" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1475218312]
