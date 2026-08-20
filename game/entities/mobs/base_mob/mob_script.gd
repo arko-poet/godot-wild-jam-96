@@ -1,7 +1,7 @@
 class_name Mob extends CharacterBody2D
 
 signal mob_killed
-signal mob_reached_end_of_path
+signal mob_reached_end_of_path (damage_to_core :int)
 signal remove_from_manager_pool( ref_to_self: Mob )
 
 
@@ -168,7 +168,7 @@ func take_damage(damage:DamagePacket) -> void:
 	_update_health_bar()
 
 func mob_reaches_end()->void:
-	mob_reached_end_of_path.emit()
+	mob_reached_end_of_path.emit(damage)
 	_mob_die()
 	
 func kill_mob() ->void:

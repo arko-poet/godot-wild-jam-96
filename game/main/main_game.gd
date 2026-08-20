@@ -89,9 +89,8 @@ func _on_tower_button_pressed(button: TowerPurchaseButton) -> void:
 func _on_ectoplasm_collected_signal(ectoplasm_value: int)->void:
 	_ectoplasm += ectoplasm_value
 
-func _on_level_core_damaged() -> void:
-	# TODO this should use mob damage instead
-	_core_charges -= 1
+func _on_level_core_damaged(damage:int) -> void:
+	_core_charges = max(0,_core_charges-damage)
 
 var ectoplasm_cost = 0
 
