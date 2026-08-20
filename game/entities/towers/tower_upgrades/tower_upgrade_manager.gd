@@ -11,8 +11,9 @@ func get_scaling_data(level_reached:int, tower_resource: TowerResource) -> Tower
 	if index < tower_resource.upgrade_path.size():
 		return tower_resource.upgrade_path[index]
 	else:
-		# MAX LEVEL REACHED. 
-		return # Nothing.
+		# MAX LEVEL REACHED
+		# repeat final upgrade on each level up
+		return tower_resource.upgrade_path[tower_resource.upgrade_path.size() - 1]
 
 # Considering that towers start at Lvl 1.
 # The Upgrade Path declares on slot [0] the upgrades for Lvl 2.

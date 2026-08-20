@@ -99,6 +99,7 @@ func get_charge_status() -> ChargeController.ChargeStatus:
 # Created this to help the towers with knowing whether the Charge is Positive, Negative or Neutral.
 func get_charge_type() -> Enums.ChargeType:
 	var charge_status = get_charge_status()
+
 	match charge_status:
 		ChargeController.ChargeStatus.OVERCHARGED_NEGATIVE:
 			return Enums.ChargeType.NEGATIVE

@@ -30,7 +30,7 @@ func activate(
 	projectile.vfx_completed.connect(apply_effect)
 	var damage_packet = DamagePacket.new()
 	damage_packet.amount = damage *context.power
-	damage_packet.charge_sign = Enums.ChargeType.NEUTRAL
+	damage_packet.charge_sign = context.charge_status
 	built_damage_packet = damage_packet
 	
 

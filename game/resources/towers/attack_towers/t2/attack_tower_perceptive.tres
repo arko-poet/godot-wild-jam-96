@@ -12,17 +12,9 @@ metadata/_custom_type_script = "uid://dv41c0f80vxun"
 
 [sub_resource type="Resource" id="Resource_l1xd4"]
 script = ExtResource("5_ojdo5")
-range = 50.0
-metadata/_custom_type_script = "uid://5sjlicbvpgxd"
-
-[sub_resource type="Resource" id="Resource_xayqd"]
-script = ExtResource("5_ojdo5")
-range = 100.0
-metadata/_custom_type_script = "uid://5sjlicbvpgxd"
-
-[sub_resource type="Resource" id="Resource_aw6bx"]
-script = ExtResource("5_ojdo5")
-range = 150.0
+power = 0.2
+range = 24.0
+charge_rate = 0.2
 metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
@@ -32,6 +24,9 @@ perception_radius = 96.0
 modulate_color = Color(0.8509804, 0.9411765, 0.83137256, 1)
 purchase_price = 200
 special_ability = ExtResource("3_tuscl")
+supercharge_charge_rate_multiplier = 1.0
+supercharge_power_multiplier = 1.5
+supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
-upgrade_path = Array[ExtResource("5_ojdo5")]([SubResource("Resource_l1xd4"), SubResource("Resource_xayqd"), SubResource("Resource_aw6bx")])
+upgrade_path = Array[ExtResource("5_ojdo5")]([SubResource("Resource_l1xd4")])
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

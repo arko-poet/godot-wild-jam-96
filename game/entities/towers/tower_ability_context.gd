@@ -18,5 +18,5 @@ func _init(
 	tower = origin_tower
 	power = ability_power
 	targets = ability_targets
-	charge_status = charge_status
+	charge_status = charging_status
 	vfx_parent = selected_vfx_parent

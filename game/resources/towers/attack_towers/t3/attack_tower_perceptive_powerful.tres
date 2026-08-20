@@ -13,17 +13,9 @@ metadata/_custom_type_script = "uid://dv41c0f80vxun"
 
 [sub_resource type="Resource" id="Resource_l1xd4"]
 script = ExtResource("5_pwesp")
-range = 50.0
-metadata/_custom_type_script = "uid://5sjlicbvpgxd"
-
-[sub_resource type="Resource" id="Resource_xayqd"]
-script = ExtResource("5_pwesp")
-range = 100.0
-metadata/_custom_type_script = "uid://5sjlicbvpgxd"
-
-[sub_resource type="Resource" id="Resource_aw6bx"]
-script = ExtResource("5_pwesp")
-range = 150.0
+power = 0.4
+range = 32.0
+charge_rate = 0.1
 metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
@@ -35,6 +27,9 @@ charge_rate = 0.5
 power = 2.0
 purchase_price = 500
 special_ability = ExtResource("3_srdue")
+supercharge_charge_rate_multiplier = 1.0
+supercharge_power_multiplier = 1.5
+supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
-upgrade_path = Array[ExtResource("5_pwesp")]([SubResource("Resource_l1xd4"), SubResource("Resource_xayqd"), SubResource("Resource_aw6bx")])
+upgrade_path = Array[ExtResource("5_pwesp")]([SubResource("Resource_l1xd4")])
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

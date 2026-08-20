@@ -123,7 +123,7 @@ func _process(delta: float) -> void:
 	if data == null or preview_mode == true:
 		return
 	update_supercharge()
-	charge(delta)
+	charge(delta * (1 + abs(rubbing_surface.get_charge() / rubbing_surface.charge_controller.max_charge)))
 
 	if can_activate():
 		activate()
