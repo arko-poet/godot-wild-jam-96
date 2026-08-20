@@ -67,6 +67,7 @@ func _ready() -> void:
 	
 	initialize_from_resource()
 	set_range_indicator_visible(default_tower_range_visibility)
+	rubbing_surface.mouse_detected_signal.connect(_on_mouse_detected)
 	queue_redraw()
 
 func initialize_from_resource() -> void:
@@ -317,3 +318,7 @@ func apply_scaling_data(scaling_data: TowerUpgradeResource):
 	if scaling_data.ability_replacement != null:
 		tower_ability = scaling_data.ability_replacement
 	update_perception_radius()
+
+
+func _on_mouse_detected( entered: bool )->void:
+	set_range_indicator_visible(entered)

@@ -25,7 +25,6 @@ size = Vector2(64, 64)
 
 [node name="Tower" type="Node2D" unique_id=1787143782]
 script = ExtResource("1_0e2fs")
-default_tower_range_visibility = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599717512]
 texture = ExtResource("2_o2swp")

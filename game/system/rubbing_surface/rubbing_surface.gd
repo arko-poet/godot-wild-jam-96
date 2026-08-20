@@ -1,6 +1,8 @@
 class_name RubbingSurface
 extends Area2D
 
+signal mouse_detected_signal( entered: bool )
+
 @export_category("Debug Display")
 @export var show_debug_labels := true
 @export var show_sprite:= false
@@ -43,6 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_mouse_entered() -> void:
 	rubbing_detector.set_mouse_inside(true)
+	mouse_detected_signal.emit(true)
 
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		rubbing_detector.start_rubbing()
@@ -51,6 +54,7 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	rubbing_detector.set_mouse_inside(false)
+	mouse_detected_signal.emit(false)
 
 
 func _physics_process(delta: float) -> void:
