@@ -71,11 +71,12 @@ func _physics_process(delta: float) -> void:
 	if not is_enabled:
 		rubbing_intensity = 0
 		
-	charge_controller.update(
-		delta,
-		rubbing_intensity,
-		charging_sign
-	)
+	if not is_overcharged():
+		charge_controller.update(
+			delta,
+			rubbing_intensity,
+			charging_sign
+		)
 
 	update_debug_labels()
 	_update_progress_bars()
