@@ -20,6 +20,36 @@ shader_parameter/line_color = Color(1, 1, 1, 0.8)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vgud1"]
 gradient = SubResource("Gradient_o2swp")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2swp"]
+bg_color = Color(0.192157, 0.239216, 0.352941, 1)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.00392157, 0.0862745, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xayqd"]
+bg_color = Color(0, 0.7934291, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw6bx"]
+bg_color = Color(0.192157, 0.239216, 0.352941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.00392157, 0.0862745, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2b6d"]
+bg_color = Color(0.92941177, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw6bx"]
 size = Vector2(64, 64)
 
@@ -45,13 +75,34 @@ texture = SubResource("GradientTexture2D_vgud1")
 
 [node name="RubbingSurface" parent="." unique_id=1880943059 instance=ExtResource("4_xayqd")]
 
-[node name="Sprite2D" parent="RubbingSurface" index="0" unique_id=787626526]
+[node name="PossitiveChargeBar" type="ProgressBar" parent="RubbingSurface" unique_id=455222706]
+offset_left = -1.0
+offset_top = -58.0
+offset_right = 33.0
+offset_bottom = -46.0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_o2swp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xayqd")
+show_percentage = false
+
+[node name="NegativeChargeBar" type="ProgressBar" parent="RubbingSurface" unique_id=1097102002]
+offset_left = -33.0
+offset_top = -58.0
+offset_right = 1.0
+offset_bottom = -46.0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_aw6bx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_o2b6d")
+fill_mode = 1
+show_percentage = false
+
+[node name="Sprite2D" parent="RubbingSurface" index="2" unique_id=787626526]
 visible = false
 
-[node name="CollisionShape2D" parent="RubbingSurface" index="1" unique_id=556403593]
+[node name="CollisionShape2D" parent="RubbingSurface" index="3" unique_id=556403593]
 shape = SubResource("RectangleShape2D_aw6bx")
 
-[node name="MetricLabelsContainer" parent="RubbingSurface" index="4" unique_id=1120814076]
+[node name="MetricLabelsContainer" parent="RubbingSurface" index="6" unique_id=1120814076]
 offset_bottom = -48.0
 
 [node name="InternalStateTimer" type="Timer" parent="." unique_id=246748010]
