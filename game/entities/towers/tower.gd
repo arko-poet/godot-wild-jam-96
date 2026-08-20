@@ -274,6 +274,7 @@ func _on_internal_state_timer_timeout() -> void:
 	if tower_state == TowerState.SUPERCHARGED:
 		# Disable Tower for a cooldown.
 		tower_state = TowerState.DISABLED
+		rubbing_surface.charge_controller.charge = 0
 		
 		# Also Resetting its attack readiness (current_charges) to 0.
 		current_charges = 0
