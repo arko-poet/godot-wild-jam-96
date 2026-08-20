@@ -68,6 +68,7 @@ func _ready() -> void:
 	
 	initialize_from_resource()
 	set_range_indicator_visible(default_tower_range_visibility)
+	rubbing_surface.mouse_detected_signal.connect(_on_mouse_detected)
 	_update_level_label()
 	queue_redraw()
 
@@ -322,5 +323,9 @@ func apply_scaling_data(scaling_data: TowerUpgradeResource):
 	update_perception_radius()
 
 
+func _on_mouse_detected( entered: bool )->void:
+	set_range_indicator_visible(entered)
+  
+  
 func _update_level_label() -> void:
 	tower_level_label.text = "Lvl %d" % level
