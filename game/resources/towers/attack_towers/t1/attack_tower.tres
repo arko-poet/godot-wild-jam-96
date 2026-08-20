@@ -13,17 +13,9 @@ metadata/_custom_type_script = "uid://dv41c0f80vxun"
 
 [sub_resource type="Resource" id="Resource_l1xd4"]
 script = ExtResource("5_775cc")
-range = 50.0
-metadata/_custom_type_script = "uid://5sjlicbvpgxd"
-
-[sub_resource type="Resource" id="Resource_xayqd"]
-script = ExtResource("5_775cc")
-range = 100.0
-metadata/_custom_type_script = "uid://5sjlicbvpgxd"
-
-[sub_resource type="Resource" id="Resource_aw6bx"]
-script = ExtResource("5_775cc")
-range = 150.0
+power = 0.2
+range = 16.0
+charge_rate = 0.2
 metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
@@ -31,5 +23,5 @@ script = ExtResource("2_egi5g")
 tower_sprite = ExtResource("4_rh0se")
 special_ability = ExtResource("3_3tdge")
 charging_configuration = SubResource("Resource_o2swp")
-upgrade_path = Array[ExtResource("5_775cc")]([SubResource("Resource_l1xd4"), SubResource("Resource_xayqd"), SubResource("Resource_aw6bx")])
+upgrade_path = Array[ExtResource("5_775cc")]([SubResource("Resource_l1xd4")])
 metadata/_custom_type_script = "uid://bchbyouil8i2v"
