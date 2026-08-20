@@ -50,5 +50,3 @@ gravity = Vector2(0, -10)
 scale_amount_min = 1.5
 scale_amount_max = 1.5
 script = ExtResource("5_6tmvf")
-
-[node name="Camera2D" type="Camera2D" parent="ChargeParticleEffect" unique_id=2042602853]

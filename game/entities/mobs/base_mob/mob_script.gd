@@ -44,21 +44,16 @@ func _ready():
 	_check_charge_for_vfx()
 
 func _check_charge_for_vfx() -> void:
-	print("\n[Mob] Checking charge VFX...")
-	print("[Mob] Charge type: ", data.charge_type)
 
 	match charge_type:
 		
 		Enums.ChargeType.NEGATIVE:
-			print("[Mob] Negative charge")
 			charge_particle_effect.display_charge_effect(false)
 
 		Enums.ChargeType.POSITIVE:
-			print("[Mob] Positive charge")
 			charge_particle_effect.display_charge_effect(true)
 
 		Enums.ChargeType.NEUTRAL:
-			print("[Mob] Neutral charge")
 			charge_particle_effect.emitting = false
 
 func _modulate_color_by_mob_type()->void:
