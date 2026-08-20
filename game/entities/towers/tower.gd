@@ -10,6 +10,9 @@ enum TowerState{
 @export var data: TowerResource
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var disabled_icon : TextureRect = %DisabledIcon
+@onready var supercharged_icon : TextureRect = %SuperchargedIcon
+
 @onready var perception_area: Area2D = $PerceptionArea
 @onready var perception_shape: CollisionShape2D = $PerceptionArea/CollisionShape2D
 @onready var vfx_origin: Marker2D = $VFXOrigin
@@ -43,7 +46,10 @@ var supercharge_range_multiplier: float
 
 const overdrive_time :float = 10.0 # 10 Seconds of supercharge/ overdrive.
 var overdrive_cooldown: float # Followed by a Cooldown during which the tower is inactive.
-var tower_state : TowerState = TowerState.OK
+var tower_state : TowerState = TowerState.OK:
+	set(value):
+		tower_state = value
+		update_status_icon()
 
 ## Current Multipliers
 var charge_rate_multiplier :float = 1.0
@@ -330,3 +336,15 @@ func _on_mouse_detected( entered: bool )->void:
   
 func _update_level_label() -> void:
 	tower_level_label.text = "Lvl %d" % level
+
+func update_status_icon():
+	match(tower_state):
+		TowerState.OK: 
+			disabled_icon.visible = false
+			supercharged_icon.visible = false
+		TowerState.DISABLED:
+			disabled_icon.visible = true
+			supercharged_icon.visible= false
+		TowerState.SUPERCHARGED:
+			disabled_icon.visible = false
+			supercharged_icon.visible = true
