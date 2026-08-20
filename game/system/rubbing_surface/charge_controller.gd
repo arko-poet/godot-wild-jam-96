@@ -47,13 +47,18 @@ func update(delta: float, rubbing_intensity: float, charging_sign:int) -> void:
 	charge_generation = charging_sign*(
 		rubbing_intensity * charge_generation_rate
 	)
+	
+	var discharge := charge_discharge_rate * delta
 
 	charge += charge_generation * delta
+	
 	if (charge >= 0):
-		charge -= charge_discharge_rate * delta
+		if rubbing_intensity == 0:
+			charge -= discharge
 		charge = clamp(charge, 0, max_charge)
 	else:
-		charge += charge_discharge_rate * delta
+		if rubbing_intensity == 0:
+			charge += discharge
 		charge = clamp(charge, -max_charge, 0)
 	
 
@@ -75,9 +80,9 @@ func get_charge_percentage() -> float:
 
 func get_charge_rate() -> float:
 	if (charge > 0):
-		return charge_generation - charge_discharge_rate
+		return charge_generation
 	elif charge <0:
-		return charge_generation + charge_discharge_rate
+		return charge_generation 
 	else:
 		return 0
 
