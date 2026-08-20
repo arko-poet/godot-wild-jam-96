@@ -190,7 +190,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="EctoplasmImg" type="TextureRect" parent="UILayer/UI/MainUiContainer/VBoxContainer/EctoplasmCountDisplay" unique_id=1426009040]
+[node name="EctoplasmImg" type="TextureRect" parent="UILayer/UI/MainUiContainer/VBoxContainer/EctoplasmCountDisplay" unique_id=1426009040 groups=["ectoplasm_lable"]]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_scale = Vector2(1.5, 1.5)
