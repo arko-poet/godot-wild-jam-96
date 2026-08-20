@@ -1,6 +1,6 @@
 class_name Level extends Node2D
 
-signal core_damaged
+signal core_damaged(damage:int)
 
 @onready var path_layer: PathLayer = %PathLayer
 @onready var mob_spawner: MobSpawner = %MobSpawner
@@ -30,8 +30,8 @@ func _on_spawn_ghost_signal()->void:
 	mob_spawner.spawn_ghost( _path )
 
 
-func _on_mob_reached_end_of_path() -> void:
-	core_damaged.emit()
+func _on_mob_reached_end_of_path(damage_to_core:int) -> void:
+	core_damaged.emit(damage_to_core)
 
 func _start_building_placement(tower_resource: TowerResource):
 	tower_placement_controller.start_placement(tower_resource)

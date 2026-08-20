@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://vmyo3m8sxbyj" path="res://game/entities/towers/tower.gd" id="1_0e2fs"]
 [ext_resource type="Texture2D" uid="uid://b7u2g0mj3rr1g" path="res://game/assets/towers/prototype_tower_large.png" id="2_o2swp"]
 [ext_resource type="Shader" uid="uid://73hk1rqg6q6q" path="res://game/entities/towers/range_indicator.gdshader" id="3_5brqy"]
+[ext_resource type="Texture2D" uid="uid://ifrwpsjhqorc" path="res://game/assets/vfx/x.png" id="3_kmi1p"]
+[ext_resource type="Texture2D" uid="uid://bua0pw6q8r66u" path="res://game/assets/vfx/supercharge.png" id="4_wdb04"]
 [ext_resource type="PackedScene" uid="uid://bus3m22c22i1j" path="res://game/system/rubbing_surface/rubbing_surface.tscn" id="4_xayqd"]
 [ext_resource type="Texture2D" uid="uid://bvott06kehk71" path="res://game/assets/vfx/plus_particle.png" id="5_aw6bx"]
 [ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="6_o2b6d"]
@@ -65,6 +67,29 @@ script = ExtResource("1_0e2fs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599717512]
 texture = ExtResource("2_o2swp")
+
+[node name="CenterContainer" type="CenterContainer" parent="Sprite2D" unique_id=1904777508]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DisabledIcon" type="TextureRect" parent="Sprite2D/CenterContainer" unique_id=272318483]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("3_kmi1p")
+
+[node name="SuperchargedIcon" type="TextureRect" parent="Sprite2D/CenterContainer" unique_id=796690176]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("4_wdb04")
 
 [node name="PerceptionArea" type="Area2D" parent="." unique_id=1968859076]
 
