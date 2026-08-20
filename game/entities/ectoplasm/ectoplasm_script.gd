@@ -12,21 +12,43 @@ var mouse_collector: EctoplasmMouseCollector
 var is_collecting := false
 var current_collecting_state: CollectingState = CollectingState.NONE
 var ectoplasm_ui_location: Vector2
-@export var collect_speed: float = 100.0
+@export var move_to_mouse_speed: float = 100.0
+@export var collect_speed: float = 500.0
 
 ## This is here so I can reparent the sprite to canvis layer for visuals when moving towards lable. 
 var _ect_lable_ref: Control
+var _ui_canvas_layer: CanvasLayer
+var _is_collected: bool = false
 
 func _ready() -> void:
 	randomize()
 	mouse_detection.area_entered.connect(_on_area_entered)
-	
+	_get_ui_ref()
+
+
+func _get_ui_ref() -> void:
 	var ectoplasm_label = get_tree().get_first_node_in_group("ectoplasm_lable")
+
+	if not ectoplasm_label:
+		print("ERROR: No ectoplasm label found")
+		return
+
 	_ect_lable_ref = ectoplasm_label
-	if ectoplasm_label:
-		ectoplasm_ui_location = ectoplasm_label.global_position
-	else:
-		print("ERROR: Could not find node in group 'ectoplasm_lable'")
+
+	var node = ectoplasm_label
+
+	while node and not node is CanvasLayer:
+		node = node.get_parent()
+
+	_ui_canvas_layer = node as CanvasLayer
+
+	if not _ui_canvas_layer:
+		print("ERROR: No CanvasLayer found")
+		return
+
+	var rect = ectoplasm_label.get_global_rect()
+	ectoplasm_ui_location = rect.get_center()
+
 
 
 
@@ -46,18 +68,14 @@ func _process(delta: float) -> void:
 		CollectingState.MOUSE:
 			global_position = global_position.move_toward(
 				mouse_collector.global_position,
-				collect_speed * delta
+				move_to_mouse_speed * delta
 			)
 
-			if global_position.distance_to(mouse_collector.global_position) < 2.0:
-				current_collecting_state = CollectingState.UI
-
+			if global_position.distance_to(mouse_collector.global_position) < 0.05:
+				_enter_ui_state()
 
 
 		CollectingState.UI:
-			
-			animated_sprite_2d.reparent(_ect_lable_ref, true)
-			reset_physics_interpolation()
 			global_position = global_position.move_toward(
 				ectoplasm_ui_location,
 				collect_speed * delta
@@ -67,7 +85,14 @@ func _process(delta: float) -> void:
 				_collected()
 
 
-	
+func _enter_ui_state() -> void:
+	current_collecting_state = CollectingState.UI
+
+	if _ui_canvas_layer:
+		reparent(_ui_canvas_layer, true)
+
+		reset_physics_interpolation()
+
 
 
 
@@ -75,5 +100,10 @@ func _play_idle()->void:
 	animation_player.play("IDLE")
 
 func _collected() -> void:
-	Event.ectoplasm_collected(ectoplasm_value)
+	if !_is_collected:
+		Event.ectoplasm_collected(ectoplasm_value)
+		animation_player.play("COLLECT")
+		_is_collected = true
+
+func _on_collect_animation_finished()->void:
 	queue_free()

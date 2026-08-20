@@ -73,6 +73,20 @@ tracks/5/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_collect_animation_finished"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_xjevg"]
 resource_name = "IDLE"
@@ -284,7 +298,6 @@ _data = {
 
 [node name="Ectoplasm" type="Node2D" unique_id=501606545]
 script = ExtResource("1_70ohq")
-collect_speed = 200.0
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="." unique_id=1540659531]
 unique_name_in_owner = true
