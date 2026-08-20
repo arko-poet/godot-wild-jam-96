@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b7u2g0mj3rr1g" path="res://game/assets/towers/prototype_tower_large.png" id="2_o2swp"]
 [ext_resource type="Shader" uid="uid://73hk1rqg6q6q" path="res://game/entities/towers/range_indicator.gdshader" id="3_5brqy"]
 [ext_resource type="PackedScene" uid="uid://bus3m22c22i1j" path="res://game/system/rubbing_surface/rubbing_surface.tscn" id="4_xayqd"]
+[ext_resource type="Texture2D" uid="uid://bvott06kehk71" path="res://game/assets/vfx/plus_particle.png" id="5_aw6bx"]
+[ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="6_o2b6d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
 
@@ -99,6 +101,23 @@ theme_override_styles/background = SubResource("StyleBoxFlat_o2swp")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xayqd")
 show_percentage = false
 
+[node name="PositiveChargeIcon" type="TextureRect" parent="RubbingSurface/PossitiveChargeBar" unique_id=229657098]
+custom_maximum_size = Vector2(7, 7)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -3.0
+offset_right = -2.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_aw6bx")
+expand_mode = 1
+
 [node name="NegativeChargeBar" type="ProgressBar" parent="RubbingSurface" unique_id=1097102002]
 offset_left = -33.0
 offset_top = -58.0
@@ -109,6 +128,19 @@ theme_override_styles/background = SubResource("StyleBoxFlat_aw6bx")
 theme_override_styles/fill = SubResource("StyleBoxFlat_o2b6d")
 fill_mode = 1
 show_percentage = false
+
+[node name="NegativeChargeIcon" type="TextureRect" parent="RubbingSurface/NegativeChargeBar" unique_id=1933526280]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -21.0
+offset_right = 27.0
+offset_bottom = 19.0
+grow_vertical = 2
+texture = ExtResource("6_o2b6d")
+expand_mode = 1
 
 [node name="InternalStateTimer" type="Timer" parent="." unique_id=246748010]
 
