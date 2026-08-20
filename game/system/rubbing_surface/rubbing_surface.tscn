@@ -10,6 +10,7 @@ size = Vector2(128, 128)
 
 [node name="RubbingSurface" type="Area2D" unique_id=1880943059]
 script = ExtResource("1_r6aub")
+show_debug_labels = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=787626526]
 texture = ExtResource("1_7hwxa")
