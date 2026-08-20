@@ -3,9 +3,9 @@ extends RefCounted
 
 # This is a simple interface meant to provide context to the tower towards a specific mob.
 # This should be edited as required after the mobs are completed. 
-var mob: Node2D
+var mob: Mob
 
-func _init(mob_node: Node2D) -> void:
+func _init(mob_node: Mob) -> void:
 	mob = mob_node
 
 var health: float:
@@ -25,5 +25,6 @@ var global_position: Vector2:
 		return mob.global_position
 
 # Update this with the proper function that makes the mob take damage in the actual mob class.
-func take_damage(amount: float) -> void:
-	mob.take_damage(amount)
+func take_damage(damage: DamagePacket) -> void:
+	if mob:
+		mob.take_damage(damage)

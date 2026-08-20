@@ -1,0 +1,433 @@
+[gd_scene format=4 uid="uid://b602m5ep1r77y"]
+
+[ext_resource type="PackedScene" uid="uid://cbu3fe1tdehc5" path="res://game/system/levels/base_level/level.tscn" id="1_aelck"]
+[ext_resource type="Script" uid="uid://clx1emo7cvkrb" path="res://game/resources/waves/wave_resource_script.gd" id="2_xl356"]
+[ext_resource type="Script" uid="uid://bm37gvgbf7jip" path="res://game/entities/mobs/base_mob/mob_resource.gd" id="3_cuyhj"]
+[ext_resource type="Resource" uid="uid://dofm3o5ypmujs" path="res://game/resources/mobs/regular_ghost/neutral_regular_ghost.tres" id="4_buplw"]
+[ext_resource type="Resource" uid="uid://j0i8f1v146ni" path="res://game/resources/mobs/fast_ghost/neutral_fast_ghost.tres" id="5_cuyhj"]
+[ext_resource type="Resource" uid="uid://b4lqupab3qskl" path="res://game/resources/mobs/boss_ghost/neutral_boss_ghost.tres" id="6_buplw"]
+[ext_resource type="Resource" uid="uid://di4w54i6dkn04" path="res://game/resources/mobs/regular_ghost/negative_regular_ghost.tres" id="7_637qe"]
+[ext_resource type="Resource" uid="uid://dc8al3h3litod" path="res://game/resources/mobs/regular_ghost/positive_regular_ghost.tres" id="8_uodjo"]
+[ext_resource type="Resource" uid="uid://drc7vcdntqa50" path="res://game/resources/mobs/boss_ghost/negative_boss_ghost.tres" id="9_xy4xk"]
+[ext_resource type="Resource" uid="uid://dk3305lubvsk8" path="res://game/resources/mobs/fast_ghost/negative_fast_ghost.tres" id="10_buudb"]
+[ext_resource type="Resource" uid="uid://chxux3f5v0lfs" path="res://game/resources/mobs/boss_ghost/positive_boss_ghost.tres" id="11_ijy6h"]
+[ext_resource type="Resource" uid="uid://bbrv8xhw21vr1" path="res://game/resources/mobs/fast_ghost/positive_fast_ghost.tres" id="12_8vgdb"]
+
+[sub_resource type="Resource" id="Resource_xl356"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 1
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_cuyhj"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 2
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_buplw"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 3
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_637qe"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 4
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_5ujo5"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("5_cuyhj"): 5
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_w5kaa"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 6
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_fodb2"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 4,
+ExtResource("5_cuyhj"): 3
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_klkbc"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 8
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_uodjo"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 4,
+ExtResource("5_cuyhj"): 5
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_xy4xk"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("6_buplw"): 1
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_buudb"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 11
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_ijy6h"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 6,
+ExtResource("5_cuyhj"): 6
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_8vgdb"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 13
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_57wjq"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("5_cuyhj"): 14
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_nld6n"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("7_637qe"): 15
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_g80bp"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 16
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_fbo3i"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("5_cuyhj"): 17
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_ffabh"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("7_637qe"): 9,
+ExtResource("4_buplw"): 9
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_302fg"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 6,
+ExtResource("7_637qe"): 7,
+ExtResource("5_cuyhj"): 6
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_kq88w"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("6_buplw"): 1,
+ExtResource("4_buplw"): 10
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_74pfe"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("7_637qe"): 21
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_bpef6"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("5_cuyhj"): 11,
+ExtResource("4_buplw"): 11
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_12org"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 11,
+ExtResource("7_637qe"): 12
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_roltc"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("7_637qe"): 12,
+ExtResource("5_cuyhj"): 12
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_76gkv"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("8_uodjo"): 25
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_0ndnd"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 13,
+ExtResource("7_637qe"): 13
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_gucpl"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("7_637qe"): 14,
+ExtResource("8_uodjo"): 13
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_8b0wn"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("5_cuyhj"): 28
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_lelbp"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("5_cuyhj"): 14,
+ExtResource("8_uodjo"): 15
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_n0k84"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("9_xy4xk"): 1,
+ExtResource("8_uodjo"): 20
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_smlgb"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 31
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_3isvt"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("7_637qe"): 32
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_wrf31"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("8_uodjo"): 33
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_lxwnx"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("7_637qe"): 11,
+ExtResource("8_uodjo"): 11,
+ExtResource("5_cuyhj"): 12
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_mid55"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("10_buudb"): 35
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_mi38q"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 36
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_2ee65"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("7_637qe"): 18,
+ExtResource("10_buudb"): 19
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_4042r"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("8_uodjo"): 9,
+ExtResource("7_637qe"): 9,
+ExtResource("4_buplw"): 9,
+ExtResource("10_buudb"): 11
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_v2ji0"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("10_buudb"): 20,
+ExtResource("5_cuyhj"): 19
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_cmbyw"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("9_xy4xk"): 1,
+ExtResource("4_buplw"): 20,
+ExtResource("11_ijy6h"): 1
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_cbnjs"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 41
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_omrsm"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("8_uodjo"): 10,
+ExtResource("10_buudb"): 11,
+ExtResource("7_637qe"): 10,
+ExtResource("5_cuyhj"): 11
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_5l8ld"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("8_uodjo"): 22,
+ExtResource("10_buudb"): 21
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_o5hn7"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 8,
+ExtResource("5_cuyhj"): 9,
+ExtResource("7_637qe"): 9,
+ExtResource("10_buudb"): 9,
+ExtResource("8_uodjo"): 9
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_1yal6"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("12_8vgdb"): 45
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_i6cev"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("6_buplw"): 5,
+ExtResource("4_buplw"): 50
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_47e78"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("5_cuyhj"): 100
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_luetk"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("11_ijy6h"): 2,
+ExtResource("8_uodjo"): 40,
+ExtResource("12_8vgdb"): 40
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_l2nvn"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("9_xy4xk"): 2,
+ExtResource("7_637qe"): 40,
+ExtResource("10_buudb"): 40
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[sub_resource type="Resource" id="Resource_737ls"]
+script = ExtResource("2_xl356")
+ghosts = Dictionary[ExtResource("3_cuyhj"), int]({
+ExtResource("4_buplw"): 10,
+ExtResource("11_ijy6h"): 3,
+ExtResource("10_buudb"): 10,
+ExtResource("8_uodjo"): 10,
+ExtResource("6_buplw"): 3,
+ExtResource("7_637qe"): 10,
+ExtResource("5_cuyhj"): 10,
+ExtResource("9_xy4xk"): 3,
+ExtResource("12_8vgdb"): 10
+})
+metadata/_custom_type_script = "uid://clx1emo7cvkrb"
+
+[node name="Level1" unique_id=1206293609 instance=ExtResource("1_aelck")]
+
+[node name="GroundLayer" parent="TileMapVisualRoot" parent_id_path=PackedInt32Array(611908526) index="0" unique_id=233455309]
+tile_map_data = PackedByteArray("AAACAAgAAAABAAEAAAADAAEAAAABAAEAAAADAAIAAAABAAEAAAADAAMAAAABAAEAAAADAAQAAAABAAEAAAADAAUAAAABAAEAAAADAAYAAAABAAEAAAADAAcAAAAEAAAAAAADAAgAAAABAAEAAAADAAkAAAAEAAYAAAADAAoAAAABAAEAAAAEAAEAAAABAAEAAAAEAAIAAAABAAEAAAAEAAMAAAABAAEAAAAEAAQAAAABAAEAAAAEAAUAAAABAAEAAAAEAAYAAAABAAEAAAAEAAcAAAABAAEAAAAEAAgAAAABAAEAAAAEAAkAAAABAAEAAAAEAAoAAAABAAEAAAAFAAEAAAABAAEAAAAFAAIAAAABAAEAAAAFAAMAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAFAAYAAAABAAEAAAAFAAcAAAABAAEAAAAFAAgAAAABAAEAAAAFAAkAAAABAAEAAAAFAAoAAAABAAEAAAAGAAAAAAACAAAAAAAGAAEAAAABAAEAAAAGAAIAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAGAAUAAAABAAEAAAAGAAYAAAABAAEAAAAGAAcAAAABAAEAAAAGAAgAAAABAAEAAAAGAAkAAAABAAEAAAAGAAoAAAABAAEAAAAHAAAAAAACAAAAAAAHAAEAAAABAAEAAAAHAAIAAAABAAEAAAAHAAMAAAABAAEAAAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAHAAYAAAABAAEAAAAHAAcAAAABAAEAAAAHAAgAAAABAAEAAAAHAAkAAAABAAEAAAAHAAoAAAABAAEAAAAIAAAAAAACAAAAAAAIAAEAAAABAAEAAAAIAAIAAAABAAEAAAAIAAMAAAABAAEAAAAIAAQAAAABAAEAAAAIAAUAAAABAAEAAAAIAAYAAAABAAEAAAAIAAcAAAABAAEAAAAIAAgAAAABAAEAAAAIAAkAAAABAAEAAAAIAAoAAAABAAEAAAAJAAAAAAACAAAAAAAJAAEAAAABAAEAAAAJAAIAAAABAAEAAAAJAAMAAAABAAEAAAAJAAQAAAABAAEAAAAJAAUAAAABAAEAAAAJAAYAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAABAAEAAAAJAAkAAAABAAEAAAAJAAoAAAABAAEAAAAKAAAAAAACAAAAAAAKAAEAAAABAAEAAAAKAAIAAAABAAEAAAAKAAMAAAABAAEAAAAKAAQAAAABAAEAAAAKAAUAAAABAAEAAAAKAAYAAAABAAEAAAAKAAcAAAABAAEAAAAKAAgAAAABAAEAAAAKAAkAAAABAAEAAAAKAAoAAAABAAEAAAALAAAAAAABAAEAAAALAAEAAAABAAEAAAALAAIAAAABAAEAAAALAAMAAAABAAEAAAALAAQAAAABAAEAAAALAAUAAAABAAEAAAALAAYAAAABAAEAAAALAAcAAAABAAEAAAALAAgAAAABAAEAAAALAAkAAAABAAEAAAALAAoAAAABAAEAAAAMAAAAAAABAAEAAAAMAAEAAAABAAEAAAAMAAIAAAABAAEAAAAMAAMAAAABAAEAAAAMAAQAAAABAAEAAAAMAAUAAAABAAEAAAAMAAYAAAABAAEAAAAMAAcAAAABAAEAAAAMAAgAAAABAAEAAAAMAAkAAAABAAEAAAAMAAoAAAABAAEAAAANAAAAAAABAAEAAAANAAEAAAABAAEAAAANAAIAAAABAAEAAAANAAMAAAABAAEAAAANAAQAAAABAAEAAAANAAUAAAABAAEAAAANAAYAAAABAAEAAAANAAcAAAABAAEAAAANAAgAAAABAAEAAAANAAkAAAABAAEAAAANAAoAAAABAAEAAAAOAAAAAAABAAEAAAAOAAEAAAABAAEAAAAOAAIAAAABAAEAAAAOAAMAAAABAAEAAAAOAAQAAAABAAEAAAAOAAUAAAABAAEAAAAOAAYAAAABAAEAAAAOAAcAAAABAAEAAAAOAAgAAAABAAEAAAAOAAkAAAABAAEAAAAOAAoAAAABAAEAAAAPAAAAAAABAAEAAAAPAAEAAAABAAEAAAAPAAIAAAABAAEAAAAPAAMAAAABAAEAAAAPAAQAAAABAAEAAAAPAAUAAAABAAEAAAAPAAYAAAABAAEAAAAPAAcAAAABAAEAAAAPAAgAAAABAAEAAAAPAAkAAAABAAEAAAAPAAoAAAABAAEAAAAQAAAAAAABAAEAAAAQAAEAAAABAAEAAAAQAAIAAAABAAEAAAAQAAMAAAABAAEAAAAQAAQAAAABAAEAAAAQAAUAAAABAAEAAAAQAAYAAAABAAEAAAAQAAcAAAABAAEAAAAQAAgAAAABAAEAAAAQAAkAAAABAAEAAAAQAAoAAAABAAEAAAARAAAAAAABAAEAAAARAAEAAAABAAEAAAARAAIAAAABAAEAAAARAAMAAAABAAEAAAARAAQAAAABAAEAAAARAAUAAAABAAEAAAARAAYAAAABAAEAAAARAAcAAAABAAEAAAARAAgAAAABAAEAAAARAAkAAAABAAEAAAARAAoAAAABAAEAAAASAAAAAAABAAEAAAASAAEAAAABAAEAAAASAAIAAAABAAEAAAASAAMAAAABAAEAAAASAAQAAAABAAEAAAASAAUAAAABAAEAAAASAAYAAAABAAEAAAASAAcAAAABAAEAAAASAAgAAAABAAEAAAASAAkAAAABAAEAAAASAAoAAAABAAEAAAATAAAAAAABAAEAAAATAAEAAAABAAEAAAATAAIAAAABAAEAAAATAAMAAAABAAEAAAATAAQAAAABAAEAAAATAAUAAAABAAEAAAATAAYAAAABAAEAAAATAAcAAAABAAEAAAATAAgAAAABAAEAAAATAAkAAAABAAEAAAATAAoAAAABAAEAAAAUAAAAAAABAAEAAAAUAAEAAAABAAEAAAAUAAIAAAABAAEAAAAUAAMAAAABAAEAAAAUAAQAAAABAAEAAAAUAAUAAAABAAEAAAAUAAYAAAABAAEAAAAUAAcAAAABAAEAAAAUAAgAAAABAAEAAAAUAAkAAAABAAEAAAAUAAoAAAABAAEAAAAUAAsAAAABAAEAAAAUAAwAAAABAAEAAAAUAA0AAAABAAEAAAAUAA4AAAABAAEAAAAUAA8AAAABAAEAAAAUABAAAAABAAEAAAAVAAAAAAABAAEAAAAVAAEAAAABAAEAAAAVAAIAAAABAAEAAAAVAAMAAAABAAEAAAAVAAQAAAABAAEAAAAVAAUAAAABAAEAAAAVAAYAAAABAAEAAAAVAAcAAAABAAEAAAAVAAgAAAABAAEAAAAVAAkAAAABAAEAAAAVAAoAAAABAAEAAAAVAAsAAAABAAEAAAAVAAwAAAABAAEAAAAVAA0AAAABAAEAAAAVAA4AAAABAAEAAAAVAA8AAAABAAEAAAAVABAAAAABAAEAAAAWAAAAAAABAAEAAAAWAAEAAAABAAEAAAAWAAIAAAABAAEAAAAWAAMAAAABAAEAAAAWAAQAAAABAAEAAAAWAAUAAAABAAEAAAAWAAYAAAABAAEAAAAWAAcAAAABAAEAAAAWAAgAAAABAAEAAAAWAAkAAAABAAEAAAAWAAoAAAABAAEAAAAWAAsAAAABAAEAAAAWAAwAAAABAAEAAAAWAA0AAAABAAEAAAAWAA4AAAABAAEAAAAWAA8AAAABAAEAAAAWABAAAAABAAEAAAAXAAAAAAABAAEAAAAXAAEAAAABAAEAAAAXAAIAAAABAAEAAAAXAAMAAAABAAEAAAAXAAQAAAABAAEAAAAXAAUAAAABAAEAAAAXAAYAAAABAAEAAAAXAAcAAAABAAEAAAAXAAgAAAABAAEAAAAXAAkAAAABAAEAAAAXAAoAAAABAAEAAAAXAAsAAAABAAEAAAAXAAwAAAABAAEAAAAXAA0AAAABAAEAAAAXAA4AAAABAAEAAAAXAA8AAAABAAEAAAAXABAAAAABAAEAAAAYAAAAAAABAAEAAAAYAAEAAAABAAEAAAAYAAIAAAABAAEAAAAYAAMAAAABAAEAAAAYAAQAAAABAAEAAAAYAAUAAAABAAEAAAAYAAYAAAABAAEAAAAYAAcAAAABAAEAAAAYAAgAAAABAAEAAAAYAAkAAAABAAEAAAAYAAoAAAABAAEAAAAYAAsAAAABAAEAAAAYAAwAAAABAAEAAAAYAA0AAAABAAEAAAAYAA4AAAABAAEAAAAYAA8AAAABAAEAAAAYABAAAAABAAEAAAAZAAAAAAABAAEAAAAZAAEAAAABAAEAAAAZAAIAAAABAAEAAAAZAAMAAAABAAEAAAAZAAQAAAABAAEAAAAZAAUAAAABAAEAAAAZAAYAAAABAAEAAAAZAAcAAAABAAEAAAAZAAgAAAABAAEAAAAZAAkAAAABAAEAAAAZAAoAAAABAAEAAAAZAAsAAAABAAEAAAAZAAwAAAABAAEAAAAZAA0AAAABAAEAAAAZAA4AAAABAAEAAAAZAA8AAAABAAEAAAAZABAAAAABAAEAAAAaAAAAAAABAAMAAAAaAAEAAAABAAEAAAAaAAIAAAABAAEAAAAaAAMAAAABAAEAAAAaAAQAAAABAAEAAAAaAAUAAAABAAEAAAAaAAYAAAABAAEAAAAaAAcAAAABAAEAAAAaAAgAAAABAAEAAAAaAAkAAAABAAEAAAAaAAoAAAABAAEAAAAaAAsAAAABAAEAAAAaAAwAAAABAAEAAAAaAA0AAAABAAEAAAAaAA4AAAABAAEAAAAaAA8AAAABAAEAAAAaABAAAAABAAEAAAAbAAAAAAABAAEAAAAbAAEAAAABAAEAAAAbAAIAAAABAAEAAAAbAAMAAAABAAEAAAAbAAQAAAABAAEAAAAbAAUAAAABAAEAAAAbAAYAAAABAAEAAAAbAAcAAAABAAEAAAAbAAgAAAABAAEAAAAbAAkAAAABAAEAAAAbAAoAAAABAAEAAAAbAAsAAAABAAEAAAAbAAwAAAABAAEAAAAbAA0AAAABAAEAAAAbAA4AAAABAAEAAAAbAA8AAAABAAEAAAAbABAAAAABAAEAAAAcAAAAAAAHAAMAAAAcAAEAAAABAAEAAAAcAAIAAAABAAEAAAAcAAMAAAABAAEAAAAcAAQAAAABAAEAAAAcAAUAAAABAAEAAAAcAAYAAAABAAEAAAAcAAcAAAABAAEAAAAcAAgAAAABAAEAAAAcAAkAAAABAAEAAAAcAAoAAAABAAEAAAAcAAsAAAABAAEAAAAcAAwAAAABAAEAAAAcAA0AAAABAAEAAAAcAA4AAAABAAEAAAAcAA8AAAABAAEAAAAcABAAAAABAAEAAAAdAAAAAAABAAEAAAAdAAEAAAABAAEAAAAdAAIAAAABAAEAAAAdAAMAAAABAAEAAAAdAAQAAAABAAEAAAAdAAUAAAABAAEAAAAdAAYAAAABAAEAAAAdAAcAAAABAAEAAAAdAAgAAAABAAEAAAAdAAkAAAABAAEAAAAdAAoAAAABAAEAAAAdAAsAAAABAAEAAAAdAAwAAAABAAEAAAAdAA0AAAABAAEAAAAdAA4AAAABAAEAAAAdAA8AAAABAAEAAAAdABAAAAABAAEAAAADAAsAAAABAAEAAAADAAwAAAABAAEAAAADAA0AAAABAAEAAAADAA4AAAABAAEAAAADAA8AAAABAAEAAAADABAAAAABAAEAAAAEAAsAAAABAAEAAAAEAAwAAAABAAEAAAAEAA0AAAABAAEAAAAEAA4AAAABAAEAAAAEAA8AAAABAAEAAAAEABAAAAABAAEAAAAFAAsAAAABAAEAAAAFAAwAAAABAAEAAAAFAA0AAAABAAEAAAAFAA4AAAABAAEAAAAFAA8AAAABAAEAAAAFABAAAAABAAEAAAAGAAsAAAABAAEAAAAGAAwAAAABAAEAAAAGAA0AAAABAAEAAAAGAA4AAAABAAEAAAAGAA8AAAABAAEAAAAGABAAAAABAAEAAAAHAAsAAAABAAEAAAAHAAwAAAABAAEAAAAHAA0AAAABAAEAAAAHAA4AAAABAAEAAAAHAA8AAAABAAEAAAAHABAAAAABAAEAAAAIAAsAAAABAAEAAAAIAAwAAAABAAEAAAAIAA0AAAABAAEAAAAIAA4AAAABAAEAAAAIAA8AAAABAAEAAAAIABAAAAABAAEAAAAJAAsAAAABAAEAAAAJAAwAAAABAAEAAAAJAA0AAAABAAEAAAAJAA4AAAABAAEAAAAJAA8AAAABAAEAAAAJABAAAAABAAEAAAAKAAsAAAABAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAAKAA4AAAABAAEAAAAKAA8AAAABAAEAAAAKABAAAAABAAEAAAALAAsAAAABAAEAAAALAAwAAAABAAEAAAALAA0AAAABAAEAAAALAA4AAAABAAEAAAALAA8AAAABAAEAAAALABAAAAABAAEAAAAMAAsAAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAAMAA4AAAABAAEAAAAMAA8AAAABAAEAAAAMABAAAAABAAEAAAANAAsAAAABAAEAAAANAAwAAAABAAEAAAANAA0AAAABAAEAAAANAA4AAAABAAEAAAANAA8AAAABAAEAAAANABAAAAABAAEAAAAOAAsAAAABAAEAAAAOAAwAAAABAAEAAAAOAA0AAAABAAEAAAAOAA4AAAABAAEAAAAOAA8AAAABAAEAAAAOABAAAAABAAEAAAAPAAsAAAABAAEAAAAPAAwAAAABAAEAAAAPAA0AAAABAAEAAAAPAA4AAAABAAEAAAAPAA8AAAABAAEAAAAPABAAAAABAAEAAAAQAAsAAAABAAEAAAAQAAwAAAABAAEAAAAQAA0AAAABAAEAAAAQAA4AAAABAAEAAAAQAA8AAAABAAEAAAAQABAAAAABAAEAAAARAAsAAAABAAEAAAARAAwAAAABAAEAAAARAA0AAAABAAEAAAARAA4AAAABAAEAAAARAA8AAAABAAEAAAARABAAAAABAAEAAAASAAsAAAABAAEAAAASAAwAAAABAAEAAAASAA0AAAABAAEAAAASAA4AAAABAAEAAAASAA8AAAABAAEAAAASABAAAAABAAEAAAATAAsAAAABAAEAAAATAAwAAAABAAEAAAATAA0AAAABAAEAAAATAA4AAAABAAEAAAATAA8AAAABAAEAAAATABAAAAABAAEAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAA=")
+
+[node name="NotUsableGroundLayer" parent="TileMapVisualRoot" parent_id_path=PackedInt32Array(611908526) index="1" unique_id=1957586002]
+tile_map_data = PackedByteArray("AAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAAAAcAAAACAAAAAAAAAAgAAAACAAAAAAAAAAkAAAACAAAAAAAAAAoAAAACAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAABAAcAAAACAAAAAAABAAgAAAACAAAAAAABAAkAAAACAAAAAAABAAoAAAACAAAAAAACAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAACAAQAAAACAAAAAAACAAUAAAACAAAAAAACAAYAAAACAAAAAAACAAcAAAACAAAAAAACAAgAAAACAAAAAAACAAkAAAACAAAAAAACAAoAAAACAAAAAAAAAAsAAAACAAAAAAAAAAwAAAACAAAAAAAAAA0AAAACAAAAAAAAAA4AAAACAAAAAAAAAA8AAAACAAAAAAAAABAAAAACAAAAAAABAAsAAAACAAAAAAABAAwAAAACAAAAAAABAA0AAAACAAAAAAABAA4AAAACAAAAAAABAA8AAAACAAAAAAABABAAAAACAAAAAAACAAsAAAACAAAAAAACAAwAAAACAAAAAAACAA0AAAACAAAAAAACAA4AAAACAAAAAAACAA8AAAACAAAAAAACABAAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAA=")
+
+[node name="PathLayer" parent="TileMapVisualRoot" parent_id_path=PackedInt32Array(611908526) index="2" unique_id=740346887]
+tile_map_data = PackedByteArray("AAAbAAoAAQAGAAQAAAAYAAkAAQACAAQAAAAYAAgAAQAGAAIAAAATAAcAAQAGAAQAAAATAAgAAQAGAAQAAAARAAkAAQAFAAMAAAAQAAkAAQAEAAMAAAAQAAoAAQAEAAQAAAAIAAoAAQADAAEAAAAHAAoAAQACAAEAAAAFAAgAAQAGAAUAAAAEAAgAAQAFAAUAAAAbAAQAAQAGAAIAAAAYAAQAAQAGAAEAAAAXAAQAAQAFAAEAAAAWAAQAAQAFAAEAAAAQAAsAAQAEAAQAAAAKAAUAAQAGAAIAAAAbAAAAAQAGAAIAAAAbAAEAAQAGAAIAAAAbAAIAAQAGAAIAAAAbAAMAAQAGAAIAAAAbAAUAAQAGAAIAAAAbAAYAAQAGAAIAAAAbAAcAAQAGAAIAAAAbAAgAAQAGAAQAAAAbAAkAAQAGAAQAAAAbAAsAAQAGAAQAAAAbAAwAAQAGAAQAAAAbAA0AAQAGAAQAAAAbAA4AAQAGAAUAAAAaAA4AAQAFAAUAAAAZAA4AAQADAAUAAAAYAA4AAQACAAUAAAAYAAoAAQACAAQAAAAYAAsAAQACAAQAAAAYAAwAAQACAAQAAAAYAA0AAQACAAQAAAAYAAUAAQAGAAIAAAAYAAYAAQAGAAIAAAAYAAcAAQAGAAIAAAAUAAQAAQADAAEAAAAVAAQAAQADAAEAAAATAAQAAQACAAEAAAATAAUAAQACAAIAAAATAAYAAQACAAIAAAATAAkAAQAGAAUAAAASAAkAAQAFAAUAAAAOAAkAAQADAAUAAAAPAAkAAQADAAMAAAANAAkAAQACAAUAAAANAAUAAQACAAQAAAANAAYAAQACAAQAAAANAAcAAQACAAQAAAANAAgAAQACAAQAAAANAAEAAQACAAIAAAANAAIAAQACAAIAAAANAAMAAQACAAIAAAANAAQAAQACAAIAAAANAAAAAQACAAEAAAAOAAAAAQADAAEAAAAPAAAAAQAFAAEAAAAQAAAAAQAGAAEAAAAQAAEAAQAGAAIAAAAQAAIAAQAGAAIAAAAQAAMAAQAGAAIAAAAQAAQAAQAGAAIAAAAQAAUAAQAEAAIAAAAQAAYAAQAEAAIAAAAQAAcAAQAEAAIAAAAQAAgAAQAEAAIAAAAQAAwAAQAEAAQAAAAQAA0AAQAEAAQAAAAQAA4AAQAGAAQAAAAQAA8AAQAGAAQAAAAQABAAAQAGAAUAAAAOABAAAQAFAAUAAAAPABAAAQAFAAUAAAALABAAAQADAAUAAAAMABAAAQADAAUAAAANABAAAQADAAUAAAAKAA8AAQACAAQAAAAKABAAAQACAAUAAAAKAA4AAQAGAAIAAAAKAA0AAQAGAAEAAAAJAA0AAQAFAAEAAAAIAA0AAQADAAUAAAAHAA0AAQACAAUAAAAHAAwAAQACAAQAAAAHAAsAAQACAAIAAAAJAAoAAQAFAAUAAAAKAAoAAQAGAAUAAAAKAAYAAQAGAAQAAAAKAAcAAQAGAAQAAAAKAAgAAQAGAAQAAAAKAAkAAQAGAAQAAAAKAAMAAQAGAAIAAAAKAAQAAQAGAAIAAAAKAAIAAQAGAAEAAAAIAAIAAQAFAAEAAAAJAAIAAQAFAAEAAAAGAAIAAQADAAEAAAAHAAIAAQADAAEAAAAFAAIAAQACAAEAAAAFAAMAAQACAAIAAAAFAAQAAQACAAIAAAAFAAUAAQACAAIAAAAFAAYAAQAGAAQAAAAFAAcAAQAGAAQAAAADAAgAAQAFAAUAAAACAAgAAQADAAEAAAAbAP//AQAGAAIAAAA=")
+
+[node name="StartLayer" parent="TileMapVisualRoot/PathLayer" index="0" unique_id=1010244544]
+tile_map_data = PackedByteArray("AAAbAP//AQAEAAMAAAA=")
+
+[node name="EndLayer" parent="TileMapVisualRoot/PathLayer" index="1" unique_id=352255070]
+tile_map_data = PackedByteArray("AAACAAgAAQAEAAMAAAA=")
+
+[node name="CrossingLayer" parent="TileMapVisualRoot/PathLayer" index="2" unique_id=1724893282]
+tile_map_data = PackedByteArray("AAAAAAYAAQACAAAAAAAQAAkAAQAEAAMAAAA=")
+
+[node name="MobSpawner" parent="." index="1" unique_id=685284413]
+waves = Array[ExtResource("2_xl356")]([SubResource("Resource_xl356"), SubResource("Resource_cuyhj"), SubResource("Resource_buplw"), SubResource("Resource_637qe"), SubResource("Resource_5ujo5"), SubResource("Resource_w5kaa"), SubResource("Resource_fodb2"), SubResource("Resource_klkbc"), SubResource("Resource_uodjo"), SubResource("Resource_xy4xk"), SubResource("Resource_buudb"), SubResource("Resource_ijy6h"), SubResource("Resource_8vgdb"), SubResource("Resource_57wjq"), SubResource("Resource_nld6n"), SubResource("Resource_g80bp"), SubResource("Resource_fbo3i"), SubResource("Resource_ffabh"), SubResource("Resource_302fg"), SubResource("Resource_kq88w"), SubResource("Resource_74pfe"), SubResource("Resource_bpef6"), SubResource("Resource_12org"), SubResource("Resource_roltc"), SubResource("Resource_76gkv"), SubResource("Resource_0ndnd"), SubResource("Resource_gucpl"), SubResource("Resource_8b0wn"), SubResource("Resource_lelbp"), SubResource("Resource_n0k84"), SubResource("Resource_smlgb"), SubResource("Resource_3isvt"), SubResource("Resource_wrf31"), SubResource("Resource_lxwnx"), SubResource("Resource_mid55"), SubResource("Resource_mi38q"), SubResource("Resource_2ee65"), SubResource("Resource_4042r"), SubResource("Resource_v2ji0"), SubResource("Resource_cmbyw"), SubResource("Resource_cbnjs"), SubResource("Resource_omrsm"), SubResource("Resource_5l8ld"), SubResource("Resource_o5hn7"), SubResource("Resource_1yal6"), SubResource("Resource_i6cev"), SubResource("Resource_47e78"), SubResource("Resource_luetk"), SubResource("Resource_l2nvn"), SubResource("Resource_737ls")])
+
+[editable path="TileMapVisualRoot/PathLayer"]

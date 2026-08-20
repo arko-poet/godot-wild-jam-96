@@ -1,0 +1,24 @@
+[gd_resource type="Theme" format=3 uid="uid://c327w5y3dq2wv"]
+
+[ext_resource type="StyleBox" uid="uid://w082yu1f23iq" path="res://game/resources/ui/hover_button_theme.tres" id="1_klxjx"]
+[ext_resource type="StyleBox" uid="uid://bcvn80pv1pwnl" path="res://game/resources/ui/normal_button_theme.tres" id="2_2lkxm"]
+[ext_resource type="StyleBox" uid="uid://xr0jk5oi281b" path="res://game/resources/ui/pressed_button_theme.tres" id="3_st2yc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxtuf"]
+bg_color = Color(0.3019608, 0.34901962, 0.4117647, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.16862746, 0.20784314, 0.25490198, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/font_sizes/font_size = 8
+Button/styles/hover = ExtResource("1_klxjx")
+Button/styles/normal = ExtResource("2_2lkxm")
+Button/styles/pressed = ExtResource("3_st2yc")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_yxtuf")

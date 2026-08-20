@@ -1,15 +1,70 @@
 [gd_scene format=3 uid="uid://dhqu0rnayje85"]
 
 [ext_resource type="Script" uid="uid://vmyo3m8sxbyj" path="res://game/entities/towers/tower.gd" id="1_0e2fs"]
-[ext_resource type="Texture2D" uid="uid://cg1bjbh845fvx" path="res://game/assets/towers/prototype_tower.png" id="2_ycjjm"]
+[ext_resource type="Texture2D" uid="uid://b7u2g0mj3rr1g" path="res://game/assets/towers/prototype_tower_large.png" id="2_o2swp"]
+[ext_resource type="Shader" uid="uid://73hk1rqg6q6q" path="res://game/entities/towers/range_indicator.gdshader" id="3_5brqy"]
+[ext_resource type="PackedScene" uid="uid://bus3m22c22i1j" path="res://game/system/rubbing_surface/rubbing_surface.tscn" id="4_xayqd"]
+[ext_resource type="Texture2D" uid="uid://bvott06kehk71" path="res://game/assets/vfx/plus_particle.png" id="5_aw6bx"]
+[ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="6_o2b6d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jsyln"]
+shader = ExtResource("3_5brqy")
+shader_parameter/thickness = 0.01
+shader_parameter/dash_count = 16.0
+shader_parameter/dash_ratio = 0.5
+shader_parameter/rotation_speed = 0.01
+shader_parameter/line_color = Color(1, 1, 1, 0.8)
+
+[sub_resource type="Gradient" id="Gradient_o2swp"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vgud1"]
+gradient = SubResource("Gradient_o2swp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw6bx"]
+size = Vector2(64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2swp"]
+bg_color = Color(0.192157, 0.239216, 0.352941, 1)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.00392157, 0.0862745, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xayqd"]
+bg_color = Color(0, 0.7934291, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw6bx"]
+bg_color = Color(0.192157, 0.239216, 0.352941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.00392157, 0.0862745, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2b6d"]
+bg_color = Color(0.92941177, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o2swp"]
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Tower" type="Node2D" unique_id=1787143782]
 script = ExtResource("1_0e2fs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599717512]
-texture = ExtResource("2_ycjjm")
+texture = ExtResource("2_o2swp")
 
 [node name="PerceptionArea" type="Area2D" parent="." unique_id=1968859076]
 
@@ -18,5 +73,91 @@ shape = SubResource("CircleShape2D_vgud1")
 
 [node name="VFXOrigin" type="Marker2D" parent="." unique_id=1798908915]
 
+[node name="RangeIndicator" type="Node2D" parent="." unique_id=137107288]
+
+[node name="Visual" type="Sprite2D" parent="RangeIndicator" unique_id=21435314]
+material = SubResource("ShaderMaterial_jsyln")
+texture = SubResource("GradientTexture2D_vgud1")
+
+[node name="RubbingSurface" parent="." unique_id=1880943059 instance=ExtResource("4_xayqd")]
+
+[node name="Sprite2D" parent="RubbingSurface" index="0" unique_id=787626526]
+visible = false
+
+[node name="CollisionShape2D" parent="RubbingSurface" index="1" unique_id=556403593]
+shape = SubResource("RectangleShape2D_aw6bx")
+
+[node name="MetricLabelsContainer" parent="RubbingSurface" index="4" unique_id=1120814076]
+offset_bottom = -48.0
+
+[node name="PossitiveChargeBar" type="ProgressBar" parent="RubbingSurface" unique_id=455222706]
+offset_left = -1.0
+offset_top = -58.0
+offset_right = 33.0
+offset_bottom = -46.0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_o2swp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xayqd")
+show_percentage = false
+
+[node name="PositiveChargeIcon" type="TextureRect" parent="RubbingSurface/PossitiveChargeBar" unique_id=229657098]
+custom_maximum_size = Vector2(7, 7)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -3.0
+offset_right = -2.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_aw6bx")
+expand_mode = 1
+
+[node name="NegativeChargeBar" type="ProgressBar" parent="RubbingSurface" unique_id=1097102002]
+offset_left = -33.0
+offset_top = -58.0
+offset_right = 1.0
+offset_bottom = -46.0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_aw6bx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_o2b6d")
+fill_mode = 1
+show_percentage = false
+
+[node name="NegativeChargeIcon" type="TextureRect" parent="RubbingSurface/NegativeChargeBar" unique_id=1933526280]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -21.0
+offset_right = 27.0
+offset_bottom = 19.0
+grow_vertical = 2
+texture = ExtResource("6_o2b6d")
+expand_mode = 1
+
+[node name="InternalStateTimer" type="Timer" parent="." unique_id=246748010]
+
+[node name="TowerLevelLabel" type="Label" parent="." unique_id=511289234]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -41.0
+offset_right = 20.0
+offset_bottom = -33.0
+grow_horizontal = 2
+text = "Lvl l"
+label_settings = SubResource("LabelSettings_o2swp")
+
 [connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
 [connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
+[connection signal="timeout" from="InternalStateTimer" to="." method="_on_internal_state_timer_timeout"]
+
+[editable path="RubbingSurface"]

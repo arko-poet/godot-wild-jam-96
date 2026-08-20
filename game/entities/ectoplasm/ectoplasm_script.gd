@@ -5,7 +5,7 @@ extends Node2D
 @onready var mouse_detection: Area2D = %MouseDetection
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-
+var ectoplasm_value: int = 1
 var mouse_collector: EctoplasmMouseCollector
 var is_collecting := false
 
@@ -36,8 +36,9 @@ func _process(delta: float) -> void:
 	)
 	
 
-
+func _play_idle()->void:
+	animation_player.play("IDLE")
 
 func _collected() -> void:
-	Event.ectoplasm_collected()
+	Event.ectoplasm_collected(ectoplasm_value)
 	queue_free()

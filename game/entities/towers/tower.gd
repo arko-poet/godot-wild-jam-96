@@ -1,14 +1,26 @@
 class_name Tower
 extends Node2D
 
+enum TowerState{
+	OK,
+	SUPERCHARGED,
+	DISABLED
+}
+
 @export var data: TowerResource
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var perception_area: Area2D = $PerceptionArea
 @onready var perception_shape: CollisionShape2D = $PerceptionArea/CollisionShape2D
 @onready var vfx_origin: Marker2D = $VFXOrigin
+@onready var range_indicator: Node2D = $RangeIndicator
+@onready var range_visual: Sprite2D = $RangeIndicator/Visual
+@onready var rubbing_surface : RubbingSurface = $RubbingSurface
+@onready var internal_state_timer : Timer = $InternalStateTimer
+@onready var tower_level_label: Label = %TowerLevelLabel
 
-
+var tower_ability : TowerAbility
+var level = 1
 var current_charges: float = 0.0
 
 var perception_radius: float
@@ -20,20 +32,49 @@ var target_group: String
 var enemies_in_range: Array[EnemyContract] = []
 var enemy_contracts: Dictionary = {}
 
+var footprint: Array[Vector2i]
+
 var preview_mode :bool = true
+
+## Super Charge
+var supercharge_charge_rate_multiplier : float
+var supercharge_power_multiplier : float
+var supercharge_range_multiplier: float
+
+const overdrive_time :float = 10.0 # 10 Seconds of supercharge/ overdrive.
+var overdrive_cooldown: float # Followed by a Cooldown during which the tower is inactive.
+var tower_state : TowerState = TowerState.OK
+
+## Current Multipliers
+var charge_rate_multiplier :float = 1.0
+var power_multiplier: float =1.0
+var range_multipler: float =1.0
+
+## This is a temporary variable. Once we figure out whether we want to have the 
+## tower range visibilities setup differently, we should change this alongside with
+## Part of the implementation (check _ready)
+@export var default_tower_range_visibility = false 
 
 func _ready() -> void:
 	if data == null:
 		push_error("Tower has no TowerResource assigned.")
 		return
+	if preview_mode == false:
+		add_to_group("Towers")
+	
+	# Duplicating Texture to prevent Towers from accessing the same Texture2D 
+	var texture2d = range_visual.texture as GradientTexture2D
+	range_visual.texture = texture2d.duplicate(true)
 	
 	initialize_from_resource()
-	
+	set_range_indicator_visible(default_tower_range_visibility)
+	rubbing_surface.mouse_detected_signal.connect(_on_mouse_detected)
+	_update_level_label()
 	queue_redraw()
 
 func initialize_from_resource() -> void:
 	sprite.texture = data.tower_sprite
-
+	tower_ability = data.special_ability
 	perception_radius = data.perception_radius
 	charge_rate = data.charge_rate
 	activation_cost = data.activation_cost
@@ -41,7 +82,19 @@ func initialize_from_resource() -> void:
 	target_group = data.target_group
 
 	vfx_origin.position = data.vfx_origin
-
+	
+	footprint = data.footprint
+	
+	sprite.modulate = data.modulate_color
+	
+	# Initialize Supercharging parameters
+	supercharge_charge_rate_multiplier = data.supercharge_charge_rate_multiplier
+	supercharge_power_multiplier = data.supercharge_power_multiplier
+	supercharge_range_multiplier = data.supercharge_range_multipler
+	overdrive_cooldown = data.overdrive_cooldown
+	if (data.charging_configuration != null):
+		rubbing_surface.apply_charge_config(data.charging_configuration)
+	
 	update_perception_radius()
 
 func update_perception_radius() -> void:
@@ -50,8 +103,10 @@ func update_perception_radius() -> void:
 	if circle == null:
 		circle = CircleShape2D.new()
 		perception_shape.shape = circle
-
-	circle.radius = perception_radius
+	
+	var rendered_range = perception_radius*range_multipler
+	circle.radius = rendered_range
+	set_range_indicator_range(rendered_range)
 
 func upgrade_range(amount: float) -> void:
 	perception_radius += amount
@@ -67,31 +122,31 @@ func set_preview_color(color: Color) -> void:
 func _process(delta: float) -> void:
 	if data == null or preview_mode == true:
 		return
-
-	charge(delta)
+	update_supercharge()
+	charge(delta * (1 + abs(rubbing_surface.get_charge() / rubbing_surface.charge_controller.max_charge)))
 
 	if can_activate():
 		activate()
 
 
-func charge(delta: float) -> void:
-	current_charges += data.charge_rate * delta
+func charge(delta: float) -> void:	
+	current_charges += charge_rate * charge_rate_multiplier * delta
 
 	current_charges = min(
 		current_charges,
-		data.activation_cost
+		activation_cost
 	)
 
 
 func can_activate() -> bool:
-	return current_charges >= data.activation_cost
+	return current_charges >= activation_cost
 
 
 func activate() -> void:
-	if data.special_ability == null:
+	if tower_ability == null:
 		return
 
-	var ability := data.special_ability
+	var ability := tower_ability
 
 	var targets := get_targets(
 		ability.get_target_count()
@@ -99,16 +154,30 @@ func activate() -> void:
 
 	if ability.requires_targets() and targets.is_empty():
 		return
-
+	
 	var context := TowerAbilityContext.new(
-		get_vfx_origin(),
-		data.power,
-		targets
+		self,
+		power*power_multiplier,
+		targets,
+		rubbing_surface.get_charge_type(),
+		self
 	)
 
 	ability.activate(context)
 
-	current_charges -= data.activation_cost
+	current_charges -= activation_cost
+
+func update_supercharge():
+	if rubbing_surface.is_overcharged() and tower_state == TowerState.OK:
+		# Enter Supercharged State, disable rubbing_surface and start Overdrive Timer.
+		tower_state = TowerState.SUPERCHARGED
+		rubbing_surface.is_enabled = false
+		charge_rate_multiplier = supercharge_charge_rate_multiplier
+		power_multiplier = supercharge_power_multiplier
+		range_multipler = supercharge_range_multiplier
+		
+		internal_state_timer.start(overdrive_time)
+		update_perception_radius()
 
 
 func get_vfx_origin() -> Vector2:
@@ -185,3 +254,79 @@ func _on_perception_area_body_exited(body: Node2D) -> void:
 	var contract: EnemyContract = enemy_contracts[body]
 	enemy_contracts.erase(body)
 	enemies_in_range.erase(contract)
+
+
+func set_range_indicator_visible(visible: bool) -> void:
+	if preview_mode == true:
+		# Preventing Potential future controls from interacting weirdly with preview towers.
+		range_indicator.visible = true
+		return
+	range_indicator.visible = visible
+
+func set_range_indicator_range(range: float) -> void:
+	var texture := range_visual.texture as GradientTexture2D
+
+	texture.width = int(range * 2.0)
+	texture.height = int(range * 2.0)
+
+
+func _on_internal_state_timer_timeout() -> void:
+	if tower_state == TowerState.SUPERCHARGED:
+		# Disable Tower for a cooldown.
+		tower_state = TowerState.DISABLED
+		rubbing_surface.charge_controller.charge = 0
+		
+		# Also Resetting its attack readiness (current_charges) to 0.
+		current_charges = 0
+		
+		# Getting the charge_rate_multiplier to zero pretty much deactivates the tower.
+		charge_rate_multiplier = 0.0
+		power_multiplier = 1.0
+		range_multipler = 1.0
+		
+		# Start internal State timer again for the cooldown duration
+		internal_state_timer.start(overdrive_cooldown)
+		update_perception_radius()
+		return
+	
+	if tower_state == TowerState.DISABLED:
+		# Re-enable Tower.
+		tower_state = TowerState.OK
+		charge_rate_multiplier = 1.0
+		rubbing_surface.is_enabled = true
+		return
+
+# Leveling Up.
+func level_up():
+	level += 1
+	var scaling_data = TowerUpgradeManager.get_scaling_data(level,data)
+	
+	# Apply Scaling Data
+	if scaling_data != null:
+		apply_scaling_data(scaling_data)
+	_update_level_label()
+
+func apply_scaling_data(scaling_data: TowerUpgradeResource):
+	power += scaling_data.power
+	perception_radius += scaling_data.range
+	charge_rate += scaling_data.charge_rate
+	
+	supercharge_charge_rate_multiplier += scaling_data.supercharge_charge_rate_multiplier
+	supercharge_power_multiplier += scaling_data.supercharge_power_multiplier
+	supercharge_range_multiplier += scaling_data.supercharge_range_multipler
+	overdrive_cooldown = max(0,overdrive_cooldown - scaling_data.overdrive_cooldown)
+	
+	rubbing_surface.increment_charge_generation_rate(scaling_data.charge_generation_rate)
+	rubbing_surface.increment_charge_discharge_rate(scaling_data.charge_discharge_rate)
+	
+	if scaling_data.ability_replacement != null:
+		tower_ability = scaling_data.ability_replacement
+	update_perception_radius()
+
+
+func _on_mouse_detected( entered: bool )->void:
+	set_range_indicator_visible(entered)
+  
+  
+func _update_level_label() -> void:
+	tower_level_label.text = "Lvl %d" % level

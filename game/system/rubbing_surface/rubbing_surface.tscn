@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bus3m22c22i1j"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_7hwxa"]
+[ext_resource type="Script" uid="uid://0v1hk5og2d1n" path="res://game/system/rubbing_surface/rubbing_surface.gd" id="1_r6aub"]
+[ext_resource type="Script" uid="uid://bfavpu1i27l7c" path="res://game/system/rubbing_surface/rubbing_detector.gd" id="3_rt8yw"]
+[ext_resource type="Script" uid="uid://ctxcp2pfuu8nt" path="res://game/system/rubbing_surface/charge_controller.gd" id="4_0ydy3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsyln"]
+size = Vector2(128, 128)
+
+[node name="RubbingSurface" type="Area2D" unique_id=1880943059]
+script = ExtResource("1_r6aub")
+show_debug_labels = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=787626526]
+texture = ExtResource("1_7hwxa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=556403593]
+shape = SubResource("RectangleShape2D_jsyln")
+
+[node name="RubbingDetector" type="Node2D" parent="." unique_id=617122147]
+script = ExtResource("3_rt8yw")
+
+[node name="ChargeController" type="Node" parent="." unique_id=835129098]
+script = ExtResource("4_0ydy3")
+
+[node name="MetricLabelsContainer" type="VBoxContainer" parent="." unique_id=1120814076]
+offset_left = -64.0
+offset_top = -92.0
+offset_right = 64.0
+offset_bottom = -64.0
+
+[node name="IntensityLabel" type="Label" parent="MetricLabelsContainer" unique_id=1504402827]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Intensity: "
+
+[node name="ChargeLabel" type="Label" parent="MetricLabelsContainer" unique_id=1525711401]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Charge: "
+
+[node name="ChargeRateLabel" type="Label" parent="MetricLabelsContainer" unique_id=1798113566]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Charge Rate: "
+
+[node name="StatusLabel" type="Label" parent="MetricLabelsContainer" unique_id=10310825]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
