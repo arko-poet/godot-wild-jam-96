@@ -30,11 +30,12 @@ font_size = 8
 [sub_resource type="LabelSettings" id="LabelSettings_d0j2t"]
 font_size = 8
 
-[node name="MainGame" type="Node" unique_id=1950236070]
+[node name="MainGame" type="Node" unique_id=1950236070 node_paths=PackedStringArray("speed_buttons")]
 script = ExtResource("1_70w2d")
 _starting_ectoplasm = 250
 _starting_core_charges = 100
 tower_resources = Array[ExtResource("2_6n5r1")]([ExtResource("3_kqlce"), ExtResource("4_7082i"), ExtResource("5_r670b"), ExtResource("6_5e54f"), ExtResource("7_6oj41"), ExtResource("8_naq3g"), ExtResource("9_hw6kc")])
+speed_buttons = [NodePath("UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons/X1"), NodePath("UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons/X2"), NodePath("UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons/X3")]
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=1922467190]
 unique_name_in_owner = true

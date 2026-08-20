@@ -1,6 +1,8 @@
 class_name RubbingSurface
 extends Area2D
 
+signal mouse_detected_signal( entered: bool )
+
 @export_category("Debug Display")
 @export var show_debug_labels := true
 @export var show_sprite:= false
@@ -14,6 +16,9 @@ extends Area2D
 @onready var charge_label: Label = $MetricLabelsContainer/ChargeLabel
 @onready var charge_rate_label: Label = $MetricLabelsContainer/ChargeRateLabel
 @onready var status_label: Label = $MetricLabelsContainer/StatusLabel
+
+@onready var possitive_charge_bar: ProgressBar = $PossitiveChargeBar
+@onready var negative_charge_bar: ProgressBar = $NegativeChargeBar
 
 var is_enabled : bool = true
 
@@ -43,6 +48,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_mouse_entered() -> void:
 	rubbing_detector.set_mouse_inside(true)
+	mouse_detected_signal.emit(true)
 
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		rubbing_detector.start_rubbing()
@@ -51,6 +57,7 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	rubbing_detector.set_mouse_inside(false)
+	mouse_detected_signal.emit(false)
 
 
 func _physics_process(delta: float) -> void:
@@ -64,13 +71,15 @@ func _physics_process(delta: float) -> void:
 	if not is_enabled:
 		rubbing_intensity = 0
 		
-	charge_controller.update(
-		delta,
-		rubbing_intensity,
-		charging_sign
-	)
+	if not is_overcharged():
+		charge_controller.update(
+			delta,
+			rubbing_intensity,
+			charging_sign
+		)
 
 	update_debug_labels()
+	_update_progress_bars()
 
 # Getters to act as a public interface for the Rubbing Surface.
 func get_charge() -> float:
@@ -165,3 +174,14 @@ func update_debug_labels() -> void:
 		charge_rate_label.modulate = Color.RED
 
 	status_label.text = status
+
+
+func _update_progress_bars()->void:
+	
+	var charge := charge_controller.charge
+	
+	if charge >= 0:
+		possitive_charge_bar.value = charge
+	
+	if charge <= 0:
+		negative_charge_bar.value = abs(charge)

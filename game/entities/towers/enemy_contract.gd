@@ -26,4 +26,5 @@ var global_position: Vector2:
 
 # Update this with the proper function that makes the mob take damage in the actual mob class.
 func take_damage(damage: DamagePacket) -> void:
-	mob.take_damage(damage)
+	if mob:
+		mob.take_damage(damage)
