@@ -23,7 +23,6 @@ autoplay = "default"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=323462887]
-visible = false
 shape = SubResource("CircleShape2D_4jx01")
 
 [node name="EctoplasmSpawner" type="Node2D" parent="." unique_id=186805388]
