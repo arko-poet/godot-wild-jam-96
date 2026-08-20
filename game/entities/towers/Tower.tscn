@@ -74,6 +74,7 @@ shape = SubResource("CircleShape2D_vgud1")
 [node name="VFXOrigin" type="Marker2D" parent="." unique_id=1798908915]
 
 [node name="RangeIndicator" type="Node2D" parent="." unique_id=137107288]
+z_index = 100
 
 [node name="Visual" type="Sprite2D" parent="RangeIndicator" unique_id=21435314]
 material = SubResource("ShaderMaterial_jsyln")
@@ -91,6 +92,7 @@ shape = SubResource("RectangleShape2D_aw6bx")
 offset_bottom = -48.0
 
 [node name="PossitiveChargeBar" type="ProgressBar" parent="RubbingSurface" unique_id=455222706]
+z_index = 100
 offset_left = -1.0
 offset_top = -58.0
 offset_right = 33.0
@@ -118,6 +120,7 @@ texture = ExtResource("5_aw6bx")
 expand_mode = 1
 
 [node name="NegativeChargeBar" type="ProgressBar" parent="RubbingSurface" unique_id=1097102002]
+z_index = 100
 offset_left = -33.0
 offset_top = -58.0
 offset_right = 1.0
@@ -145,6 +148,7 @@ expand_mode = 1
 
 [node name="TowerLevelLabel" type="Label" parent="." unique_id=511289234]
 unique_name_in_owner = true
+z_index = 100
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
