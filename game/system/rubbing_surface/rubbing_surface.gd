@@ -19,6 +19,7 @@ signal mouse_detected_signal( entered: bool )
 
 @onready var possitive_charge_bar: ProgressBar = $PossitiveChargeBar
 @onready var negative_charge_bar: ProgressBar = $NegativeChargeBar
+@onready var charge_particle_effect: ChargeParticleEffect = %ChargeParticleEffect
 
 var is_enabled : bool = true
 
@@ -79,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		)
 
 	update_debug_labels()
-	_update_progress_bars()
+	_update_charge_vfx()
 
 # Getters to act as a public interface for the Rubbing Surface.
 func get_charge() -> float:
@@ -176,12 +177,16 @@ func update_debug_labels() -> void:
 	status_label.text = status
 
 
-func _update_progress_bars()->void:
+func _update_charge_vfx()->void:
 	
 	var charge := charge_controller.charge
 	
 	if charge >= 0:
 		possitive_charge_bar.value = charge
+		charge_particle_effect.display_charge_effect_for_tower( true, charge )
 	
 	if charge <= 0:
 		negative_charge_bar.value = abs(charge)
+		charge_particle_effect.display_charge_effect_for_tower( false, charge )
+	
+	

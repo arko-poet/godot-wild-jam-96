@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7u2g0mj3rr1g" path="res://game/assets/towers/prototype_tower_large.png" id="2_o2swp"]
 [ext_resource type="Shader" uid="uid://73hk1rqg6q6q" path="res://game/entities/towers/range_indicator.gdshader" id="3_5brqy"]
 [ext_resource type="PackedScene" uid="uid://bus3m22c22i1j" path="res://game/system/rubbing_surface/rubbing_surface.tscn" id="4_xayqd"]
+[ext_resource type="PackedScene" uid="uid://bxv4j0y4abcc8" path="res://game/system/vfx_scenes/charge_particle_effect.tscn" id="5_xayqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
 
@@ -63,6 +64,9 @@ script = ExtResource("1_0e2fs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599717512]
 texture = ExtResource("2_o2swp")
+
+[node name="ChargeParticleEffect" parent="Sprite2D" unique_id=1362100915 instance=ExtResource("5_xayqd")]
+unique_name_in_owner = true
 
 [node name="PerceptionArea" type="Area2D" parent="." unique_id=1968859076]
 

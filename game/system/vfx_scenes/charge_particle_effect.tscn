@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bxv4j0y4abcc8"]
+
+[ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="1_as6tb"]
+[ext_resource type="Script" uid="uid://khlttmdgh4vp" path="res://game/system/vfx/charge_particle_effect.gd" id="2_5w0ig"]
+
+[node name="ChargeParticleEffect" type="CPUParticles2D" unique_id=1362100915]
+self_modulate = Color(1, 1, 1, 0.80784315)
+amount = 3
+texture = ExtResource("1_as6tb")
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 18.74
+gravity = Vector2(0, -10)
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+script = ExtResource("2_5w0ig")
