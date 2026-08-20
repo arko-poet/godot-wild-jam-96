@@ -15,6 +15,9 @@ extends Area2D
 @onready var charge_rate_label: Label = $MetricLabelsContainer/ChargeRateLabel
 @onready var status_label: Label = $MetricLabelsContainer/StatusLabel
 
+@onready var possitive_charge_bar: ProgressBar = $PossitiveChargeBar
+@onready var negative_charge_bar: ProgressBar = $NegativeChargeBar
+
 var is_enabled : bool = true
 
 func _ready() -> void:
@@ -71,6 +74,7 @@ func _physics_process(delta: float) -> void:
 	)
 
 	update_debug_labels()
+	_update_progress_bars()
 
 # Getters to act as a public interface for the Rubbing Surface.
 func get_charge() -> float:
@@ -165,3 +169,14 @@ func update_debug_labels() -> void:
 		charge_rate_label.modulate = Color.RED
 
 	status_label.text = status
+
+
+func _update_progress_bars()->void:
+	
+	var charge := charge_controller.charge
+	
+	if charge >= 0:
+		possitive_charge_bar.value = charge
+	
+	if charge <= 0:
+		negative_charge_bar.value = abs(charge)
