@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://c0t3rtc1w03rl" path="res://game/resources/mobs/ghost_mob.tres" id="2_savdq"]
 [ext_resource type="SpriteFrames" uid="uid://dg8jti0bl5lk2" path="res://game/resources/mobs/ghost_sprite_frames.tres" id="3_67lka"]
 [ext_resource type="Script" uid="uid://ccunmongimtvu" path="res://game/system/spawners/ectoplasm_spawner.gd" id="4_67lka"]
-[ext_resource type="Texture2D" uid="uid://bvott06kehk71" path="res://game/assets/vfx/plus_particle.png" id="5_2v5jp"]
+[ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="5_2v5jp"]
 [ext_resource type="Script" uid="uid://khlttmdgh4vp" path="res://game/system/vfx/charge_particle_effect.gd" id="5_6tmvf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jx01"]
@@ -23,6 +23,7 @@ autoplay = "default"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=323462887]
+visible = false
 shape = SubResource("CircleShape2D_4jx01")
 
 [node name="EctoplasmSpawner" type="Node2D" parent="." unique_id=186805388]
