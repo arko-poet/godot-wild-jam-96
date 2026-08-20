@@ -78,6 +78,7 @@ material = SubResource("ShaderMaterial_jsyln")
 texture = SubResource("GradientTexture2D_vgud1")
 
 [node name="RubbingSurface" parent="." unique_id=1880943059 instance=ExtResource("4_xayqd")]
+show_debug_labels = false
 
 [node name="Sprite2D" parent="RubbingSurface" index="0" unique_id=787626526]
 visible = false
