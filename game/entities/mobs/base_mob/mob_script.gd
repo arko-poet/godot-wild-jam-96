@@ -152,6 +152,11 @@ func take_damage(damage:DamagePacket) -> void:
 		# Edit here to change how the Charge applies extra damage.
 		# With the current implementation it only applies double damage.
 		charge_damage_bonus = damage.amount
+	elif (# penalty if charges match
+		(charge_type == Enums.ChargeType.POSITIVE and damage.charge_sign == Enums.ChargeType.POSITIVE)
+		or (charge_type == Enums.ChargeType.NEGATIVE and damage.charge_sign == Enums.ChargeType.NEGATIVE)
+		):
+		charge_damage_bonus -= damage.amount / 2.0
 	
 	var damage_to_inflict = damage.amount + charge_damage_bonus
 	
