@@ -248,12 +248,12 @@ offset_top = -63.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 8
-text = "Tips:
+text = "Tip:
 Charged towers are stronger
 Hold LMB and for positive charge
 Hold LMB+RMB for negative charge
 Move rapidly over towers to charge them
-Charged towers counter charged ghosts"
+Check itch page for more details"
 
 [node name="EctoplasmMouseCollector" parent="." unique_id=1134838315 instance=ExtResource("10_evtg3")]
 
