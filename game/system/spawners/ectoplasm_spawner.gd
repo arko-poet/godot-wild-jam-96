@@ -16,16 +16,20 @@ func _ready() -> void:
 
 
 func _on_mob_killed() -> void:
+	
+	_spawn_ectoplasm()
+
+
+
+func _spawn_ectoplasm()->void:
+	
 	var parent: Mob = get_parent()
-
-	for loot in parent.loot:
-		var ectoplasm: Ectoplasm = ECTOPLASM_SCENE.instantiate()
-
-		get_tree().current_scene.add_child(ectoplasm)
-
-		var offset := Vector2(
-			randf_range(-spawn_radius, spawn_radius),
-			randf_range(-spawn_radius, spawn_radius)
-		)
-
-		ectoplasm.global_position = global_position + offset
+	var ectoplasm: Ectoplasm = ECTOPLASM_SCENE.instantiate()
+	var offset := Vector2(
+		randf_range(-spawn_radius, spawn_radius),
+		randf_range(-spawn_radius, spawn_radius)
+	)
+	
+	ectoplasm.global_position = global_position + offset
+	ectoplasm.ectoplasm_value = parent.loot
+	get_tree().current_scene.add_child(ectoplasm)

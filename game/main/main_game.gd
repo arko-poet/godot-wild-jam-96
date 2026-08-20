@@ -86,8 +86,8 @@ func _on_tower_button_pressed(button: TowerPurchaseButton) -> void:
 
 
 
-func _on_ectoplasm_collected_signal()->void:
-	_ectoplasm += 1
+func _on_ectoplasm_collected_signal(ectoplasm_value: int)->void:
+	_ectoplasm += ectoplasm_value
 
 func _on_level_core_damaged() -> void:
 	# TODO this should use mob damage instead
