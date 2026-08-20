@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://d1kopu171ngjw" path="res://game/resources/towers/attack_towers/t1/attack_tower.tres" id="2_syksk"]
 [ext_resource type="Script" uid="uid://bj20lhnl4mmwb" path="res://game/sandbox/test_controller.gd" id="3_gl1dy"]
 [ext_resource type="Texture2D" uid="uid://blj34dy6dqld7" path="res://game/assets/towers/prototype_enemy.png" id="4_ol8s6"]
+[ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="6_gl1dy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
 radius = 20.024984
@@ -24,6 +25,9 @@ texture = ExtResource("4_ol8s6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobExample" unique_id=801920005]
 shape = SubResource("CircleShape2D_vgud1")
+
+[node name="Mob" parent="MobExample" unique_id=978749843 instance=ExtResource("6_gl1dy")]
+position = Vector2(506, 233)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=525100753]
 
