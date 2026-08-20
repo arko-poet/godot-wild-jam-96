@@ -157,7 +157,7 @@ func take_damage(damage:DamagePacket) -> void:
 		or (charge_type == Enums.ChargeType.NEGATIVE and damage.charge_sign == Enums.ChargeType.NEGATIVE)
 		):
 		charge_damage_bonus -= damage.amount / 2.0
-	
+		
 	var damage_to_inflict = damage.amount + charge_damage_bonus
 	
 	# Apply Damage
