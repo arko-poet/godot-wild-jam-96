@@ -69,6 +69,14 @@ script = ExtResource("1_0e2fs")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599717512]
 texture = ExtResource("2_wdb04")
 
+[node name="BarrelSprite" type="Sprite2D" parent="Sprite2D" unique_id=699060565]
+unique_name_in_owner = true
+texture = ExtResource("5_1hvyf")
+
+[node name="BulletOriginMarker" type="Marker2D" parent="Sprite2D/BarrelSprite" unique_id=1650057458]
+unique_name_in_owner = true
+position = Vector2(28, 0)
+
 [node name="CenterContainer" type="CenterContainer" parent="Sprite2D" unique_id=1904777508]
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,14 +99,6 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 texture = ExtResource("4_wdb04")
-
-[node name="BarrelSprite" type="Sprite2D" parent="Sprite2D" unique_id=699060565]
-unique_name_in_owner = true
-texture = ExtResource("5_1hvyf")
-
-[node name="BulletOriginMarker" type="Marker2D" parent="Sprite2D/BarrelSprite" unique_id=1650057458]
-unique_name_in_owner = true
-position = Vector2(28, 0)
 
 [node name="PerceptionArea" type="Area2D" parent="." unique_id=1968859076]
 

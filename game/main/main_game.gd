@@ -147,7 +147,6 @@ func _build_tower_buttons() -> void:
 		tower_button.set_texture(tower_resource.preview_texture)
 		tower_button_container.add_child(tower_button)
 		tower_button.pressed.connect(_on_tower_button_pressed.bind(tower_button))
-		tower_button.modulate = tower_resource.modulate_color
 		tower_button.tower_resource = tower_resource
 
 func update_tower_buttons():

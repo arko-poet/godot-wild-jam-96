@@ -6,5 +6,6 @@
 [node name="ProjectUISoundController" type="Node" unique_id=1525696179]
 script = ExtResource("1_dmagn")
 button_hovered = ExtResource("2_n2xtw")
+texture_button_hovered = ExtResource("2_n2xtw")
 tab_hovered = ExtResource("2_n2xtw")
 slider_hovered = ExtResource("2_n2xtw")

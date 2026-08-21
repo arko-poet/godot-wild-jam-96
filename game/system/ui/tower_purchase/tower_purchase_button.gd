@@ -9,6 +9,7 @@ var tower_resource: TowerResource:
 		tower_resource = value
 		if tower_resource != null:
 			_cost_label.text = str(tower_resource.purchase_price)
+			self_modulate = tower_resource.modulate_color
 
 func set_texture(texture: Texture2D) -> void:
 	texture_normal = texture
@@ -19,8 +20,7 @@ func set_texture(texture: Texture2D) -> void:
 
 
 func _on_mouse_entered() -> void:
-	if not disabled:
-		selection_border.visible = true
+	selection_border.visible = true
 
 
 func _on_mouse_exited() -> void:
@@ -38,8 +38,9 @@ func _on_pressed() -> void:
 func toggle_enable(enable: bool) -> void:
 	disabled = not enable
 	if disabled:
-		disabled_visual.visible = true
+		# disabled_visual.visible = true
+		_cost_label.modulate = Color.RED
 	else:
 		disabled_visual.visible = false
-		
+		_cost_label.modulate = Color.WHITE
 	
