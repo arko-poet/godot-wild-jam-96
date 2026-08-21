@@ -37,7 +37,7 @@ var _tower_upgrades_purchased := 0:
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
 @onready var core_charges_count: Label = %CoreChargesCount
 @onready var _upgrade_tower_button: Button = %UpgradeTowerButton
-@onready var tower_button_container: VBoxContainer = %TowerButtonContainer
+@onready var tower_button_container: GridContainer = %TowerButtonContainer
 
 @export var tower_resources: Array[TowerResource]
 
@@ -67,6 +67,10 @@ func _ready() -> void:
 	_update_tower_upgrade_cost()
 	_build_tower_buttons()
 
+func _process(delta: float) -> void:
+	update_tower_buttons()
+	update_tower_upgrade_button()
+	pass
 
 func _connect_speed_buttons()->void:
 	for button in speed_buttons:
@@ -131,12 +135,25 @@ func _on_upgrade_tower_button_pressed() -> void:
 func _update_tower_upgrade_cost() -> void:
 	_tower_upgrade_cost = UPGRADE_SCALING_FACTOR * (1 + _tower_upgrades_purchased)
 
+func update_tower_upgrade_button() -> void:
+	if _ectoplasm < _tower_upgrade_cost:
+		_upgrade_tower_button.disabled = true
+	else:
+		_upgrade_tower_button.disabled = false
+
 func _build_tower_buttons() -> void:
 	for tower_resource: TowerResource in tower_resources:
 		var tower_button: TowerPurchaseButton = TowerPurchaseButtonScene.instantiate()
+		tower_button.set_texture(tower_resource.preview_texture)
 		tower_button_container.add_child(tower_button)
 		tower_button.pressed.connect(_on_tower_button_pressed.bind(tower_button))
-		tower_button.icon = tower_resource.tower_sprite
 		tower_button.modulate = tower_resource.modulate_color
 		tower_button.tower_resource = tower_resource
-		
+
+func update_tower_buttons():
+	for button : TowerPurchaseButton in tower_button_container.get_children():
+		var t_resource = button.tower_resource
+		if t_resource.purchase_price <= _ectoplasm:
+			button.toggle_enable(true)
+		else:
+			button.toggle_enable(false)
