@@ -12,6 +12,8 @@ enum TowerState{
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var disabled_icon : TextureRect = %DisabledIcon
 @onready var supercharged_icon : TextureRect = %SuperchargedIcon
+@onready var barrel_sprite: Sprite2D = %BarrelSprite
+@onready var barrel_tip_point: Marker2D = %BulletOriginMarker
 
 @onready var perception_area: Area2D = $PerceptionArea
 @onready var perception_shape: CollisionShape2D = $PerceptionArea/CollisionShape2D
@@ -80,6 +82,8 @@ func _ready() -> void:
 
 func initialize_from_resource() -> void:
 	sprite.texture = data.tower_sprite
+	barrel_sprite.texture = data.barrel_sprite
+	
 	tower_ability = data.special_ability
 	perception_radius = data.perception_radius
 	charge_rate = data.charge_rate
@@ -91,7 +95,10 @@ func initialize_from_resource() -> void:
 	
 	footprint = data.footprint
 	
-	sprite.modulate = data.modulate_color
+	sprite.self_modulate = data.modulate_color
+	barrel_sprite.self_modulate = data.modulate_color
+	if (data.use_different_modulate_for_barrel):
+		barrel_sprite.self_modulate = data.barrel_modulate_color
 	
 	# Initialize Supercharging parameters
 	supercharge_charge_rate_multiplier = data.supercharge_charge_rate_multiplier
@@ -160,6 +167,12 @@ func activate() -> void:
 
 	if ability.requires_targets() and targets.is_empty():
 		return
+	
+	# If we add more towers (ones with another barrel for example) we will need
+	# to prevent this from running. As for different barrels, we need to setup
+	# ways to change the barrel sprite and the bullet position inside it.
+	# Potentially by setting up Barrels as separate scenes maybe.	
+	update_barrel_rotation(get_barrel_target_position(targets))
 	
 	var context := TowerAbilityContext.new(
 		self,
@@ -337,7 +350,7 @@ func _on_mouse_detected( entered: bool )->void:
 func _update_level_label() -> void:
 	tower_level_label.text = "Lvl %d" % level
 
-func update_status_icon():
+func update_status_icon() -> void:
 	match(tower_state):
 		TowerState.OK: 
 			disabled_icon.visible = false
@@ -348,3 +361,22 @@ func update_status_icon():
 		TowerState.SUPERCHARGED:
 			disabled_icon.visible = false
 			supercharged_icon.visible = true
+
+func update_barrel_rotation(target_position:Vector2) -> void:
+	# global_position.angle_to_point() returns the absolute angle to the target
+	var angle = global_position.angle_to_point(target_position)
+	
+	# Override the rotation
+	barrel_sprite.rotation = angle
+	
+	vfx_origin.global_position = barrel_tip_point.global_position
+
+func get_barrel_target_position(targets : Array[EnemyContract]) -> Vector2:
+	if targets.is_empty():
+		return Vector2.ZERO
+	
+	var sum := Vector2.ZERO
+	for target in targets:
+		sum += target.global_position
+		
+	return sum / targets.size()

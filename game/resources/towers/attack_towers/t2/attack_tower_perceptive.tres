@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="TowerResource" format=3 uid="uid://csiarfm06pi2c"]
 
+[ext_resource type="Texture2D" uid="uid://u22p4orcseah" path="res://game/assets/towers/barrel.png" id="1_icoo2"]
 [ext_resource type="Script" uid="uid://dv41c0f80vxun" path="res://game/system/rubbing_surface/charge_config.gd" id="1_uoupo"]
 [ext_resource type="Script" uid="uid://bchbyouil8i2v" path="res://game/entities/towers/tower_resource.gd" id="2_icoo2"]
 [ext_resource type="Resource" uid="uid://8cklpgs4b6cj" path="res://game/resources/towers/abilities/attack.tres" id="3_tuscl"]
 [ext_resource type="Texture2D" uid="uid://b7x2ej5v7npqq" path="res://game/assets/towers/tower.png" id="4_e8aw0"]
+[ext_resource type="Texture2D" uid="uid://c71tg7uc7v3pa" path="res://game/assets/towers/tower_no_barrel.png" id="4_uoupo"]
 [ext_resource type="Script" uid="uid://5sjlicbvpgxd" path="res://game/entities/towers/tower_upgrades/tower_upgrade_resource.gd" id="5_ojdo5"]
 
 [sub_resource type="Resource" id="Resource_o2swp"]
@@ -19,7 +21,9 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_icoo2")
-tower_sprite = ExtResource("4_e8aw0")
+tower_sprite = ExtResource("4_uoupo")
+barrel_sprite = ExtResource("1_icoo2")
+preview_texture = ExtResource("4_e8aw0")
 perception_radius = 96.0
 modulate_color = Color(0.8509804, 0.9411765, 0.83137256, 1)
 purchase_price = 200

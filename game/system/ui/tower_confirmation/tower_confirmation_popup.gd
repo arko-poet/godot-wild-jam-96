@@ -27,7 +27,8 @@ func show_for_tower(tower_resource: TowerResource) -> void:
 	tower = tower_resource
 
 	tower_name_label.text = tower_resource.display_name
-	tower_sprite.texture = tower_resource.tower_sprite
+	tower_sprite.texture = tower_resource.preview_texture
+	tower_sprite.self_modulate = tower_resource.modulate_color
 	cost_label.text = "%d Electroplasm" % tower_resource.purchase_price
 
 	description_label.text = tower_resource.description

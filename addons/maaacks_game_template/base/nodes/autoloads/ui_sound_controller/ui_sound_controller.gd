@@ -22,6 +22,11 @@ const MAX_DEPTH = 16
 @export var button_focused : AudioStream
 @export var button_pressed : AudioStream
 
+@export_group("Texture Button Sounds")
+@export var texture_button_hovered : AudioStream
+@export var texture_button_focused : AudioStream
+@export var texture_button_pressed : AudioStream
+
 @export_group("TabBar Sounds")
 @export var tab_hovered : AudioStream
 @export var tab_changed : AudioStream
@@ -54,6 +59,10 @@ const MAX_DEPTH = 16
 var button_hovered_player : AudioStreamPlayer
 var button_focused_player : AudioStreamPlayer
 var button_pressed_player : AudioStreamPlayer
+
+var texture_button_hovered_player : AudioStreamPlayer
+var texture_button_focused_player : AudioStreamPlayer
+var texture_button_pressed_player : AudioStreamPlayer
 
 var tab_hovered_player : AudioStreamPlayer
 var tab_changed_player : AudioStreamPlayer
@@ -103,6 +112,13 @@ func _build_button_stream_players() -> void:
 	button_focused_player = _build_stream_player(button_focused, "ButtonFocused")
 	button_pressed_player = _build_stream_player(button_pressed, "ButtonClicked")
 
+func _build_texture_button_stream_players() -> void:
+	texture_button_hovered_player = _build_stream_player(texture_button_hovered, "ButtonHovered")
+	texture_button_focused_player = _build_stream_player(texture_button_focused, "ButtonFocused")
+	texture_button_pressed_player = _build_stream_player(texture_button_pressed, "ButtonClicked")
+
+
+
 func _build_tab_stream_players() -> void:
 	tab_hovered_player = _build_stream_player(tab_hovered, "TabHovered")
 	tab_changed_player = _build_stream_player(tab_changed, "TabChanged")
@@ -132,6 +148,7 @@ func _build_tree_stream_players() -> void:
 
 func _build_all_stream_players() -> void:
 	_build_button_stream_players()
+	_build_texture_button_stream_players()
 	_build_tab_stream_players()
 	_build_slider_stream_players()
 	_build_line_stream_players()
@@ -167,6 +184,10 @@ func connect_ui_sounds(node: Node) -> void:
 		_connect_stream_player(node, button_hovered_player, &"mouse_entered", _play_stream)
 		_connect_stream_player(node, button_focused_player, &"focus_entered", _play_stream)
 		_connect_stream_player(node, button_pressed_player, &"pressed", _play_stream)
+	elif node is TextureButton:
+		_connect_stream_player(node, texture_button_hovered_player, &"mouse_entered", _play_stream)
+		_connect_stream_player(node, texture_button_focused_player, &"focus_entered", _play_stream)
+		_connect_stream_player(node, texture_button_pressed_player, &"pressed", _play_stream)
 	elif node is TabBar:
 		_connect_stream_player(node, tab_hovered_player, &"tab_hovered", _tab_event_play_stream)
 		_connect_stream_player(node, tab_changed_player, &"tab_changed", _tab_event_play_stream)
