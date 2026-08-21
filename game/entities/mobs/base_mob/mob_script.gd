@@ -8,6 +8,7 @@ signal remove_from_manager_pool( ref_to_self: Mob )
 @onready var mob_animated_sprite: AnimatedSprite2D = %MobAnimatedSprite
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var charge_particle_effect: ChargeParticleEffect = %ChargeParticleEffect
+@onready var ectoplasm_spawner: EctoplasmSpawner = $EctoplasmSpawner
 
 @export var data: MobResource
 
@@ -68,6 +69,7 @@ func _modulate_color_by_mob_type()->void:
 		MobResource.MobType.BOSS_GHOST:
 			
 			mob_animated_sprite.set_modulate( Color.DARK_BLUE )
+			ectoplasm_spawner.spawns_move_than_one_ectoplasm = true
 
 
 
