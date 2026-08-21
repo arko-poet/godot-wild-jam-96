@@ -53,6 +53,10 @@ folder_colors={
 "res://game/system/": "orange"
 }
 
+[global_group]
+
+ectoplasm_lable="UI Ectoplasm Img"
+
 [gui]
 
 theme/custom="res://template/resources/themes/lore.tres"
