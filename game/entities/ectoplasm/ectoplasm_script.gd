@@ -13,12 +13,17 @@ var is_collecting := false
 var current_collecting_state: CollectingState = CollectingState.NONE
 var ectoplasm_ui_location: Vector2
 @export var move_to_mouse_speed: float = 100.0
-@export var collect_speed: float = 500.0
 
 ## This is here so I can reparent the sprite to canvis layer for visuals when moving towards lable. 
 var _ect_lable_ref: Control
 var _ui_canvas_layer: CanvasLayer
 var _is_collected: bool = false
+
+## For Movement to UI Movement:
+var ui_start_position: Vector2
+var ui_move_progress := 0.0
+## Controlls the speed / time it takes for the arc to complete. 
+var ui_move_duration := 0.8
 
 func _ready() -> void:
 	randomize()
@@ -76,17 +81,34 @@ func _process(delta: float) -> void:
 
 
 		CollectingState.UI:
-			global_position = global_position.move_toward(
+			ui_move_progress += delta / ui_move_duration
+
+			var t = clamp(ui_move_progress, 0.0, 1.0)
+
+			# Smooth start/end
+			var eased_t = t * t * (3.0 - 2.0 * t)
+
+			# Main movement
+			var pos := ui_start_position.lerp(
 				ectoplasm_ui_location,
-				collect_speed * delta
+				eased_t
 			)
 
-			if global_position.distance_to(ectoplasm_ui_location) < 2.0:
+			# Parabolic arc
+			var arc_height := 100.0
+			pos.y -= 4.0 * arc_height * t * (1.0 - t)
+
+			global_position = pos
+
+			if t >= 1.0:
 				_collected()
+
 
 
 func _enter_ui_state() -> void:
 	current_collecting_state = CollectingState.UI
+	ui_start_position = global_position
+	ui_move_progress = 0.0
 
 	if _ui_canvas_layer:
 		reparent(_ui_canvas_layer, true)
