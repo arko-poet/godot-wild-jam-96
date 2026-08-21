@@ -22,10 +22,12 @@ func _ready() -> void:
 func _on_start_wave_button()->void:
 	if _active_wave == false:
 		_active_wave = true
+		start_wave_button.disabled = true
 		_next_wave()
 
 func _on_wave_ended_signal()->void:
 	_active_wave = false
+	start_wave_button.disabled = false
 
 
 func _next_wave()->void:

@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _stop() -> void:
 	ghost_spawner_timer.stop()
+	Event.wave_ended()
 
 
 func _start(current_wave: int) -> void:
@@ -43,9 +44,6 @@ func _start(current_wave: int) -> void:
 
 func _on_ghost_mob_died(ghost_mob: Mob) -> void:
 	_active_ghosts.erase(ghost_mob)
-
-	if _active_ghosts.is_empty():
-		Event.wave_ended()
 
 
 func spawn_ghost(path: Array[Vector2i]) -> void:

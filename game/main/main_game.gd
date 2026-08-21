@@ -34,7 +34,6 @@ var _tower_upgrades_purchased := 0:
 @onready var _win_lose_manager: Node = %WinLoseManager
 @onready var _level : Level = %Level
 
-@onready var _ui : Control = $UILayer/UI
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
 @onready var core_charges_count: Label = %CoreChargesCount
 @onready var _upgrade_tower_button: Button = %UpgradeTowerButton
