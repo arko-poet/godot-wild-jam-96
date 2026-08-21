@@ -69,15 +69,19 @@ func _process(delta: float) -> void:
 		return
 
 	match current_collecting_state:
+		
 
 		CollectingState.MOUSE:
-			global_position = global_position.move_toward(
-				mouse_collector.global_position,
-				move_to_mouse_speed * delta
-			)
-
-			if global_position.distance_to(mouse_collector.global_position) < 0.05:
-				_enter_ui_state()
+			_enter_ui_state()
+			# Commenting this out as we are no longer using this logic. 
+			# Keeping it if we plan on using Ectoplsm collision feature. 
+			#global_position = global_position.move_toward(
+			#	mouse_collector.global_position,
+			#	move_to_mouse_speed * delta
+			#)
+#
+			#if global_position.distance_to(mouse_collector.global_position) < 0.05:
+			#	_enter_ui_state()
 
 
 		CollectingState.UI:
