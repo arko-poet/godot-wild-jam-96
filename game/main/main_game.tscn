@@ -63,6 +63,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="MainUiContainer" type="PanelContainer" parent="UILayer/UI" unique_id=1278955814]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
