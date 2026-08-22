@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://pssm8g3a6sbk"]
 
 [ext_resource type="Script" uid="uid://cph74luehmsxo" path="res://template/scenes/menus/options_menu/game/toogle_tips_control/toogle_tips_script.gd" id="1_o8bl2"]
+[ext_resource type="Resource" uid="uid://bu6pp4yifkawr" path="res://game/resources/game_options/game_options_resource.tres" id="2_tc8cb"]
 
 [node name="ToogleTips" type="HBoxContainer" unique_id=2070818652]
 script = ExtResource("1_o8bl2")
+game_options_resource = ExtResource("2_tc8cb")
 
 [node name="Label" type="Label" parent="." unique_id=877034866]
 layout_mode = 2
