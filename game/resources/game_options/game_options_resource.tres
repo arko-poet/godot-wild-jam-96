@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="GameOptionsResourceScript" format=3 uid="uid://bu6pp4yifkawr"]
+
+[ext_resource type="Script" uid="uid://dqbhlmrcoumle" path="res://game/resources/game_options/game_options_resource_script.gd" id="1_u5gbr"]
+
+[resource]
+script = ExtResource("1_u5gbr")
