@@ -35,3 +35,6 @@ func _on_mob_reached_end_of_path(damage_to_core:int) -> void:
 
 func _start_building_placement(tower_resource: TowerResource):
 	tower_placement_controller.start_placement(tower_resource)
+
+func get_wave_time_estimate(wave :int) -> float:
+	return mob_spawner.calculate_time_estimation(wave)

@@ -170,3 +170,10 @@ func update_tower_buttons():
 			button.toggle_enable(true)
 		else:
 			button.toggle_enable(false)
+
+
+func _on_wave_manager_generate_wave_rewards(ectoplasm: int) -> void:
+	if (ectoplasm > 0):
+		# Potentially here we need to add a visual effect to imply this gain.
+		_ectoplasm+= ectoplasm
+	pass # Replace with function body.
