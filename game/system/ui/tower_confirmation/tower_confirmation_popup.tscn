@@ -18,17 +18,23 @@ script = ExtResource("1_4t7uk")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1743461669]
 layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=166638364]
 layout_mode = 2
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=26473844]
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "Build Tower"
 
 [node name="TowerName" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1636176233]
 unique_name_in_owner = true
 layout_mode = 2
+horizontal_alignment = 1
 
 [node name="TowerSprite" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=567883782]
 unique_name_in_owner = true
@@ -38,10 +44,18 @@ stretch_mode = 3
 [node name="Cost" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1158187888]
 unique_name_in_owner = true
 layout_mode = 2
+horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer" unique_id=422593858]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=2146888664]
 layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=422593858]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+autowrap_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=102728294]
 layout_mode = 2

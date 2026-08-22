@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_egi5g")
+display_name = "Ghostbuster Mk1"
 tower_sprite = ExtResource("4_gbc7i")
 barrel_sprite = ExtResource("1_egi5g")
 preview_texture = ExtResource("4_rh0se")
@@ -31,4 +32,5 @@ supercharge_power_multiplier = 1.5
 supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_775cc")]([SubResource("Resource_l1xd4")])
+description = "Simple but dependable. Shoots ghosts one at a time."
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

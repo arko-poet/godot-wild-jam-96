@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_5pmjs")
+display_name = "Jabber"
 tower_sprite = ExtResource("4_ylfq2")
 barrel_sprite = ExtResource("1_5pmjs")
 preview_texture = ExtResource("4_msn22")
@@ -36,4 +37,5 @@ supercharge_power_multiplier = 1.5
 supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_pbnnp")]([SubResource("Resource_l1xd4")])
+description = "Shorter barrel, faster charging rate, bigger power! Sadly doesn't reach far.||Firing Rate ++||Power +||Range -"
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

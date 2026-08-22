@@ -4,6 +4,9 @@ class_name TowerPurchaseButton extends TextureButton
 @onready var selection_border : Panel = $SelectionBorder
 @onready var disabled_visual : TextureRect = $DisabledVisual
 
+const TOOLTIP_SCENE := preload("res://game/system/ui/tower_purchase/tower_menu_tooltip.tscn")
+
+
 var tower_resource: TowerResource:
 	set(value):
 		tower_resource = value
@@ -43,4 +46,11 @@ func toggle_enable(enable: bool) -> void:
 	else:
 		disabled_visual.visible = false
 		_cost_label.modulate = Color.WHITE
-	
+
+func _make_custom_tooltip(for_text: String) -> Object:
+	var tooltip := TOOLTIP_SCENE.instantiate() as TowerMenuTooltip
+	var tower_name = tower_resource.display_name
+	var tower_description = tower_resource.description
+	tooltip.setup(tower_name, tower_description)
+
+	return tooltip

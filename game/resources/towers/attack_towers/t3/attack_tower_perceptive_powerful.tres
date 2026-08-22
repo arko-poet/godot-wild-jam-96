@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_wbs65")
+display_name = "Railgun"
 tower_sprite = ExtResource("4_v86d5")
 barrel_sprite = ExtResource("1_wbs65")
 preview_texture = ExtResource("4_ip8bg")
@@ -36,4 +37,5 @@ supercharge_power_multiplier = 1.5
 supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_pwesp")]([SubResource("Resource_l1xd4")])
+description = "Takes a while to charge but it can target ghosts beyond your mortal understanding.||Range++||Power+||Firing Rate -"
 metadata/_custom_type_script = "uid://bchbyouil8i2v"
