@@ -129,6 +129,7 @@ func _collected() -> void:
 	if !_is_collected:
 		Event.ectoplasm_collected(ectoplasm_value)
 		animation_player.play("COLLECT")
+		Event.play_sfx( Enums.SfxTrack.ECTOPLASM_PICKUP )
 		_is_collected = true
 
 func _on_collect_animation_finished()->void:

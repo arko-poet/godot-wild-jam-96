@@ -14,6 +14,7 @@ enum TowerState{
 @onready var supercharged_icon : TextureRect = %SuperchargedIcon
 @onready var barrel_sprite: Sprite2D = %BarrelSprite
 @onready var barrel_tip_point: Marker2D = %BulletOriginMarker
+@onready var tower_sfx_player: AudioStreamPlayer = $TowerSfxPlayer
 
 @onready var perception_area: Area2D = $PerceptionArea
 @onready var perception_shape: CollisionShape2D = $PerceptionArea/CollisionShape2D
@@ -185,6 +186,7 @@ func activate() -> void:
 	ability.activate(context)
 
 	current_charges -= activation_cost
+	tower_sfx_player.play_sfx( TowerSfxPlayer.SfxTrack.SHOOT )
 
 func update_supercharge():
 	if rubbing_surface.is_overcharged() and tower_state == TowerState.OK:
@@ -197,6 +199,7 @@ func update_supercharge():
 		
 		internal_state_timer.start(overdrive_time)
 		update_perception_radius()
+		tower_sfx_player.play_sfx( TowerSfxPlayer.SfxTrack.SUPERCHARGE )
 
 
 func get_vfx_origin() -> Vector2:

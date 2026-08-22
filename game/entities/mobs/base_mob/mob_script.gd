@@ -12,6 +12,7 @@ signal remove_from_manager_pool( ref_to_self: Mob )
 
 @export var data: MobResource
 
+
 # Runtime Stats
 var max_health: float = 1.0
 var current_health : float = 1.0
@@ -179,4 +180,5 @@ func kill_mob() ->void:
 
 func _mob_die()->void:
 	remove_from_manager_pool.emit(self)
+	Event.play_sfx( Enums.SfxTrack.GHOST_DEATH )
 	queue_free()
