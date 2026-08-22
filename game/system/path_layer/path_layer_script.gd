@@ -11,10 +11,18 @@ var _end_tile: Vector2i
 var _start_tile: Vector2i
 var _path: Array[Vector2i]
 
+var is_built : bool = false
+
+func get_built_path() -> Array[Vector2i]:
+	if not is_built:
+		return build_path()
+	else:
+		return _path
 
 func build_path() -> Array[Vector2i]:
 
 	_path = _build_path()
+	is_built = true
 	return _path
 
 

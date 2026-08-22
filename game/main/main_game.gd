@@ -1,11 +1,15 @@
 extends Node
 
-const UPGRADE_SCALING_FACTOR := 1000
+const BASE_SCALING := 500
+const UPGRADE_SCALING_FACTOR := 250
 const TowerPurchaseButtonScene := preload("res://game/system/ui/tower_purchase/tower_purchase_button.tscn")
+const ECTOPLASM_MULTIPLIER_SCALING := 0.25
 
 @export var _starting_ectoplasm: int
 @export var _starting_core_charges: int
 @onready var level: Level = %Level
+
+var ectoplasm_multiplier := 1.0
 
 
 var _ectoplasm: int:
@@ -21,6 +25,10 @@ var _core_charges: int:
 		if _core_charges == 0:
 			_win_lose_manager.game_lost()
 
+var _income_upgrade_cost: int:
+	set(value):
+		_income_upgrade_cost = value
+		upgrade_income_button.text = "Upgrade\nIncome\n\n%s" % _income_upgrade_cost
 var _tower_upgrade_cost: int:
 	set(value):
 		_tower_upgrade_cost = value
@@ -29,6 +37,10 @@ var _tower_upgrades_purchased := 0:
 	set(value):
 		_tower_upgrades_purchased = value
 		_update_tower_upgrade_cost()
+var _income_upgrades_purchased := 0:
+	set(value):
+		_income_upgrades_purchased = value
+		_update_income_upgrade_cost()
 
 @onready var _pause_menu_controller: Node = %PauseMenuController
 @onready var _win_lose_manager: Node = %WinLoseManager
@@ -38,6 +50,7 @@ var _tower_upgrades_purchased := 0:
 @onready var core_charges_count: Label = %CoreChargesCount
 @onready var _upgrade_tower_button: Button = %UpgradeTowerButton
 @onready var tower_button_container: GridContainer = %TowerButtonContainer
+@onready var upgrade_income_button: Button = %UpgradeIncomeButton
 
 @export var tower_resources: Array[TowerResource]
 
@@ -52,6 +65,7 @@ func _ready() -> void:
 	_ectoplasm = _starting_ectoplasm
 	_core_charges = _starting_core_charges
 	Event.ectoplasm_collected_signal.connect(_on_ectoplasm_collected_signal)
+	Event.reset_engine_speed_signal.connect(_reset_speed_buttons)
 
 	_level.tower_placement_controller.confirmation_requested.connect(
 		_on_tower_placement_confirmation_requested
@@ -65,22 +79,36 @@ func _ready() -> void:
 	)
 	
 	_update_tower_upgrade_cost()
+	_update_income_upgrade_cost()
 	_build_tower_buttons()
 	_upgrade_tower_button.tooltip_text = "Levels up all built towers\n increasing their efficiency\n (Range, Power and Firing Rate)."
+	upgrade_income_button.tooltip_text = "Increases ectoplasm generation"
 
 func _process(_delta: float) -> void:
 	update_tower_buttons()
 	update_tower_upgrade_button()
+	update_income_update_button()
 
 
 func _connect_speed_buttons()->void:
+	_reset_speed_buttons()
 	for button in speed_buttons:
 		button.pressed.connect( _on_speed_button_pressed.bind(button))
 
 
 func _on_speed_button_pressed(button: Button) -> void:
+
 	var button_index := speed_buttons.find(button)
-	Engine.time_scale = button_index + 1.0 # Array index + 1.0 to determin engine speed 
+	Engine.time_scale = button_index + 1.0 # Array index + 1.0 determines engine speed
+	
+	for speed_button: Button in speed_buttons:
+		speed_button.button_pressed = speed_button == button
+
+func _reset_speed_buttons() -> void:
+	speed_buttons[0].button_pressed = true
+	Engine.time_scale = 1.0
+	for i in range(1, speed_buttons.size()):
+		speed_buttons[i].button_pressed = false
 
 func _on_tower_button_pressed(button: TowerPurchaseButton) -> void:
 	var preselected_tower: TowerResource = button.tower_resource
@@ -91,7 +119,7 @@ func _on_tower_button_pressed(button: TowerPurchaseButton) -> void:
 
 
 func _on_ectoplasm_collected_signal(ectoplasm_value: int)->void:
-	_ectoplasm += ectoplasm_value
+	_ectoplasm += ectoplasm_value * ectoplasm_multiplier
 
 func _on_level_core_damaged(damage:int) -> void:
 	_core_charges = max(0,_core_charges-damage)
@@ -119,6 +147,14 @@ func _on_confirmation_cancelled() -> void:
 func _on_wave_manager_wave_limit_exceeded() -> void:
 	_win_lose_manager.game_won()
 
+func _on_upgrade_income_button_pressed() -> void:
+	if _ectoplasm < _tower_upgrade_cost:
+		return
+		
+	_ectoplasm -= _income_upgrade_cost
+	ectoplasm_multiplier += ECTOPLASM_MULTIPLIER_SCALING
+	_income_upgrades_purchased += 1
+	Event.play_sfx( Enums.SfxTrack.TOWER_UPGRADE )
 
 func _on_upgrade_tower_button_pressed() -> void:
 	
@@ -136,13 +172,25 @@ func _on_upgrade_tower_button_pressed() -> void:
 
 
 func _update_tower_upgrade_cost() -> void:
-	_tower_upgrade_cost = UPGRADE_SCALING_FACTOR * (1 + _tower_upgrades_purchased)
+	_tower_upgrade_cost = BASE_SCALING + UPGRADE_SCALING_FACTOR * _tower_upgrades_purchased
+
+
+func _update_income_upgrade_cost() -> void:
+	_income_upgrade_cost = BASE_SCALING + UPGRADE_SCALING_FACTOR * _income_upgrades_purchased
+
 
 func update_tower_upgrade_button() -> void:
 	if _ectoplasm < _tower_upgrade_cost:
 		_upgrade_tower_button.disabled = true
 	else:
 		_upgrade_tower_button.disabled = false
+
+
+func update_income_update_button() -> void:
+	if _ectoplasm < _income_upgrade_cost:
+		upgrade_income_button.disabled = true
+	else:
+		upgrade_income_button.disabled = false
 
 func _build_tower_buttons() -> void:
 	for tower_resource: TowerResource in tower_resources:
@@ -159,3 +207,10 @@ func update_tower_buttons():
 			button.toggle_enable(true)
 		else:
 			button.toggle_enable(false)
+
+
+func _on_wave_manager_generate_wave_rewards(ectoplasm: int) -> void:
+	if (ectoplasm > 0):
+		# Potentially here we need to add a visual effect to imply this gain.
+		_ectoplasm+= ectoplasm * ectoplasm_multiplier
+	pass # Replace with function body.

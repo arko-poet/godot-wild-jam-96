@@ -22,6 +22,7 @@
 [ext_resource type="Theme" uid="uid://bqy65ykakpg5q" path="res://template/resources/themes/lore.tres" id="15_7082i"]
 [ext_resource type="AudioStream" uid="uid://c3ys33y3f70ih" path="res://game/assets/audio/music/gameplay-track1.mp3" id="15_d0j2t"]
 [ext_resource type="Script" uid="uid://faax4bjb3t42" path="res://game/system/ui/tip_label/tip_label_script.gd" id="18_as1rp"]
+[ext_resource type="PackedScene" uid="uid://c1ttv0f7fcyad" path="res://game/system/ui/start_wave_button/start_wave_button.tscn" id="18_yxbml"]
 [ext_resource type="Script" uid="uid://b8vltu7bjk4cp" path="res://game/system/sfx/sfx_manager.gd" id="21_7082i"]
 [ext_resource type="AudioStream" uid="uid://cjrljaool8bne" path="res://game/assets/audio/sfx/ghost-death-1.wav" id="22_hw6kc"]
 [ext_resource type="AudioStream" uid="uid://dvd8ttpkayyoo" path="res://game/assets/audio/sfx/start-wave-1.wav" id="23_hw6kc"]
@@ -30,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://bm4smo4a681ye" path="res://game/assets/audio/sfx/ectoplasm-pickup-1.wav" id="25_naq3g"]
 [ext_resource type="AudioStream" uid="uid://dr15hck185225" path="res://game/assets/audio/sfx/tower-shooting-1.wav" id="27_8i3wl"]
 [ext_resource type="AudioStream" uid="uid://b5vcddqtaiksh" path="res://game/assets/audio/sfx/supercharged-mode-1.mp3" id="28_hq47i"]
+[ext_resource type="PackedScene" uid="uid://bk5bnm7mapiml" path="res://game/system/rewards_manager/rewards_manager.tscn" id="30_as1rp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gw1l1"]
 font_size = 8
@@ -108,18 +110,21 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+toggle_mode = true
 text = "X1"
 
 [node name="X2" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=1391817401]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+toggle_mode = true
 text = "X2"
 
 [node name="X3" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=645777733]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+toggle_mode = true
 text = "X3"
 
 [node name="Margin3" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1475218312]
@@ -194,6 +199,17 @@ Towers
 1000"
 autowrap_trim_flags = 64
 
+[node name="UpgradeIncomeButton" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=632826291]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("15_7082i")
+theme_override_font_sizes/font_size = 8
+text = "Upgrade
+Income
+
+1000"
+autowrap_trim_flags = 64
+
 [node name="Margin6" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1678276031]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -214,36 +230,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "100,000"
 label_settings = SubResource("LabelSettings_d0j2t")
-horizontal_alignment = 1
-
-[node name="StartWaveButton" type="Button" parent="UILayer/UI" unique_id=1676360846]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -186.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 42.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 16
-text = "Next Charge"
-
-[node name="WaveLabel" type="Label" parent="UILayer/UI/StartWaveButton" unique_id=165852345]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -95.0
-offset_top = 10.0
-offset_right = 97.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "100/100"
 horizontal_alignment = 1
 
 [node name="TowerConfirmationPopup" parent="UILayer/UI" unique_id=643378081 instance=ExtResource("7_uflg0")]
@@ -269,11 +255,15 @@ Move rapidly over towers to charge them
 Check itch page for more details"
 script = ExtResource("18_as1rp")
 
+[node name="StartWaveButton" parent="UILayer/UI" unique_id=1012081810 instance=ExtResource("18_yxbml")]
+layout_mode = 1
+
 [node name="EctoplasmMouseCollector" parent="." unique_id=1134838315 instance=ExtResource("10_evtg3")]
 
-[node name="WaveManager" type="Node" parent="." unique_id=159233388]
+[node name="WaveManager" type="Node" parent="." unique_id=159233388 node_paths=PackedStringArray("rewards_manager")]
 unique_name_in_owner = true
 script = ExtResource("8_fjfis")
+rewards_manager = NodePath("../RewardsManager")
 
 [node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("14_gw1l1")]
 stream = ExtResource("15_d0j2t")
@@ -290,7 +280,11 @@ SfxTracks = Dictionary[int, AudioStream]({
 6: ExtResource("25_naq3g")
 })
 
+[node name="RewardsManager" parent="." unique_id=2125820462 instance=ExtResource("30_as1rp")]
+
 [connection signal="core_damaged" from="Level" to="." method="_on_level_core_damaged"]
 [connection signal="pressed" from="UILayer/UI/MainUiContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainUiContainer/VBoxContainer/UpgradeTowerButton" to="." method="_on_upgrade_tower_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/MainUiContainer/VBoxContainer/UpgradeIncomeButton" to="." method="_on_upgrade_income_button_pressed"]
+[connection signal="generate_wave_rewards" from="WaveManager" to="." method="_on_wave_manager_generate_wave_rewards"]
 [connection signal="wave_limit_exceeded" from="WaveManager" to="." method="_on_wave_manager_wave_limit_exceeded"]
