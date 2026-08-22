@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://khlttmdgh4vp" path="res://game/system/vfx/charge_particle_effect.gd" id="5_6tmvf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jx01"]
-radius = 18.110771
+radius = 16.0
 
 [sub_resource type="Animation" id="Animation_r4p24"]
 length = 0.001
