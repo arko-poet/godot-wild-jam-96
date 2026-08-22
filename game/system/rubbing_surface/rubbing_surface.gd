@@ -188,20 +188,19 @@ func _update_progress_bars()->void:
 	
 	if charge <= 0:
 		negative_charge_bar.value = abs(charge)
-	_check_to_play_charge_sfx()
+	
 
 
 func _check_to_play_charge_sfx() -> void:
-	var charge := charge_controller.charge
-
-	if charge == 0:
+	var intensity := rubbing_detector.rubbing_intensity
+	
+	if intensity > 0:
+		if is_charging:
+			return
+		
+		is_charging = true
+		tower_sfx_player.play_sfx(TowerSfxPlayer.SfxTrack.CHARGE)
+	
+	else:
 		is_charging = false
 		tower_sfx_player.stop()
-		return
-
-	if is_charging:
-		return
-
-	is_charging = true
-	tower_sfx_player.play_sfx(TowerSfxPlayer.SfxTrack.CHARGE)
-	print("play")
