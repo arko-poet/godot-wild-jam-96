@@ -284,9 +284,12 @@ func set_range_indicator_visible(visible: bool) -> void:
 
 func set_range_indicator_range(range: float) -> void:
 	var texture := range_visual.texture as GradientTexture2D
-
-	texture.width = int(range * 2.0)
-	texture.height = int(range * 2.0)
+	
+	var mob_radius = 18.11
+	var visual_range = range + mob_radius 
+	
+	texture.width = int(visual_range * 2.0)
+	texture.height = int(visual_range * 2.0)
 
 
 func _on_internal_state_timer_timeout() -> void:

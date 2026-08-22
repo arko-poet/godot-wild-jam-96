@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="6_o2b6d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
+resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jsyln"]
 shader = ExtResource("3_5brqy")
