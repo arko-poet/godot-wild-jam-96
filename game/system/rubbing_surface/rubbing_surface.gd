@@ -82,6 +82,7 @@ func _physics_process(delta: float) -> void:
 
 	update_debug_labels()
 	_update_progress_bars()
+	_check_to_play_charge_sfx()
 
 # Getters to act as a public interface for the Rubbing Surface.
 func get_charge() -> float:
