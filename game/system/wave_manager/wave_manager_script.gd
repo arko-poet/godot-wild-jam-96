@@ -35,8 +35,10 @@ func _next_wave()->void:
 	
 	if _current_wave > level.get_number_of_waves():
 		wave_limit_exceeded.emit()
-	
+		return
+		
 	Event.next_wave_trigered(_current_wave)
+	Event.play_sfx( Enums.SfxTrack.START_WAVE )
 
 
 func trigger_next_wave()->void:

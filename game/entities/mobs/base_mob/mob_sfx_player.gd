@@ -1,9 +1,9 @@
-class_name TowerSfxPlayer extends AudioStreamPlayer
+class_name MobSfxPlayer extends AudioStreamPlayer
 
-
-enum SfxTrack { CHARGE, SHOOT, SUPERCHARGE }
+enum SfxTrack {  DEATH  }
 
 @export var sfx_track: Dictionary [ SfxTrack, AudioStream ]
+
 
 func play_sfx(track: SfxTrack) -> void:
 	if not sfx_track.has(track):

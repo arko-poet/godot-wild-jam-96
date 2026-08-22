@@ -67,10 +67,10 @@ func _ready() -> void:
 	_update_tower_upgrade_cost()
 	_build_tower_buttons()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_tower_buttons()
 	update_tower_upgrade_button()
-	pass
+
 
 func _connect_speed_buttons()->void:
 	for button in speed_buttons:
@@ -109,6 +109,7 @@ func _on_tower_placement_confirmation_requested(
 func _on_confirmation_confirmed() -> void:
 	_level.tower_placement_controller.confirm_placement()
 	_ectoplasm = max(0, _ectoplasm - ectoplasm_cost)
+	Event.play_sfx( Enums.SfxTrack.TOWER_PLACEMENT )
 	
 func _on_confirmation_cancelled() -> void:
 	_level.tower_placement_controller.cancel_confirmation()
@@ -130,6 +131,7 @@ func _on_upgrade_tower_button_pressed() -> void:
 		if tower is Tower:
 			tower.level_up()
 	_tower_upgrades_purchased += 1
+	Event.play_sfx( Enums.SfxTrack.TOWER_UPGRADE )
 
 
 func _update_tower_upgrade_cost() -> void:
