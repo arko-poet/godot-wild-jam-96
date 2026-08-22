@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://pssm8g3a6sbk"]
+
+[ext_resource type="Script" uid="uid://cph74luehmsxo" path="res://template/scenes/menus/options_menu/game/toogle_tips_control/toogle_tips_script.gd" id="1_o8bl2"]
+
+[node name="ToogleTips" type="HBoxContainer" unique_id=2070818652]
+script = ExtResource("1_o8bl2")
+
+[node name="Label" type="Label" parent="." unique_id=877034866]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Toogle Tips :"
+
+[node name="CheckButton" type="CheckButton" parent="." unique_id=2032783466]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
