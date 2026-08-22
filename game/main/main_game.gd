@@ -74,13 +74,24 @@ func _process(_delta: float) -> void:
 
 
 func _connect_speed_buttons()->void:
+	_reset_speed_buttons()
 	for button in speed_buttons:
 		button.pressed.connect( _on_speed_button_pressed.bind(button))
 
 
 func _on_speed_button_pressed(button: Button) -> void:
+
 	var button_index := speed_buttons.find(button)
-	Engine.time_scale = button_index + 1.0 # Array index + 1.0 to determin engine speed 
+	Engine.time_scale = button_index + 1.0 # Array index + 1.0 determines engine speed
+	
+	for speed_button: Button in speed_buttons:
+		speed_button.button_pressed = speed_button == button
+
+func _reset_speed_buttons() -> void:
+	speed_buttons[0].button_pressed = true
+	Engine.time_scale = 1.0
+	for i in range(1, speed_buttons.size()):
+		speed_buttons[i].button_pressed = false
 
 func _on_tower_button_pressed(button: TowerPurchaseButton) -> void:
 	var preselected_tower: TowerResource = button.tower_resource

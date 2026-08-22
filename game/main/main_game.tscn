@@ -107,18 +107,21 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+toggle_mode = true
 text = "X1"
 
 [node name="X2" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=1391817401]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+toggle_mode = true
 text = "X2"
 
 [node name="X3" type="Button" parent="UILayer/UI/MainUiContainer/VBoxContainer/SpeedButtons" unique_id=645777733]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+toggle_mode = true
 text = "X3"
 
 [node name="Margin3" type="Control" parent="UILayer/UI/MainUiContainer/VBoxContainer" unique_id=1475218312]
