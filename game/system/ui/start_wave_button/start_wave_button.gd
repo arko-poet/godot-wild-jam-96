@@ -12,7 +12,7 @@ func set_wave_text(wave_text:String):
 	wave_label.text = wave_text
 
 func set_reward(reward:int):
-	if (reward >0):
+	if (reward >0 and not button.disabled):
 		reward_label.text = "%d" % reward
 		reward_container.visible = true
 	else:
