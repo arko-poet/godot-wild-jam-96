@@ -172,11 +172,11 @@ func _on_upgrade_tower_button_pressed() -> void:
 
 
 func _update_tower_upgrade_cost() -> void:
-	_tower_upgrade_cost = BASE_SCALING + UPGRADE_SCALING_FACTOR * _tower_upgrades_purchased
+	_tower_upgrade_cost = _tower_upgrade_cost + BASE_SCALING + UPGRADE_SCALING_FACTOR * _tower_upgrades_purchased
 
 
 func _update_income_upgrade_cost() -> void:
-	_income_upgrade_cost = BASE_SCALING + UPGRADE_SCALING_FACTOR * _income_upgrades_purchased
+	_income_upgrade_cost = _tower_upgrade_cost + BASE_SCALING + UPGRADE_SCALING_FACTOR * _income_upgrades_purchased
 
 
 func update_tower_upgrade_button() -> void:
