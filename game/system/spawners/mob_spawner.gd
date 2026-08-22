@@ -121,3 +121,48 @@ func spawn_ghost(path: Array[Vector2i]) -> void:
 
 func _on_ghost_spawner_timeout() -> void:
 	spawn_ghost_signal.emit()
+
+func calculate_time_estimation(wave_number: int) -> float:
+	if wave_number <= 0 or wave_number > waves.size():
+		push_error("[MobSpawner] Invalid wave number.")
+		return 0.0
+
+	var wave_resource: WaveResource = waves[wave_number - 1]
+
+	if wave_resource.ghosts.is_empty():
+		return 0.0
+
+	# Get the mobs in the same order that the spawner uses.
+	var mob_resources: Array[MobResource] = wave_resource.ghosts.keys()
+
+	# Find the final enemy type.
+	var last_mob: MobResource = mob_resources[-1]
+
+	# Count every enemy in the wave.
+	var total_enemies := 0
+
+	for mob_resource in mob_resources:
+		total_enemies += wave_resource.ghosts[mob_resource]
+
+	# Calculate the length of the path.
+	var path_length := 0.0
+	var path := path_layer.get_built_path()
+
+	for i in range(1, path.size()):
+		var previous_position: Vector2 = path_layer.to_global(
+			path_layer.map_to_local(path[i - 1])
+		)
+
+		var current_position: Vector2 = path_layer.to_global(
+			path_layer.map_to_local(path[i])
+		)
+
+		path_length += previous_position.distance_to(current_position)
+
+	# Time before the final enemy is spawned.
+	var spawn_time := (total_enemies - 1) * ghost_spawner_timer.wait_time
+
+	# Time for the final enemy to travel the entire path.
+	var travel_time := path_length / last_mob.speed
+
+	return spawn_time + travel_time

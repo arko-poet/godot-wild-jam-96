@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c1ttv0f7fcyad"]
+
+[ext_resource type="Script" uid="uid://de6tdve8qoxee" path="res://game/system/ui/start_wave_button/start_wave_button.gd" id="1_porfd"]
+[ext_resource type="Texture2D" uid="uid://c55tbhxxayvpk" path="res://game/assets/ectoplasm/ectoplasm.png" id="1_ps23x"]
+
+[node name="StartWaveButton" type="Control" unique_id=1012081810]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_porfd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1541442685]
+custom_minimum_size = Vector2(235, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -208.0
+offset_bottom = 88.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=304982397]
+layout_mode = 2
+text = "Next Charge"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1262434513]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=1503749674]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 10
+
+[node name="RewardContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2" unique_id=3833060]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AvailableRewardLabel" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/RewardContainer" unique_id=1296938852]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21176471, 0.93333334, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Bonus:"
+
+[node name="ValueLabel" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/RewardContainer" unique_id=703229790]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21176471, 0.93333334, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "72"
+
+[node name="EctoplasmSprite" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer2/RewardContainer" unique_id=508797084]
+layout_mode = 2
+texture = ExtResource("1_ps23x")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=428385964]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="WaveLabel" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer" unique_id=1354100156]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10/100"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
