@@ -200,7 +200,7 @@ func _check_to_play_charge_sfx() -> void:
 			return
 		
 		is_charging = true
-		tower_sfx_player.play_sfx(TowerSfxPlayer.SfxTrack.CHARGE)
+		tower_sfx_player.play()
 	
 	else:
 		is_charging = false

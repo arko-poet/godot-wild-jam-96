@@ -27,6 +27,8 @@
 [ext_resource type="AudioStream" uid="uid://doe2fsh4doyoi" path="res://game/assets/audio/sfx/tower-upgrade-1.wav" id="24_elvgd"]
 [ext_resource type="AudioStream" uid="uid://csmdumfmpn7b5" path="res://game/assets/audio/sfx/tower-placement-1.wav" id="25_8i3wl"]
 [ext_resource type="AudioStream" uid="uid://bm4smo4a681ye" path="res://game/assets/audio/sfx/ectoplasm-pickup-1.wav" id="25_naq3g"]
+[ext_resource type="AudioStream" uid="uid://dr15hck185225" path="res://game/assets/audio/sfx/tower-shooting-1.wav" id="27_8i3wl"]
+[ext_resource type="AudioStream" uid="uid://b5vcddqtaiksh" path="res://game/assets/audio/sfx/supercharged-mode-1.mp3" id="28_hq47i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gw1l1"]
 font_size = 8
@@ -281,7 +283,9 @@ SfxTracks = Dictionary[int, AudioStream]({
 1: ExtResource("23_hw6kc"),
 2: ExtResource("24_elvgd"),
 3: ExtResource("25_8i3wl"),
-4: ExtResource("25_naq3g")
+4: ExtResource("27_8i3wl"),
+5: ExtResource("28_hq47i"),
+6: ExtResource("25_naq3g")
 })
 
 [connection signal="core_damaged" from="Level" to="." method="_on_level_core_damaged"]

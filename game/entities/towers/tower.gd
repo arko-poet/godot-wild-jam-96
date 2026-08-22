@@ -186,7 +186,7 @@ func activate() -> void:
 	ability.activate(context)
 
 	current_charges -= activation_cost
-	tower_sfx_player.play_sfx( TowerSfxPlayer.SfxTrack.SHOOT )
+	Event.play_sfx( Enums.SfxTrack.TOWER_SHOOT )
 
 func update_supercharge():
 	if rubbing_surface.is_overcharged() and tower_state == TowerState.OK:
@@ -199,7 +199,7 @@ func update_supercharge():
 		
 		internal_state_timer.start(overdrive_time)
 		update_perception_radius()
-		tower_sfx_player.play_sfx( TowerSfxPlayer.SfxTrack.SUPERCHARGE )
+		Event.play_sfx( Enums.SfxTrack.TOWER_SUPER_CHARGE )
 
 
 func get_vfx_origin() -> Vector2:

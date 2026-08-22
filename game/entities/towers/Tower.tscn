@@ -11,8 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="6_o2b6d"]
 [ext_resource type="Script" uid="uid://dgquf5svssu41" path="res://game/system/sfx/tower_sfx_player.gd" id="10_1hvyf"]
 [ext_resource type="AudioStream" uid="uid://bkxuwuccb0ejq" path="res://game/assets/audio/sfx/tower-charging-1.wav" id="11_kisgu"]
-[ext_resource type="AudioStream" uid="uid://dr15hck185225" path="res://game/assets/audio/sfx/tower-shooting-1.wav" id="12_pcgjg"]
-[ext_resource type="AudioStream" uid="uid://b5vcddqtaiksh" path="res://game/assets/audio/sfx/supercharged-mode-1.mp3" id="13_86w6u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
 
@@ -199,13 +197,9 @@ text = "Lvl l"
 label_settings = SubResource("LabelSettings_o2swp")
 
 [node name="TowerSfxPlayer" type="AudioStreamPlayer" parent="." unique_id=1364923251]
+stream = ExtResource("11_kisgu")
 bus = &"SFX"
 script = ExtResource("10_1hvyf")
-sfx_track = Dictionary[int, AudioStream]({
-0: ExtResource("11_kisgu"),
-1: ExtResource("12_pcgjg"),
-2: ExtResource("13_86w6u")
-})
 
 [connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
 [connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
