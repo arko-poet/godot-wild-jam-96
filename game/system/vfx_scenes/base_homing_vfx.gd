@@ -3,7 +3,7 @@ extends Node2D
 
 signal vfx_completed
 
-const PRESET_SPEED: float = 1000.0
+const PRESET_SPEED: float = 500.0
 const CONTACT_DISTANCE_SQR: float = 64.0 # Just a small value to make the bullet think it has reached it's destination
 var current_speed :float = 0
 
@@ -19,12 +19,15 @@ func _process(delta: float) -> void:
 	if not is_instance_valid(target_node):
 		queue_free()
 		return
-	update_direction()
-	global_position += direction*current_speed*delta
 	
 	if check_for_completion():
 		vfx_completed.emit()
 		queue_free()
+	
+	update_direction()
+	global_position += direction*current_speed*delta
+	
+	
 
 func update_direction():
 	direction = global_position.direction_to(target_node.global_position)
