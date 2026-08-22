@@ -30,7 +30,7 @@ var path_index: int = 0
 
 # Value to use to determin how fast or how much hp a Mob will have. 
 var _difficulty: int = 0
-@export var health_curve: float = 0.5
+@export var health_curve: float = 2
 
 
 func _ready():
@@ -82,7 +82,11 @@ func _update_health_bar()->void:
 func _run_dificulty_curve()->void:
 	
 	# Health dificulty increase
-	var health_ratio_gain: float = pow(1 + floor(_difficulty / 5), 2) * health_curve
+	var health_ratio_gain: float
+	if _difficulty < 25:
+		health_ratio_gain = floor(_difficulty / 5) * health_curve
+	else:
+		health_ratio_gain = floor(_difficulty / 5) * health_curve * 2
 	max_health *= health_ratio_gain
 	current_health = max_health
 	
