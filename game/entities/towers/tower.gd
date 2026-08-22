@@ -136,6 +136,7 @@ func set_preview_color(color: Color) -> void:
 func _process(delta: float) -> void:
 	if data == null or preview_mode == true:
 		return
+	update_visuals()
 	update_supercharge()
 	charge(delta * (1 + abs(rubbing_surface.get_charge() / rubbing_surface.charge_controller.max_charge)))
 
@@ -169,11 +170,6 @@ func activate() -> void:
 	if ability.requires_targets() and targets.is_empty():
 		return
 	
-	# If we add more towers (ones with another barrel for example) we will need
-	# to prevent this from running. As for different barrels, we need to setup
-	# ways to change the barrel sprite and the bullet position inside it.
-	# Potentially by setting up Barrels as separate scenes maybe.	
-	update_barrel_rotation(get_barrel_target_position(targets))
 	
 	var context := TowerAbilityContext.new(
 		self,
@@ -383,3 +379,22 @@ func get_barrel_target_position(targets : Array[EnemyContract]) -> Vector2:
 		sum += target.global_position
 		
 	return sum / targets.size()
+
+func update_visuals():
+	if tower_ability == null:
+		return
+	var ability = tower_ability
+	var targets := get_targets(
+		ability.get_target_count()
+	)
+	
+	if targets.is_empty():
+		return
+	
+	# If we add more towers (ones with another barrel for example) we will need
+	# to prevent this from running. As for different barrels, we need to setup
+	# ways to change the barrel sprite and the bullet position inside it.
+	# Potentially by setting up Barrels as separate scenes maybe.	
+	update_barrel_rotation(get_barrel_target_position(targets))
+	
+	
