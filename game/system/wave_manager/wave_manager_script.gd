@@ -5,7 +5,6 @@ signal generate_wave_rewards(ectoplasm:int)
 
 @export var rewards_manager : RewardsManager
 
-@onready var _wave_label: Label = %WaveLabel
 var _current_wave: int = 0:
 	set(value):
 		_current_wave = value
