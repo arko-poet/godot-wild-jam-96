@@ -20,7 +20,7 @@ func calculate_reward_based_on_time_left(time_estimation:float, time_left:float)
 	return sqrt(ratio)
 
 func calculate_reward_based_on_current_wave(current_wave:int)->int:
-	return 50.0 + (current_wave * 25.0)
+	return current_wave * 5
 
 func calculate_reward_based_on_towers():
 	# Fetch towers from Group "Towers" and do calculations as needed here
