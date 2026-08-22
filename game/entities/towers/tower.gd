@@ -47,7 +47,7 @@ var supercharge_charge_rate_multiplier : float
 var supercharge_power_multiplier : float
 var supercharge_range_multiplier: float
 
-const overdrive_time :float = 5.0 # 10 Seconds of supercharge/ overdrive.
+const overdrive_time :float = 10.0 # 10 Seconds of supercharge/ overdrive.
 var overdrive_cooldown: float # Followed by a Cooldown during which the tower is inactive.
 var tower_state : TowerState = TowerState.OK:
 	set(value):
