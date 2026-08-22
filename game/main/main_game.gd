@@ -66,6 +66,7 @@ func _ready() -> void:
 	
 	_update_tower_upgrade_cost()
 	_build_tower_buttons()
+	_upgrade_tower_button.tooltip_text = "Levels up all built towers\n increasing their efficiency\n (Range, Power and Firing Rate)."
 
 func _process(delta: float) -> void:
 	update_tower_buttons()

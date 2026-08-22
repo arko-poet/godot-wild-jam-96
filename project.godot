@@ -59,6 +59,7 @@ ectoplasm_lable="UI Ectoplasm Img"
 
 [gui]
 
+timers/tooltip_delay_sec=0.1
 theme/custom="res://template/resources/themes/lore.tres"
 theme/custom_font="uid://dbpq11kg7v055"
 
