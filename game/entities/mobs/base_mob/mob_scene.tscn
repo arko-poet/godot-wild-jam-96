@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://khlttmdgh4vp" path="res://game/system/vfx/charge_particle_effect.gd" id="5_6tmvf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jx01"]
-radius = 18.110771
+radius = 16.0
 
 [node name="Mob" type="CharacterBody2D" unique_id=978749843]
 collision_mask = 0

@@ -285,7 +285,7 @@ func set_range_indicator_visible(visible: bool) -> void:
 func set_range_indicator_range(range: float) -> void:
 	var texture := range_visual.texture as GradientTexture2D
 	
-	var mob_radius = 18.11
+	var mob_radius = 0 #In case we need to add this correction again. 
 	var visual_range = range + mob_radius 
 	
 	texture.width = int(visual_range * 2.0)
