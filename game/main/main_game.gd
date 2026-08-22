@@ -52,6 +52,7 @@ func _ready() -> void:
 	_ectoplasm = _starting_ectoplasm
 	_core_charges = _starting_core_charges
 	Event.ectoplasm_collected_signal.connect(_on_ectoplasm_collected_signal)
+	Event.reset_engine_speed_signal.connect(_reset_speed_buttons)
 
 	_level.tower_placement_controller.confirmation_requested.connect(
 		_on_tower_placement_confirmation_requested
