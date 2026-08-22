@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_5fwxq")
+display_name = "Specter Wrecker"
 tower_sprite = ExtResource("4_e0mey")
 barrel_sprite = ExtResource("1_5fwxq")
 preview_texture = ExtResource("4_oqi2l")
@@ -36,4 +37,5 @@ supercharge_power_multiplier = 1.5
 supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_n6qw4")]([SubResource("Resource_l1xd4")])
+description = "It's like the Pasta Blaster got serious about it's job at wrecking ghosts.||Firing Rate ++||Range +||Power -"
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

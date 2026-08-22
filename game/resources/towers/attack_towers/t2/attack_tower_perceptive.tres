@@ -21,6 +21,7 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_icoo2")
+display_name = "Belltower Cannon"
 tower_sprite = ExtResource("4_uoupo")
 barrel_sprite = ExtResource("1_icoo2")
 preview_texture = ExtResource("4_e8aw0")
@@ -33,4 +34,5 @@ supercharge_power_multiplier = 1.5
 supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_ojdo5")]([SubResource("Resource_l1xd4")])
+description = "It's like Ghostbuster, but placed on top of a Belltower||Range +"
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_wur8u")
+display_name = "Pasta Blaster"
 tower_sprite = ExtResource("4_5ptv8")
 barrel_sprite = ExtResource("1_wur8u")
 preview_texture = ExtResource("4_3tk84")
@@ -34,4 +35,5 @@ supercharge_power_multiplier = 1.5
 supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_k82n1")]([SubResource("Resource_l1xd4")])
+description = "Pasta makes you Fasta. Shoots bullets one at a time, slightly faster than Ghostbuster Mk1||Firing Rate +"
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

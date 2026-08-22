@@ -29,12 +29,20 @@ func show_for_tower(tower_resource: TowerResource) -> void:
 	tower_name_label.text = tower_resource.display_name
 	tower_sprite.texture = tower_resource.preview_texture
 	tower_sprite.self_modulate = tower_resource.modulate_color
-	cost_label.text = "%d Electroplasm" % tower_resource.purchase_price
-
-	description_label.text = tower_resource.description
+	cost_label.text = "Costs: %d" % tower_resource.purchase_price
+	
+	var description_stripped_of_metadata = strip_description_metadata(tower_resource.description)
+	description_label.text = description_stripped_of_metadata
 
 	show()
-	
+
+func strip_description_metadata(description: String) -> String:
+	var sections := description.split("||")
+
+	if sections.is_empty():
+		return ""
+
+	return sections[0].strip_edges()
 
 func _on_confirm_pressed() -> void:
 	hide()

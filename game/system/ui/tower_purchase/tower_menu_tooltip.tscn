@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://e7erp4k68ld5"]
+
+[ext_resource type="Script" uid="uid://bl4pesv184tr2" path="res://game/system/ui/tower_purchase/tower_menu_tooltip.gd" id="1_gaman"]
+
+[node name="TowerMenuTooltip" type="PanelContainer" unique_id=581377193]
+custom_minimum_size = Vector2(120, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gaman")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1265857736]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="RowsContainer" type="VBoxContainer" parent="MarginContainer" unique_id=259940327]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/RowsContainer" unique_id=327113763]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Title"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/RowsContainer" unique_id=653276224]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Title"
+autowrap_mode = 3
+
+[node name="JustAGap" type="Label" parent="MarginContainer/RowsContainer" unique_id=315391181]
+visible = false
+layout_mode = 2

@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_6l00k")
+display_name = "Ghostbuster Mk2"
 tower_sprite = ExtResource("4_f1lq4")
 barrel_sprite = ExtResource("1_6l00k")
 preview_texture = ExtResource("4_fnqx6")
@@ -34,4 +35,5 @@ supercharge_power_multiplier = 1.5
 supercharge_range_multipler = 1.5
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_o2yoj")]([SubResource("Resource_l1xd4")])
+description = "The new and improved version of the Ghostbuster, comes with improved damage.||Power +"
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

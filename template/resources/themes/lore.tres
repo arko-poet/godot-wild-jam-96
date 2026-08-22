@@ -186,5 +186,6 @@ TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_7eahf")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_5sk2t")
 TimerProgressBar/base_type = &"ProgressBar"
 TimerProgressBar/styles/fill = SubResource("StyleBoxFlat_00w47")
+TooltipLabel/font_sizes/font_size = 8
 WarningProgressBar/base_type = &"ProgressBar"
 WarningProgressBar/styles/fill = SubResource("StyleBoxFlat_gh53c")
