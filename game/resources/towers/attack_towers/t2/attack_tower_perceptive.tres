@@ -10,6 +10,8 @@
 
 [sub_resource type="Resource" id="Resource_o2swp"]
 script = ExtResource("1_uoupo")
+charge_generation_rate = 80.0
+charge_discharge_rate = 10.0
 metadata/_custom_type_script = "uid://dv41c0f80vxun"
 
 [sub_resource type="Resource" id="Resource_l1xd4"]
@@ -30,8 +32,9 @@ modulate_color = Color(0.8509804, 0.9411765, 0.83137256, 1)
 purchase_price = 200
 special_ability = ExtResource("3_tuscl")
 supercharge_charge_rate_multiplier = 1.0
-supercharge_power_multiplier = 1.5
+supercharge_power_multiplier = 2.0
 supercharge_range_multipler = 1.5
+overdrive_cooldown = 10.0
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_ojdo5")]([SubResource("Resource_l1xd4")])
 description = "It's like Ghostbuster, but placed on top of a Belltower||Range +"

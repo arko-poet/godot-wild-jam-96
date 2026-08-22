@@ -10,7 +10,8 @@
 
 [sub_resource type="Resource" id="Resource_o2swp"]
 script = ExtResource("1_e0mey")
-charge_generation_rate = 50.0
+charge_generation_rate = 80.0
+charge_discharge_rate = 10.0
 metadata/_custom_type_script = "uid://dv41c0f80vxun"
 
 [sub_resource type="Resource" id="Resource_l1xd4"]
@@ -33,8 +34,9 @@ power = 0.5
 purchase_price = 500
 special_ability = ExtResource("3_8lc2r")
 supercharge_charge_rate_multiplier = 1.0
-supercharge_power_multiplier = 1.5
+supercharge_power_multiplier = 2.0
 supercharge_range_multipler = 1.5
+overdrive_cooldown = 10.0
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_n6qw4")]([SubResource("Resource_l1xd4")])
 description = "It's like the Pasta Blaster got serious about it's job at wrecking ghosts.||Firing Rate ++||Range +||Power -"
