@@ -60,3 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		_on_cancel_pressed()
 		get_viewport().set_input_as_handled()
+	
+	if event.is_action_pressed("ui_accept"):
+		_on_confirm_pressed()
+		get_viewport().set_input_as_handled()
