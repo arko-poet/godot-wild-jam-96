@@ -14,7 +14,8 @@ func _ready() -> void:
 func _on_play_sfx_signal(track: Enums.SfxTrack) -> void:
 
 	var sfx_player := AudioStreamPlayer.new()
-
+	
+	sfx_player.set_bus("SFX")
 	sfx_player.stream = SfxTracks[track]
 	sfx_player.finished.connect(_on_sfx_finished.bind(sfx_player))
 
