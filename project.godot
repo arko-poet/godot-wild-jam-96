@@ -15,7 +15,7 @@ config/version="0.1.0"
 config/tags=PackedStringArray("jam")
 run/main_scene="res://template/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://b7x2ej5v7npqq"
 
 [audio]
 
@@ -53,8 +53,13 @@ folder_colors={
 "res://game/system/": "orange"
 }
 
+[global_group]
+
+ectoplasm_lable="UI Ectoplasm Img"
+
 [gui]
 
+timers/tooltip_delay_sec=0.1
 theme/custom="res://template/resources/themes/lore.tres"
 theme/custom_font="uid://dbpq11kg7v055"
 

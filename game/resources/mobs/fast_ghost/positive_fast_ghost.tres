@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_cx7te")
 mob_sprite = ExtResource("1_41ry2")
-speed = 200.0
+speed = 300.0
 health = 100.0
 loot = 10
 charge_type = 1

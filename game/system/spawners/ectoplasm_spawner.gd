@@ -4,11 +4,19 @@ extends Node2D
 
 const ECTOPLASM_SCENE = preload("uid://dk80bjowjtg8w")
 
+@export var boss_spawn_count: int = 3
+
+var spawns_move_than_one_ectoplasm: bool = false
 
 func _ready() -> void:
 	randomize()
 	var mob: Mob = get_parent()
+	
 	mob.mob_killed.connect(_on_mob_killed)
+
+
+
+
 
 
 ## For varied offest in spawn location
@@ -17,7 +25,12 @@ func _ready() -> void:
 
 func _on_mob_killed() -> void:
 	
-	_spawn_ectoplasm()
+	if spawns_move_than_one_ectoplasm:
+		for count in boss_spawn_count:
+			_spawn_ectoplasm()
+
+	else:
+		_spawn_ectoplasm()
 
 
 

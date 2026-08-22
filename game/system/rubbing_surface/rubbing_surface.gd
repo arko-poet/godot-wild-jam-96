@@ -11,6 +11,7 @@ signal mouse_detected_signal( entered: bool )
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var rubbing_detector: RubbingDetector = $RubbingDetector
 @onready var charge_controller: ChargeController = $ChargeController
+@onready var tower_sfx_player: TowerSfxPlayer = $"../TowerSfxPlayer"
 
 @onready var intensity_label: Label = $MetricLabelsContainer/IntensityLabel
 @onready var charge_label: Label = $MetricLabelsContainer/ChargeLabel
@@ -21,6 +22,7 @@ signal mouse_detected_signal( entered: bool )
 @onready var negative_charge_bar: ProgressBar = $NegativeChargeBar
 
 var is_enabled : bool = true
+var is_charging: bool = false
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
@@ -80,6 +82,7 @@ func _physics_process(delta: float) -> void:
 
 	update_debug_labels()
 	_update_progress_bars()
+	_check_to_play_charge_sfx()
 
 # Getters to act as a public interface for the Rubbing Surface.
 func get_charge() -> float:
@@ -186,3 +189,19 @@ func _update_progress_bars()->void:
 	
 	if charge <= 0:
 		negative_charge_bar.value = abs(charge)
+	
+
+
+func _check_to_play_charge_sfx() -> void:
+	var intensity := rubbing_detector.rubbing_intensity
+	
+	if intensity > 0:
+		if is_charging:
+			return
+		
+		is_charging = true
+		tower_sfx_player.play()
+	
+	else:
+		is_charging = false
+		tower_sfx_player.stop()

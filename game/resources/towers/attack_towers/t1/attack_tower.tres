@@ -1,14 +1,17 @@
 [gd_resource type="Resource" script_class="TowerResource" format=3 uid="uid://d1kopu171ngjw"]
 
+[ext_resource type="Texture2D" uid="uid://u22p4orcseah" path="res://game/assets/towers/barrel.png" id="1_egi5g"]
 [ext_resource type="Script" uid="uid://dv41c0f80vxun" path="res://game/system/rubbing_surface/charge_config.gd" id="1_gbc7i"]
 [ext_resource type="Script" uid="uid://bchbyouil8i2v" path="res://game/entities/towers/tower_resource.gd" id="2_egi5g"]
 [ext_resource type="Resource" uid="uid://8cklpgs4b6cj" path="res://game/resources/towers/abilities/attack.tres" id="3_3tdge"]
+[ext_resource type="Texture2D" uid="uid://c71tg7uc7v3pa" path="res://game/assets/towers/tower_no_barrel.png" id="4_gbc7i"]
 [ext_resource type="Texture2D" uid="uid://b7x2ej5v7npqq" path="res://game/assets/towers/tower.png" id="4_rh0se"]
 [ext_resource type="Script" uid="uid://5sjlicbvpgxd" path="res://game/entities/towers/tower_upgrades/tower_upgrade_resource.gd" id="5_775cc"]
 
 [sub_resource type="Resource" id="Resource_o2swp"]
 script = ExtResource("1_gbc7i")
-charge_generation_rate = 50.0
+charge_generation_rate = 80.0
+charge_discharge_rate = 10.0
 metadata/_custom_type_script = "uid://dv41c0f80vxun"
 
 [sub_resource type="Resource" id="Resource_l1xd4"]
@@ -20,11 +23,16 @@ metadata/_custom_type_script = "uid://5sjlicbvpgxd"
 
 [resource]
 script = ExtResource("2_egi5g")
-tower_sprite = ExtResource("4_rh0se")
+display_name = "Ghostbuster Mk1"
+tower_sprite = ExtResource("4_gbc7i")
+barrel_sprite = ExtResource("1_egi5g")
+preview_texture = ExtResource("4_rh0se")
 special_ability = ExtResource("3_3tdge")
 supercharge_charge_rate_multiplier = 1.0
-supercharge_power_multiplier = 1.5
+supercharge_power_multiplier = 2.0
 supercharge_range_multipler = 1.5
+overdrive_cooldown = 10.0
 charging_configuration = SubResource("Resource_o2swp")
 upgrade_path = Array[ExtResource("5_775cc")]([SubResource("Resource_l1xd4")])
+description = "Simple but dependable. Shoots ghosts one at a time."
 metadata/_custom_type_script = "uid://bchbyouil8i2v"

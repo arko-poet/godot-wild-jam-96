@@ -24,7 +24,7 @@ func activate(
 	context.vfx_parent.add_child(projectile)
 
 	projectile.start(
-		context.tower.global_position,
+		context.tower.get_vfx_origin(),
 		target.mob
 	)
 	projectile.vfx_completed.connect(apply_effect)

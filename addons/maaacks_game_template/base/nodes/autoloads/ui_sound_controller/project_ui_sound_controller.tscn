@@ -2,9 +2,15 @@
 
 [ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_game_template/base/nodes/autoloads/ui_sound_controller/ui_sound_controller.gd" id="1_dmagn"]
 [ext_resource type="AudioStream" uid="uid://x2q06rn4i44a" path="res://game/assets/audio/sfx/hover-tactile1.wav" id="2_n2xtw"]
+[ext_resource type="AudioStream" uid="uid://dlskvc8bpgutb" path="res://game/assets/audio/sfx/click-1.wav" id="3_7ejmi"]
 
 [node name="ProjectUISoundController" type="Node" unique_id=1525696179]
 script = ExtResource("1_dmagn")
 button_hovered = ExtResource("2_n2xtw")
+button_pressed = ExtResource("3_7ejmi")
+texture_button_hovered = ExtResource("2_n2xtw")
+texture_button_pressed = ExtResource("3_7ejmi")
 tab_hovered = ExtResource("2_n2xtw")
+tab_changed = ExtResource("3_7ejmi")
 slider_hovered = ExtResource("2_n2xtw")
+slider_drag_started = ExtResource("3_7ejmi")

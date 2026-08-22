@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bqfojvu65r47f" path="res://game/system/ectoplasm_mouse_collector/ectoplasm_mouse_collector_script.gd" id="1_ktswu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jx01"]
+radius = 14.0
 
 [node name="EctoplasmMouseCollector" type="Area2D" unique_id=1134838315]
 script = ExtResource("1_ktswu")

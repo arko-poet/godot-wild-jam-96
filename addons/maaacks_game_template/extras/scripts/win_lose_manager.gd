@@ -66,5 +66,6 @@ func game_lost() -> void:
 
 func game_won() -> void:
 	if has_won_game or has_lost_game: return
+	Event.reset_engine_speed()
 	has_won_game = true
 	_load_win_screen_or_ending()
