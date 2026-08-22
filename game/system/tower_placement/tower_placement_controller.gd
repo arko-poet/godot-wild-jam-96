@@ -10,6 +10,7 @@ signal placement_cancelled
 
 @export_category("References")
 @export var ground_layer: TileMapLayer
+@export var not_usable_ground_layer: TileMapLayer
 @export var path_layer: TileMapLayer
 @export var towers_container: Node2D
 
@@ -26,6 +27,9 @@ var placement_valid: bool = false
 func _ready() -> void:
 	if ground_layer == null:
 		push_error("TowerPlacementController: Ground Layer is not assigned.")
+
+	if not_usable_ground_layer == null:
+		push_error("TowerPlacementController: Not Usable Ground Layer is not assigned.")
 
 	if path_layer == null:
 		push_error("TowerPlacementController: Path Layer is not assigned.")
@@ -94,7 +98,10 @@ func is_valid_placement(cell: Vector2i) -> bool:
 	
 		if not is_ground(grid_cell):
 			return false
-
+		
+		if is_ground_not_usable(grid_cell):
+			return false
+		
 		if is_path(grid_cell):
 			return false
 
@@ -106,6 +113,8 @@ func is_valid_placement(cell: Vector2i) -> bool:
 func is_ground(cell: Vector2i) -> bool:
 	return ground_layer.get_cell_source_id(cell) != -1
 
+func is_ground_not_usable(cell: Vector2i) -> bool:
+	return not_usable_ground_layer.get_cell_source_id(cell) != -1
 
 func is_path(cell: Vector2i) -> bool:
 	return path_layer.get_cell_source_id(cell) != -1
