@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dxyg50dwonbwg" path="res://game/assets/tile_sets/place_holder.png" id="2_c7wb3"]
 [ext_resource type="Texture2D" uid="uid://bg3ayibjcpfaj" path="res://game/assets/tile_sets/SCIFI_TILESET.png" id="2_gjc8c"]
 [ext_resource type="PackedScene" uid="uid://dg60arx7lqg2x" path="res://game/system/path_layer/path_layer_scene.tscn" id="2_mj2gk"]
+[ext_resource type="Texture2D" uid="uid://cdehqtinrsva7" path="res://game/assets/tile_sets/extra_tiles.png" id="3_6bo20"]
 [ext_resource type="Script" uid="uid://chgbt5wt25778" path="res://game/system/spawners/mob_spawner.gd" id="3_fk1rh"]
 [ext_resource type="PackedScene" uid="uid://cvfsn6p6oe2yn" path="res://game/entities/mobs/base_mob/mob_scene.tscn" id="5_0x1cl"]
 [ext_resource type="PackedScene" uid="uid://da5t23dc7a4x3" path="res://game/system/tower_placement/tower_placement_controller.tscn" id="6_0x1cl"]
@@ -79,6 +80,22 @@ texture_region_size = Vector2i(32, 32)
 7:7/0 = 0
 8:7/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gjc8c"]
+texture = ExtResource("3_6bo20")
+margins = Vector2i(0, 16)
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0x1cl"]
 texture = ExtResource("2_c7wb3")
 texture_region_size = Vector2i(32, 32)
@@ -88,6 +105,7 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_0x1cl")
 sources/0 = SubResource("TileSetAtlasSource_d38cy")
+sources/1 = SubResource("TileSetAtlasSource_gjc8c")
 
 [sub_resource type="Resource" id="Resource_ruild"]
 script = ExtResource("6_7ovgr")
