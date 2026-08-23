@@ -11,7 +11,8 @@ signal remove_from_manager_pool( ref_to_self: Mob )
 @onready var ectoplasm_spawner: EctoplasmSpawner = $EctoplasmSpawner
 
 @export var data: MobResource
-
+@export var fast_ghost_color: Color
+@export var boss_ghost_color: Color
 
 # Runtime Stats
 var max_health: float = 1.0
@@ -65,11 +66,11 @@ func _modulate_color_by_mob_type()->void:
 		
 		MobResource.MobType.FAST_GHOST:
 			
-			mob_animated_sprite.set_modulate( Color.AQUA ) 
+			mob_animated_sprite.set_modulate( fast_ghost_color ) 
 		
 		MobResource.MobType.BOSS_GHOST:
 			
-			mob_animated_sprite.set_modulate( Color.DARK_BLUE )
+			mob_animated_sprite.set_modulate( boss_ghost_color )
 			ectoplasm_spawner.spawns_move_than_one_ectoplasm = true
 
 
