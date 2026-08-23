@@ -1,0 +1,40 @@
+[gd_resource type="TileSet" format=3 uid="uid://ouuooqlf5xvg"]
+
+[ext_resource type="Texture2D" uid="uid://bg3ayibjcpfaj" path="res://game/assets/tile_sets/SCIFI_TILESET.png" id="1_phpcr"]
+[ext_resource type="Texture2D" uid="uid://cdehqtinrsva7" path="res://game/assets/tile_sets/extra_tiles.png" id="2_ypata"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ovgr"]
+texture = ExtResource("1_phpcr")
+margins = Vector2i(16, 15)
+texture_region_size = Vector2i(32, 32)
+1:6/0 = 0
+2:6/0 = 0
+7:0/0 = 0
+6:0/0 = 0
+5:0/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+7:2/0 = 0
+6:2/0 = 0
+5:2/0 = 0
+4:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ruild"]
+texture = ExtResource("2_ypata")
+margins = Vector2i(0, 16)
+texture_region_size = Vector2i(32, 32)
+0:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/2 = SubResource("TileSetAtlasSource_7ovgr")
+sources/3 = SubResource("TileSetAtlasSource_ruild")
