@@ -147,7 +147,7 @@ func _on_confirmation_cancelled() -> void:
 
 
 func _on_upgrade_income_button_pressed() -> void:
-	if _ectoplasm < _tower_upgrade_cost:
+	if _ectoplasm < _income_upgrade_cost:
 		return
 		
 	_ectoplasm -= _income_upgrade_cost
