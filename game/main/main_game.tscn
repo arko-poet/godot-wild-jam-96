@@ -20,18 +20,19 @@
 [ext_resource type="PackedScene" uid="uid://b602m5ep1r77y" path="res://game/system/levels/level_1.tscn" id="12_arblt"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="14_gw1l1"]
 [ext_resource type="Theme" uid="uid://bqy65ykakpg5q" path="res://template/resources/themes/lore.tres" id="15_7082i"]
-[ext_resource type="AudioStream" uid="uid://c3ys33y3f70ih" path="res://game/assets/audio/music/gameplay-track1.mp3" id="15_d0j2t"]
 [ext_resource type="Script" uid="uid://faax4bjb3t42" path="res://game/system/ui/tip_label/tip_label_script.gd" id="18_as1rp"]
 [ext_resource type="PackedScene" uid="uid://c1ttv0f7fcyad" path="res://game/system/ui/start_wave_button/start_wave_button.tscn" id="18_yxbml"]
 [ext_resource type="Script" uid="uid://b8vltu7bjk4cp" path="res://game/system/sfx/sfx_manager.gd" id="21_7082i"]
 [ext_resource type="AudioStream" uid="uid://cjrljaool8bne" path="res://game/assets/audio/sfx/ghost-death-1.wav" id="22_hw6kc"]
+[ext_resource type="AudioStream" uid="uid://drjmddu7q3rdm" path="res://game/assets/audio/music/gameplay-track1 (1).mp3" id="23_djgt4"]
 [ext_resource type="AudioStream" uid="uid://dvd8ttpkayyoo" path="res://game/assets/audio/sfx/start-wave-1.wav" id="23_hw6kc"]
 [ext_resource type="AudioStream" uid="uid://doe2fsh4doyoi" path="res://game/assets/audio/sfx/tower-upgrade-1.wav" id="24_elvgd"]
 [ext_resource type="AudioStream" uid="uid://csmdumfmpn7b5" path="res://game/assets/audio/sfx/tower-placement-1.wav" id="25_8i3wl"]
 [ext_resource type="AudioStream" uid="uid://bm4smo4a681ye" path="res://game/assets/audio/sfx/ectoplasm-pickup-1.wav" id="25_naq3g"]
-[ext_resource type="AudioStream" uid="uid://dr15hck185225" path="res://game/assets/audio/sfx/tower-shooting-1.wav" id="27_8i3wl"]
 [ext_resource type="AudioStream" uid="uid://b5vcddqtaiksh" path="res://game/assets/audio/sfx/supercharged-mode-1.mp3" id="28_hq47i"]
+[ext_resource type="AudioStream" uid="uid://nmbdauc5s0ch" path="res://game/assets/audio/sfx/tower-lazer-1.wav" id="29_djgt4"]
 [ext_resource type="PackedScene" uid="uid://bk5bnm7mapiml" path="res://game/system/rewards_manager/rewards_manager.tscn" id="30_as1rp"]
+[ext_resource type="AudioStream" uid="uid://c54imo15odesu" path="res://game/assets/audio/sfx/tower-lazer-2.wav" id="30_itmgl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gw1l1"]
 font_size = 8
@@ -41,6 +42,12 @@ font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_d0j2t"]
 font_size = 8
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uodjo"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("29_djgt4")
+stream_1/stream = ExtResource("30_itmgl")
 
 [node name="MainGame" type="Node" unique_id=1950236070 node_paths=PackedStringArray("speed_buttons")]
 script = ExtResource("1_70w2d")
@@ -265,7 +272,7 @@ script = ExtResource("8_fjfis")
 rewards_manager = NodePath("../RewardsManager")
 
 [node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("14_gw1l1")]
-stream = ExtResource("15_d0j2t")
+stream = ExtResource("23_djgt4")
 
 [node name="SfxManager" type="Node" parent="." unique_id=1310482715]
 script = ExtResource("21_7082i")
@@ -274,7 +281,7 @@ SfxTracks = Dictionary[int, AudioStream]({
 1: ExtResource("23_hw6kc"),
 2: ExtResource("24_elvgd"),
 3: ExtResource("25_8i3wl"),
-4: ExtResource("27_8i3wl"),
+4: SubResource("AudioStreamRandomizer_uodjo"),
 5: ExtResource("28_hq47i"),
 6: ExtResource("25_naq3g")
 })
