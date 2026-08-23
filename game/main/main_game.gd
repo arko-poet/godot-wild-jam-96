@@ -5,7 +5,7 @@ const UPGRADE_SCALING_FACTOR := 250
 const TowerPurchaseButtonScene := preload("res://game/system/ui/tower_purchase/tower_purchase_button.tscn")
 const ECTOPLASM_MULTIPLIER_SCALING := 0.25
 
-@export var _starting_ectoplasm: int
+@export var _starting_ectoplasm: int = 200
 @export var _starting_core_charges: int
 @onready var level: Level = %Level
 
@@ -216,5 +216,5 @@ func _on_wave_manager_generate_wave_rewards(ectoplasm: int) -> void:
 
 
 func _check_if_game_won()->void:
-	if level.get_number_of_waves() >= _wave_manager.get_current_wave():
+	if level.get_number_of_waves() <= _wave_manager.get_current_wave():
 		_win_lose_manager.game_won()

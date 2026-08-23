@@ -30,5 +30,5 @@ func reset_engine_speed()->void:
 	reset_engine_speed_signal.emit()
 
 func all_ghosts_in_scene_are_cleared()->void:
-	
+	all_ghosts_in_scene_are_cleared_signal.emit()
 	pass

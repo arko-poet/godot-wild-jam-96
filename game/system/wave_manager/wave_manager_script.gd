@@ -4,6 +4,7 @@ signal wave_limit_exceeded
 signal generate_wave_rewards(ectoplasm:int)
 
 @export var rewards_manager : RewardsManager
+@export var starting_wave :int  = 0
 
 var _current_wave: int = 0:
 	set(value):
@@ -20,7 +21,7 @@ var current_time_estimate : float = 0.0
 var time_passed : float = 0.0
 
 func _ready() -> void:
-	_current_wave = _current_wave
+	_current_wave = starting_wave
 	start_wave_button.pressed.connect(_on_start_wave_button)
 	Event.wave_ended_signal.connect(_on_wave_ended_signal)
 	if rewards_manager == null:
@@ -49,7 +50,11 @@ func _on_start_wave_button()->void:
 
 func _on_wave_ended_signal()->void:
 	_active_wave = false
-	start_wave_button.toggle_enable(true)
+	if (_current_wave >= level.get_number_of_waves()):
+		return
+	else:
+		start_wave_button.toggle_enable(true)
+	
 
 
 
