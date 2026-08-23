@@ -1,10 +1,105 @@
 [gd_scene format=3 uid="uid://c38pre04vijye"]
 
 [ext_resource type="Script" uid="uid://slhpwfxi86yw" path="res://game/system/vfx_scenes/base_homing_vfx.gd" id="1_chqj3"]
-[ext_resource type="Texture2D" uid="uid://bh7s4wlv22y0c" path="res://game/assets/vfx/yellow_8.png" id="2_7x52h"]
+[ext_resource type="Texture2D" uid="uid://cg7swt5xevxb1" path="res://game/assets/vfx/electric_orb.png" id="2_chqj3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x52h"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db53k"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ruh0"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mino8"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n1h1"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u32sm"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dli1"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilv51"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02m3k"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es1sm"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4b0x"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqldf"]
+atlas = ExtResource("2_chqj3")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgud1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x52h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db53k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ruh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mino8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n1h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u32sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dli1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilv51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02m3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es1sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4b0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqldf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BaseHomingVFX" type="Node2D" unique_id=421966830]
 script = ExtResource("1_chqj3")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=233249997]
-texture = ExtResource("2_7x52h")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1310602622]
+sprite_frames = SubResource("SpriteFrames_vgud1")
+autoplay = "default"
+frame_progress = 0.24480802
+speed_scale = 4.0
