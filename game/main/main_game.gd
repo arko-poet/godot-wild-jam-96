@@ -193,7 +193,22 @@ func update_income_update_button() -> void:
 		upgrade_income_button.disabled = false
 
 func _build_tower_buttons() -> void:
-	for tower_resource: TowerResource in tower_resources:
+	var sorted_indices: Array[int] = []
+
+	# Create an index for each tower resource
+	for i in tower_resources.size():
+		sorted_indices.append(i)
+
+	# Sort indices by tower cost
+	sorted_indices.sort_custom(
+		func(a: int, b: int) -> bool:
+			return tower_resources[a].purchase_price < tower_resources[b].purchase_price
+	)
+
+	# Build buttons using the sorted indices
+	for index: int in sorted_indices:
+		var tower_resource: TowerResource = tower_resources[index]
+		
 		var tower_button: TowerPurchaseButton = TowerPurchaseButtonScene.instantiate()
 		tower_button.set_texture(tower_resource.preview_texture)
 		tower_button_container.add_child(tower_button)
