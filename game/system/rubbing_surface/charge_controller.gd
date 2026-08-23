@@ -48,7 +48,7 @@ func update(delta: float, rubbing_intensity: float, charging_sign:int) -> void:
 		rubbing_intensity * charge_generation_rate
 	)
 	
-	var discharge := charge_discharge_rate * delta
+	var discharge := charge_discharge_rate * (delta / Engine.time_scale)
 
 	charge += charge_generation * delta
 	
