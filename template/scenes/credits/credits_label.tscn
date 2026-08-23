@@ -13,10 +13,19 @@ size_flags_vertical = 5
 bbcode_enabled = true
 text = "[font_size=48]Collaborators[/font_size]
 
-[font_size=32]Role[/font_size]
-Person 1  
-Person 2  
-[url=]Person w/ Link[/url]  
+[font_size=32]Project Direction[/font_size]
+[url=https://arko-poet.itch.io/]arko[/url]
+
+[font_size=32]Art[/font_size]
+[url=https://itch.io/profile/sulpherr]sulpherr[/url]
+
+[font_size=32]Music & SFX[/font_size]
+[url=https://itch.io/profile/mouse99]mouse99[/url]
+
+[font_size=32]Programming[/font_size]
+[url=https://josephkhland.itch.io/]josephkhland[/url]
+[url=https://jerrylikesgreen.itch.io/]jerrylikesgreen[/url]
+[url=https://arko-poet.itch.io/]arko[/url]
 
 [font_size=48]Sourced[/font_size]
 [font_size=32]Font[/font_size]
@@ -54,6 +63,7 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("1_hbpko")
 attribution_file_path = "res://template/ATTRIBUTION.md"
+auto_update = false
 h1_font_size = 64
 h2_font_size = 48
 h3_font_size = 32
