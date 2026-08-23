@@ -65,6 +65,7 @@ var range_multipler: float =1.0
 ## tower range visibilities setup differently, we should change this alongside with
 ## Part of the implementation (check _ready)
 @export var default_tower_range_visibility = false 
+@onready var charge_particle_effect: ChargeParticleEffect = %ChargeParticleEffect
 
 func _ready() -> void:
 	if data == null:
@@ -82,6 +83,7 @@ func _ready() -> void:
 	rubbing_surface.mouse_detected_signal.connect(_on_mouse_detected)
 	_update_level_label()
 	queue_redraw()
+
 
 func initialize_from_resource() -> void:
 	sprite.texture = data.tower_sprite
@@ -144,6 +146,16 @@ func _process(delta: float) -> void:
 
 	if can_activate():
 		activate()
+	
+	match rubbing_surface.get_charge_type():
+		Enums.ChargeType.NEUTRAL:
+			charge_particle_effect.hide()
+		Enums.ChargeType.POSITIVE:
+			charge_particle_effect.show()
+			charge_particle_effect.display_charge_effect(true)
+		Enums.ChargeType.NEGATIVE:
+			charge_particle_effect.show()
+			charge_particle_effect.display_charge_effect(false)
 
 
 func charge(delta: float) -> void:	

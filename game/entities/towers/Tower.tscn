@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="6_o2b6d"]
 [ext_resource type="Script" uid="uid://dgquf5svssu41" path="res://game/system/sfx/tower_sfx_player.gd" id="10_1hvyf"]
 [ext_resource type="AudioStream" uid="uid://bkxuwuccb0ejq" path="res://game/assets/audio/sfx/tower-charging-1.wav" id="11_kisgu"]
+[ext_resource type="Script" uid="uid://khlttmdgh4vp" path="res://game/system/vfx/charge_particle_effect.gd" id="13_kisgu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kisgu"]
 atlas = ExtResource("4_mh8h4")
@@ -274,6 +275,20 @@ label_settings = SubResource("LabelSettings_o2swp")
 stream = ExtResource("11_kisgu")
 bus = &"SFX"
 script = ExtResource("10_1hvyf")
+
+[node name="ChargeParticleEffect" type="CPUParticles2D" parent="." unique_id=1224624124]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.80784315)
+position = Vector2(-1, -1.5)
+amount = 3
+texture = ExtResource("6_o2b6d")
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 18.74
+gravity = Vector2(0, -10)
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+script = ExtResource("13_kisgu")
 
 [connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
 [connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
