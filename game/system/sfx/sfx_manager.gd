@@ -15,7 +15,7 @@ func _on_play_sfx_signal(track: Enums.SfxTrack) -> void:
 
 	var sfx_player := AudioStreamPlayer.new()
 	
-	if track == Enums.SfxTrack.TOWER_SHOOT:
+	if track == Enums.SfxTrack.TOWER_SHOOT or track == Enums.SfxTrack.GHOST_DEATH:
 		sfx_player.volume_db -= 6.0
 	
 	sfx_player.set_bus("SFX")
