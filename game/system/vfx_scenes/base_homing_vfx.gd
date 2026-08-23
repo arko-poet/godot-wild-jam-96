@@ -4,7 +4,6 @@ extends Node2D
 signal vfx_completed
 
 const PRESET_SPEED: float = 500.0
-const CONTACT_DISTANCE_SQR: float = 64.0 # Just a small value to make the bullet think it has reached it's destination
 var current_speed :float = 0
 
 var direction = Vector2(0,0)
@@ -20,17 +19,22 @@ func _process(delta: float) -> void:
 		queue_free()
 		return
 	
-	if check_for_completion():
+	var target_position := target_node.global_position
+	var distance := global_position.distance_to(target_position)
+	var movement := current_speed * delta
+	
+	# We would reach or overshoot the target this frame.
+	if movement >= distance:
+		global_position = target_position
 		vfx_completed.emit()
 		queue_free()
+		return
 	
 	update_direction()
-	global_position += direction*current_speed*delta
+	global_position += direction * movement
 	
 	
 
 func update_direction():
 	direction = global_position.direction_to(target_node.global_position)
 	
-func check_for_completion():
-	return target_node.global_position.distance_squared_to(global_position) < CONTACT_DISTANCE_SQR
