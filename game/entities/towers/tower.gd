@@ -25,6 +25,8 @@ enum TowerState{
 @onready var internal_state_timer : Timer = $InternalStateTimer
 @onready var tower_level_label: Label = %TowerLevelLabel
 
+@onready var turret_blast_vfx: AnimatedSprite2D = %TurretBlastVfx
+
 var tower_ability : TowerAbility
 var level = 1
 var current_charges: float = 0.0
@@ -178,9 +180,8 @@ func activate() -> void:
 		rubbing_surface.get_charge_type(),
 		self
 	)
-
+	turret_blast_vfx.play("default")
 	ability.activate(context)
-
 	current_charges -= activation_cost
 	Event.play_sfx( Enums.SfxTrack.TOWER_SHOOT )
 

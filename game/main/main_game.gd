@@ -5,7 +5,7 @@ const UPGRADE_SCALING_FACTOR := 250
 const TowerPurchaseButtonScene := preload("res://game/system/ui/tower_purchase/tower_purchase_button.tscn")
 const ECTOPLASM_MULTIPLIER_SCALING := 0.25
 
-@export var _starting_ectoplasm: int
+@export var _starting_ectoplasm: int = 200
 @export var _starting_core_charges: int
 @onready var level: Level = %Level
 
@@ -45,6 +45,7 @@ var _income_upgrades_purchased := 0:
 @onready var _pause_menu_controller: Node = %PauseMenuController
 @onready var _win_lose_manager: Node = %WinLoseManager
 @onready var _level : Level = %Level
+@onready var _wave_manager: WaveManager = %WaveManager
 
 @onready var _ectoplasm_label: Label = %EctoplasmLabel
 @onready var core_charges_count: Label = %CoreChargesCount
@@ -66,6 +67,7 @@ func _ready() -> void:
 	_core_charges = _starting_core_charges
 	Event.ectoplasm_collected_signal.connect(_on_ectoplasm_collected_signal)
 	Event.reset_engine_speed_signal.connect(_reset_speed_buttons)
+	Event.all_ghosts_in_scene_are_cleared_signal.connect(_check_if_game_won)
 
 	_level.tower_placement_controller.confirmation_requested.connect(
 		_on_tower_placement_confirmation_requested
@@ -144,9 +146,6 @@ func _on_confirmation_cancelled() -> void:
 	_level.tower_placement_controller.cancel_confirmation()
 
 
-func _on_wave_manager_wave_limit_exceeded() -> void:
-	_win_lose_manager.game_won()
-
 func _on_upgrade_income_button_pressed() -> void:
 	if _ectoplasm < _tower_upgrade_cost:
 		return
@@ -193,7 +192,22 @@ func update_income_update_button() -> void:
 		upgrade_income_button.disabled = false
 
 func _build_tower_buttons() -> void:
-	for tower_resource: TowerResource in tower_resources:
+	var sorted_indices: Array[int] = []
+
+	# Create an index for each tower resource
+	for i in tower_resources.size():
+		sorted_indices.append(i)
+
+	# Sort indices by tower cost
+	sorted_indices.sort_custom(
+		func(a: int, b: int) -> bool:
+			return tower_resources[a].purchase_price < tower_resources[b].purchase_price
+	)
+
+	# Build buttons using the sorted indices
+	for index: int in sorted_indices:
+		var tower_resource: TowerResource = tower_resources[index]
+		
 		var tower_button: TowerPurchaseButton = TowerPurchaseButtonScene.instantiate()
 		tower_button.set_texture(tower_resource.preview_texture)
 		tower_button_container.add_child(tower_button)
@@ -214,3 +228,8 @@ func _on_wave_manager_generate_wave_rewards(ectoplasm: int) -> void:
 		# Potentially here we need to add a visual effect to imply this gain.
 		_ectoplasm+= ectoplasm * ectoplasm_multiplier
 	pass # Replace with function body.
+
+
+func _check_if_game_won()->void:
+	if level.get_number_of_waves() <= _wave_manager.get_current_wave():
+		_win_lose_manager.game_won()

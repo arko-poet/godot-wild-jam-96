@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c71tg7uc7v3pa" path="res://game/assets/towers/tower_no_barrel.png" id="2_wdb04"]
 [ext_resource type="Shader" uid="uid://73hk1rqg6q6q" path="res://game/entities/towers/range_indicator.gdshader" id="3_5brqy"]
 [ext_resource type="Texture2D" uid="uid://ifrwpsjhqorc" path="res://game/assets/vfx/x.png" id="3_kmi1p"]
+[ext_resource type="Texture2D" uid="uid://d23u75m5p163c" path="res://game/assets/vfx/turret_blast.png" id="4_mh8h4"]
 [ext_resource type="Texture2D" uid="uid://bua0pw6q8r66u" path="res://game/assets/vfx/supercharge.png" id="4_wdb04"]
 [ext_resource type="PackedScene" uid="uid://bus3m22c22i1j" path="res://game/system/rubbing_surface/rubbing_surface.tscn" id="4_xayqd"]
 [ext_resource type="Texture2D" uid="uid://u22p4orcseah" path="res://game/assets/towers/barrel.png" id="5_1hvyf"]
@@ -11,6 +12,70 @@
 [ext_resource type="Texture2D" uid="uid://01iad3ghlhkt" path="res://game/assets/vfx/minus_particle.png" id="6_o2b6d"]
 [ext_resource type="Script" uid="uid://dgquf5svssu41" path="res://game/system/sfx/tower_sfx_player.gd" id="10_1hvyf"]
 [ext_resource type="AudioStream" uid="uid://bkxuwuccb0ejq" path="res://game/assets/audio/sfx/tower-charging-1.wav" id="11_kisgu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kisgu"]
+atlas = ExtResource("4_mh8h4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcgjg"]
+atlas = ExtResource("4_mh8h4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86w6u"]
+atlas = ExtResource("4_mh8h4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjyjv"]
+atlas = ExtResource("4_mh8h4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd4fh"]
+atlas = ExtResource("4_mh8h4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjwg1"]
+atlas = ExtResource("4_mh8h4")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbhpp"]
+atlas = ExtResource("4_mh8h4")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh8h4"]
+atlas = ExtResource("4_mh8h4")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgud1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kisgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcgjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86w6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjyjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd4fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjwg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbhpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh8h4")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgud1"]
 resource_local_to_scene = true
@@ -79,6 +144,11 @@ texture = ExtResource("5_1hvyf")
 [node name="BulletOriginMarker" type="Marker2D" parent="Sprite2D/BarrelSprite" unique_id=1650057458]
 unique_name_in_owner = true
 position = Vector2(28, 0)
+
+[node name="TurretBlastVfx" type="AnimatedSprite2D" parent="Sprite2D/BarrelSprite/BulletOriginMarker" unique_id=2109939689]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_vgud1")
+speed_scale = 4.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Sprite2D" unique_id=1904777508]
 anchors_preset = 15
