@@ -5,4 +5,4 @@
 [node name="ProjectMusicController" type="Node" unique_id=1628865114]
 process_mode = 3
 script = ExtResource("1_wbudo")
-fade_in_duration = 4.0
+fade_out_duration = 4.0
