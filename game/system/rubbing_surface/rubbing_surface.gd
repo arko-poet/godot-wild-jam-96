@@ -200,7 +200,8 @@ func _check_to_play_charge_sfx() -> void:
 			return
 		
 		is_charging = true
-		tower_sfx_player.play()
+		if is_enabled:
+			tower_sfx_player.play()
 	
 	else:
 		is_charging = false
