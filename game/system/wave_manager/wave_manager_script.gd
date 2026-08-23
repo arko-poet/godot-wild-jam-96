@@ -14,6 +14,7 @@ var _active_wave: bool = false
 
 @onready var start_wave_button: StartWaveButton = $"../UILayer/UI/StartWaveButton"
 @onready var level: Level = %Level
+@onready var win_lose_manager: Node = %WinLoseManager
 
 var current_time_estimate : float = 0.0
 var time_passed : float = 0.0
@@ -29,6 +30,10 @@ func _process(delta) -> void:
 	time_passed += delta
 	update_button_visuals()
 
+func get_current_wave()->int:
+	
+	return _current_wave
+	
 
 func update_button_visuals():
 	var reward = rewards_manager.calculate_reward(current_time_estimate, current_time_estimate-time_passed,_current_wave)
@@ -45,6 +50,7 @@ func _on_start_wave_button()->void:
 func _on_wave_ended_signal()->void:
 	_active_wave = false
 	start_wave_button.toggle_enable(true)
+
 
 
 func _next_wave()->void:
